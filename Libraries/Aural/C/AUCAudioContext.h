@@ -28,6 +28,8 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import "AUCTypes.h"
 
+#define INVALID_ELEMENT UINT_MAX
+
 #define kMaxSourcesPerContext 1024
 
 
