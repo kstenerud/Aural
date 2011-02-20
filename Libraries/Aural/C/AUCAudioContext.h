@@ -30,7 +30,8 @@
 
 #define INVALID_ELEMENT UINT_MAX
 
-#define kMaxSourcesPerContext 1024
+// TODO: Probably should set this lower since each buffer slot consumes memory.
+#define kMaxSourcesPerContext 128
 
 
 DEFINE_INTERFACE(AUCAudioContext)
