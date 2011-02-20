@@ -58,7 +58,7 @@ AUCAudioBuffer* AUCAudioBuffer_create(NSArray* channelData,
 	self->numFrames = self->numBytes / self->format.mBytesPerFrame;
 	
 	self->channelData[0] = [monoChannel bytes];
-	if([channelData count] > 0)
+	if([channelData count] > 1)
 	{
 		self->channelData[1] = [[channelData objectAtIndex:1] bytes];
 	}
