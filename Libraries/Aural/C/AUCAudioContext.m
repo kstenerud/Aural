@@ -167,17 +167,16 @@ AUCAudioContext* AUCAudioContext_create(AUCAudioManager* manager)
 	NSLog(@"Graph state before init:");
 	CAShow(self->auGraph);
 	
+	self_setMaxFramesPerSlice(self, kDefaultMaxFramesPerSlice);
+	
+	
+	self_setNumElements(self, kMaxSourcesPerContext);
+	
 	if(noErr != (error = AUGraphInitialize(self->auGraph)))
 	{
 		REPORT_AUGRAPH_ERROR(error, "Could not initialize the audio processing graph");
 		goto done;
 	}
-	
-	self_setMaxFramesPerSlice(self, kDefaultMaxFramesPerSlice);
-	
-	
-	// TODO: Is this a good idea?
-	self_setNumElements(self, kMaxSourcesPerContext);
 	
 	NSLog(@"Graph state after init:");
 	CAShow(self->auGraph);
