@@ -92,7 +92,7 @@ AUCAudioSource* AUCAudioSource_create(AUCAudioContext* context)
 	AUC_MUTEX_INIT(&self->mutex);
 	self->context = context;
 	self->elementNumber = context->notifySourceInit(context, self);
-	if(UINT_MAX == self->elementNumber)
+	if(INVALID_ELEMENT == self->elementNumber)
 	{
 		AUC_LOG_ERROR("Cannot allocate more than %d sources per context", kMaxSourcesPerContext);
 		self_destroy(self);
@@ -244,7 +244,6 @@ static void self_setPaused(AUCAudioSource* self, BOOL paused)
 		{
 			self_enableRenderProc(self);
 		}
-
 	}
 }
 	
@@ -255,64 +254,17 @@ static void self_play(AUCAudioSource* self)
 		self_stop(self);
 	}
 	
-	
-	AUC_LOG_DEBUG("Playing source %d. Offset = %d", self->elementNumber, self->currentBytePos);
-	
 	self_enableRenderProc(self);
 	self->playing = TRUE;
-
-	/*
-	 OSStatus error = noErr;
-
-	OPT_LOCK_MIXER();
-	error = AudioUnitSetParameter(self->context->mixerUnit,
-								  kMultiChannelMixerParam_Enable,
-								  kAudioUnitScope_Input,
-								  self->elementNumber,
-								  TRUE,
-								  0);
-	if(noErr == error)
-	{
-		self->playing = TRUE;
-	}
-	OPT_UNLOCK_MIXER();
-	
-	if(noErr != error)
-	{
-		REPORT_AUGRAPH_ERROR(error, "Could not enable source %d", self->elementNumber);
-	}
-	 */
+	self->paused = FALSE;
 }
 
 static void self_stop(AUCAudioSource* self)
 {
 	self_disableRenderProc(self);
 	self->playing = FALSE;
+	self->paused = FALSE;
 	self->currentBytePos = 0;
-	
-	/*
-	OSStatus error = noErr;
-		
-	OPT_LOCK_MIXER();
-	error = AudioUnitSetParameter(self->context->mixerUnit,
-								  kMultiChannelMixerParam_Enable,
-								  kAudioUnitScope_Input,
-								  self->elementNumber,
-								  FALSE,
-								  0);
-	if(noErr == error)
-	{
-		self->playing = FALSE;
-		// TODO: This is still unsafe
-		self->currentBytePos = 0;
-	}
-	OPT_UNLOCK_MIXER();
-	
-	if(noErr != error)
-	{
-		REPORT_AUGRAPH_ERROR(error, "Could not disable source %d", self->elementNumber);
-	}
-	 */
 }
 
 static OSStatus renderCallback(void* inRefCon,
@@ -322,7 +274,6 @@ static OSStatus renderCallback(void* inRefCon,
 							   UInt32 inNumberFrames,
 							   AudioBufferList* ioData)
 {
-	
 	AUCAudioSource* source = (AUCAudioSource*)inRefCon;
 	AUCAudioBuffer* buffer = source->buffer;
 	
