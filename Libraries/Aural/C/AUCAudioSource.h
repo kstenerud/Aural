@@ -46,6 +46,9 @@ DEFINE_INTERFACE(AUCAudioSource)
 	BOOL (*getMuted)(AUCAudioSource* self);
 	void (*setMuted)(AUCAudioSource* self, BOOL muted);
 	
+	float (*getGain)(AUCAudioSource* self);
+	void (*setGain)(AUCAudioSource* self, float gain);
+	
 	void (*play)(AUCAudioSource* self);
 	void (*stop)(AUCAudioSource* self);
 
@@ -56,9 +59,9 @@ DEFINE_INTERFACE(AUCAudioSource)
 	
 	pthread_mutex_t mutex;
 
-//	float volume;
 //	int numLoops;
 	// maybe max/min gain?
+	float gain;
 	BOOL muted;
 	BOOL paused;
 	BOOL playing;

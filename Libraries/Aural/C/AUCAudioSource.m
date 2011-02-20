@@ -61,6 +61,9 @@ static void self_setPaused(AUCAudioSource* self, BOOL paused);
 static BOOL self_getMuted(AUCAudioSource* self);
 static void self_setMuted(AUCAudioSource* self, BOOL muted);
 
+static float self_getGain(AUCAudioSource* self);
+static void self_setGain(AUCAudioSource* self, float gain);
+
 static void self_play(AUCAudioSource* self);
 static void self_stop(AUCAudioSource* self);
 
@@ -85,6 +88,8 @@ AUCAudioSource* AUCAudioSource_create(AUCAudioContext* context)
 	self->setPaused = self_setPaused;
 	self->getMuted = self_getMuted;
 	self->setMuted = self_setMuted;
+	self->getGain = self_getGain;
+	self->setGain = self_setGain;
 	self->play = self_play;
 	self->stop = self_stop;
 	
@@ -98,6 +103,8 @@ AUCAudioSource* AUCAudioSource_create(AUCAudioContext* context)
 		self_destroy(self);
 		return NULL;
 	}
+	
+	self->gain = 1.0f;
 
 	AUC_LOG_DEBUG("Initialized source %d", self->elementNumber);
 //	self_stop(self);
@@ -265,6 +272,39 @@ static void self_stop(AUCAudioSource* self)
 	self->playing = FALSE;
 	self->paused = FALSE;
 	self->currentBytePos = 0;
+}
+
+static float self_getGain(AUCAudioSource* self)
+{
+	return self->gain;
+}
+
+static void self_setGain(AUCAudioSource* self, float gain)
+{
+	OSStatus error = noErr;
+	
+	OPT_LOCK_MIXER();
+	if(gain != self->gain)
+	{
+		// Converting to sound pressure, so * 20
+		Float32	db = fmaxf(log10f(gain) * 20.0f, -120.0f);
+		error = AudioUnitSetParameter(self->context->mixerUnit,
+									  k3DMixerParam_Gain,
+									  kAudioUnitScope_Input,
+									  self->elementNumber,
+									  db,
+									  sizeof(db));
+		if(noErr == error)
+		{
+			self->gain = gain;
+		}
+	}
+	OPT_UNLOCK_MIXER();
+	
+	if(noErr != error)
+	{
+		REPORT_AUGRAPH_ERROR(error, "Could not set source %d gain to %f", self->elementNumber, gain);
+	}
 }
 
 static OSStatus renderCallback(void* inRefCon,

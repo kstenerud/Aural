@@ -42,6 +42,10 @@
     [super dealloc];
 }
 
+@synthesize gainSlider1;
+@synthesize gainSlider2;
+
+
 - (IBAction) onPlay1
 {
 	source1->play(source1);
@@ -62,6 +66,13 @@
 	source1->setPaused(source1, !source1->getPaused(source1));
 }
 
+- (IBAction) onGainSlider1:(id) sender
+{
+	source1->setGain(source1, gainSlider1.value);
+}
+
+
+
 - (IBAction) onPlay2
 {
 	source2->play(source2);
@@ -81,6 +92,13 @@
 {
 	source2->setPaused(source2, !source2->getPaused(source2));
 }
+
+- (IBAction) onGainSlider2:(id) sender
+{
+	source2->setGain(source2, gainSlider2.value);
+}
+
+
 
 - (IBAction) onContext
 {
