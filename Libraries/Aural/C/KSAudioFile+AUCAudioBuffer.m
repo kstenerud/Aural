@@ -88,7 +88,8 @@
 	//	self.sampleRate = sampleRate;
 	_outputDescription.mSampleRate = sampleRate;
 	// TODO: For some reason setting to 16 bit fails...
-	[self setTo32BitCanonicalFormatWithStereo:stereo interleaved:NO];
+//	[self setTo32BitCanonicalFormatWithStereo:stereo interleaved:NO];
+	[self setTo16BitCanonicalFormatWithStereo:NO interleaved:YES];
 }
 
 - (AUCAudioBuffer*) aucBufferWithName:(NSString*) name

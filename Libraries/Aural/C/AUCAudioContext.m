@@ -104,7 +104,8 @@ AUCAudioContext* AUCAudioContext_create(AUCAudioManager* manager)
 	AudioComponentDescription nodeMixerDesc =
 	{
 		.componentType          = kAudioUnitType_Mixer,
-		.componentSubType       = kAudioUnitSubType_MultiChannelMixer,
+//		.componentSubType       = kAudioUnitSubType_MultiChannelMixer,
+		.componentSubType       = kAudioUnitSubType_AU3DMixerEmbedded,
 		.componentManufacturer  = kAudioUnitManufacturer_Apple,
 		.componentFlags         = 0,
 		.componentFlagsMask     = 0,
@@ -363,12 +364,12 @@ static unsigned int self_notifySourceInit(AUCAudioContext* self, AUCAudioSource*
 			return i;
 		}
 	}
-	return UINT_MAX;
+	return INVALID_ELEMENT;
 }
 
 static void self_notifySourceDestroy(AUCAudioContext* self, AUCAudioSource* source)
 {
-	if(UINT_MAX != source->elementNumber)
+	if(INVALID_ELEMENT != source->elementNumber)
 	{
 		self->sources[source->elementNumber] = NULL;
 	}

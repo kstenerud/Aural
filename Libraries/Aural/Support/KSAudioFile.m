@@ -94,8 +94,8 @@ NSLog(@"Error: %s: %@", \
  * @param bytesPerChannel The number of bytes per channel.
  */
 - (void) setToCanonicalFormatWithStereo:(bool) stereo
-						    interleaved:(bool) interleaved
-						bytesPerChannel:(UInt32) bytesPerSample;
+						    interleaved:(bool) interleaved;
+//						bytesPerChannel:(UInt32) bytesPerSample;
 
 @end
 
@@ -240,13 +240,13 @@ SYNTHESIZE_ASBD_PROPERTY(UInt32, bitsPerChannel, BitsPerChannel);
 
 - (void) setToCanonicalFormatWithStereo:(bool) stereo
 						    interleaved:(bool) interleaved
-						bytesPerChannel:(UInt32) bytesPerChannel
 {
 	AudioStreamBasicDescription newFormat = _inputDescription;
 
+	UInt32 bytesPerChannel = sizeof(AudioSampleType);
 	newFormat.mSampleRate       = _outputDescription.mSampleRate;
 	newFormat.mFormatID         = kAudioFormatLinearPCM;
-	newFormat.mFormatFlags      = kAudioFormatFlagsAudioUnitCanonical;
+	newFormat.mFormatFlags      = kAudioFormatFlagsCanonical;
 	newFormat.mFramesPerPacket  = 1;
 	newFormat.mChannelsPerFrame = stereo && _inputDescription.mChannelsPerFrame > 1 ? 2 : 1;
 	newFormat.mBitsPerChannel   = bytesPerChannel * 8;
@@ -269,16 +269,16 @@ SYNTHESIZE_ASBD_PROPERTY(UInt32, bitsPerChannel, BitsPerChannel);
 								 interleaved:(bool) interleaved
 {
 	return [self setToCanonicalFormatWithStereo:stereo
-								    interleaved:interleaved
-								bytesPerChannel:sizeof(AudioSampleType)];
+								    interleaved:interleaved];
+//								bytesPerChannel:sizeof(AudioSampleType)];
 }
 
 - (void) setTo32BitCanonicalFormatWithStereo:(bool) stereo
 								 interleaved:(bool) interleaved
 {
 	return [self setToCanonicalFormatWithStereo:stereo
-								    interleaved:interleaved
-								bytesPerChannel:sizeof(AudioUnitSampleType)];
+								    interleaved:interleaved];
+//								bytesPerChannel:sizeof(AudioUnitSampleType)];
 }
 
 - (void) setOutputFormat:(AudioStreamBasicDescription*) format
