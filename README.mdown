@@ -3,8 +3,8 @@ Aural
 
 ### What is it?
 
-Aural is an audio library for iOS that provides a simpler interface to Audio Units while remaining
-fast and efficient.
+Aural is an audio library for iOS (and soon OSX) that provides a simpler interface to Audio Units
+while remaining fast and efficient.
 
 
 ### How does it work?
