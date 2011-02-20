@@ -1,0 +1,3 @@
+kAudioUnitSubType_AU3DMixerEmbedded requires 16-bit samples (AudioSampleType) whereas kAudioUnitSubType_MultiChannelMixer requires 8.24 samples (AudioUnitSampleType).
+Furthermore, with the embedded mixer you can't have stereo, even if interleaved, it seems.
+
