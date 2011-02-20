@@ -1,0 +1,33 @@
+Aural
+=====
+
+### What is it?
+
+Aural is an audio library for iOS that provides a simpler interface to Audio Units while remaining
+fast and efficient.
+
+
+### How does it work?
+
+Currently, I've put in a C interface to Aural, which mimics a number of object-oriented behaviors.
+It follows to a large extent the same model as OpenAL, with contexts, sources, and buffers. However,
+the API is completely different. Personally, I can't stand the OpenAL API :P
+
+Once the C interface is complete, I'll be adding an Objective-C wrapper to gain access to all the
+Objective-C conveniences.
+
+
+### Should I use this code in my program?
+
+Absolutely NOT!
+
+This code is experimental. It's not even alpha quality. It's my sandbox for trying out new ideas.
+
+The API will change. Stuff will break. You're welcome to try it out if you want, and I'm open to
+architectural critiques, but I'll offer no support whatsoever until I've finished the API, tested
+fully, and declared this library to be production ready.
+
+
+### License
+
+This code is copyright 2011 Karl Stenerud, and is released under the Apache 2.0 license.
