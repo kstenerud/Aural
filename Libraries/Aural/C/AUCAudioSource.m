@@ -64,6 +64,9 @@ static void self_setMuted(AUCAudioSource* self, BOOL muted);
 static float self_getGain(AUCAudioSource* self);
 static void self_setGain(AUCAudioSource* self, float gain);
 
+static float self_getPitch(AUCAudioSource* self);
+static void self_setPitch(AUCAudioSource* self, float pitch);
+
 static void self_play(AUCAudioSource* self);
 static void self_stop(AUCAudioSource* self);
 
@@ -90,6 +93,8 @@ AUCAudioSource* AUCAudioSource_create(AUCAudioContext* context)
 	self->setMuted = self_setMuted;
 	self->getGain = self_getGain;
 	self->setGain = self_setGain;
+	self->getPitch = self_getPitch;
+	self->setPitch = self_setPitch;
 	self->play = self_play;
 	self->stop = self_stop;
 	
@@ -214,12 +219,15 @@ static void self_setMuted(AUCAudioSource* self, BOOL muted)
 	OPT_LOCK_MIXER();
 	if(muted != self->muted)
 	{
+		NSLog(@"Set %d to muted %d", self->elementNumber, muted);
+		/*
 		error = AudioUnitSetParameter(self->context->mixerUnit,
 									  kMultiChannelMixerParam_Enable,
 									  kAudioUnitScope_Input,
 									  self->elementNumber,
 									  !muted,
 									  0);
+		 */
 		if(noErr == error)
 		{
 			self->muted = muted;
@@ -307,6 +315,37 @@ static void self_setGain(AUCAudioSource* self, float gain)
 	}
 }
 
+static float self_getPitch(AUCAudioSource* self)
+{
+	return self->pitch;
+}
+
+static void self_setPitch(AUCAudioSource* self, float pitch)
+{
+	OSStatus error = noErr;
+	
+	OPT_LOCK_MIXER();
+	if(pitch != self->pitch)
+	{
+		error = AudioUnitSetParameter(self->context->mixerUnit,
+									  k3DMixerParam_PlaybackRate,
+									  kAudioUnitScope_Input,
+									  self->elementNumber,
+									  pitch,
+									  sizeof(pitch));
+		if(noErr == error)
+		{
+			self->pitch = pitch;
+		}
+	}
+	OPT_UNLOCK_MIXER();
+	
+	if(noErr != error)
+	{
+		REPORT_AUGRAPH_ERROR(error, "Could not set source %d pitch to %f", self->elementNumber, pitch);
+	}
+}
+
 static OSStatus renderCallback(void* inRefCon,
 							   AudioUnitRenderActionFlags* ioActionFlags,
 							   const AudioTimeStamp* inTimeStamp,
@@ -326,10 +365,21 @@ static OSStatus renderCallback(void* inRefCon,
 
 	if(source->muted)
 	{
-		*ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;
+		// TODO: Strange behavior here: If I have two sources and the second
+		// one gets muted and sets this flag, BOTH sources get muted!
+//		*ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;
 		source->currentBytePos = (inStartPos + requestedBytes) % inSize;
+		for(unsigned int i = 0; i < numChannels; i++)
+		{
+			memset(ioData->mBuffers[i].mData, 0, requestedBytes);
+		}
 		return noErr;
 	}
+	else
+	{
+//		*ioActionFlags &= ~kAudioUnitRenderAction_OutputIsSilence;
+	}
+
 								  
 	for(unsigned int i = 0; i < numChannels; i++)
 	{

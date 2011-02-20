@@ -30,6 +30,13 @@
 	
 	source2 = context->createSource(context);
 	source2->setBuffer(source2, buffer);
+	
+	gainSlider1.value = 1.0f;
+	gainSlider2.value = 1.0f;
+
+	pitchSlider1.value = 0.5f;
+	pitchSlider2.value = 0.5f;
+
 }
 
 - (void)dealloc
@@ -39,11 +46,18 @@
 	context->destroy(context);
 	buffer->destroy(buffer);
 	
+	[gainSlider1 release];
+	[gainSlider2 release];
+	[pitchSlider1 release];
+	[pitchSlider2 release];
+
     [super dealloc];
 }
 
 @synthesize gainSlider1;
 @synthesize gainSlider2;
+@synthesize pitchSlider1;
+@synthesize pitchSlider2;
 
 
 - (IBAction) onPlay1
@@ -71,6 +85,12 @@
 	source1->setGain(source1, gainSlider1.value);
 }
 
+- (IBAction) onPitchSlider1:(id) sender
+{
+	NSLog(@"Slider value = %f", pitchSlider1.value);
+	source1->setPitch(source1, pitchSlider1.value * 2.0f);
+}
+
 
 
 - (IBAction) onPlay2
@@ -96,6 +116,11 @@
 - (IBAction) onGainSlider2:(id) sender
 {
 	source2->setGain(source2, gainSlider2.value);
+}
+
+- (IBAction) onPitchSlider2:(id) sender
+{
+	source2->setPitch(source2, pitchSlider2.value * 2.0f);
 }
 
 

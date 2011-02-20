@@ -49,6 +49,9 @@ DEFINE_INTERFACE(AUCAudioSource)
 	float (*getGain)(AUCAudioSource* self);
 	void (*setGain)(AUCAudioSource* self, float gain);
 	
+	float (*getPitch)(AUCAudioSource* self);
+	void (*setPitch)(AUCAudioSource* self, float pitch);
+	
 	void (*play)(AUCAudioSource* self);
 	void (*stop)(AUCAudioSource* self);
 
@@ -65,7 +68,7 @@ DEFINE_INTERFACE(AUCAudioSource)
 	BOOL muted;
 	BOOL paused;
 	BOOL playing;
-//	float pitch;
+	float pitch;
 	// position or pan...
 	// playback finished callback...
 	
