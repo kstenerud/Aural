@@ -34,3 +34,11 @@ struct INTF_NAME##_
 #define DECLARE_AND_DEFINE_INTERFACE(INTF_NAME) \
 DECLARE_INTERFACE(INTF_NAME); \
 DEFINE_INTERFACE(INTF_NAME)
+
+#define DECLARE_GETTER_SETTER(TYPE, NAME) \
+static TYPE self_get##NAME(AUCAudioSource* self); \
+static void self_set##NAME(AUCAudioSource* self, TYPE NAME)
+
+#define ASSIGN_GETTER_SETTER(NAME) \
+self->get##NAME = self_get##NAME; \
+self->set##NAME = self_set##NAME

@@ -48,27 +48,25 @@ static OSStatus renderCallback(void* inRefCon,
 
 static void self_destroy(AUCAudioSource* self);
 
+static inline OSStatus self_setFloat32Property(AUCAudioSource* self,
+											   UInt32 property,
+											   Float32 value);
+
 static void self_enableRenderProc(AUCAudioSource* self);
-
 static void self_disableRenderProc(AUCAudioSource* self);
-
-static AUCAudioBuffer* self_getBuffer(AUCAudioSource* self);
-static void self_setBuffer(AUCAudioSource* self, AUCAudioBuffer* buffer);
-
-static BOOL self_getPaused(AUCAudioSource* self);
-static void self_setPaused(AUCAudioSource* self, BOOL paused);
-
-static BOOL self_getMuted(AUCAudioSource* self);
-static void self_setMuted(AUCAudioSource* self, BOOL muted);
-
-static float self_getGain(AUCAudioSource* self);
-static void self_setGain(AUCAudioSource* self, float gain);
-
-static float self_getPitch(AUCAudioSource* self);
-static void self_setPitch(AUCAudioSource* self, float pitch);
 
 static void self_play(AUCAudioSource* self);
 static void self_stop(AUCAudioSource* self);
+
+DECLARE_GETTER_SETTER(AUCAudioBuffer*, Buffer);
+DECLARE_GETTER_SETTER(BOOL, Paused);
+DECLARE_GETTER_SETTER(BOOL, Muted);
+DECLARE_GETTER_SETTER(float, Gain);
+DECLARE_GETTER_SETTER(float, Pitch);
+DECLARE_GETTER_SETTER(float, Pan);
+
+static void self_setDistance(AUCAudioSource* self, float distance);
+
 
 
 #pragma mark -
@@ -85,18 +83,14 @@ AUCAudioSource* AUCAudioSource_create(AUCAudioContext* context)
 	
 	// Method Assignment
 	self->destroy = self_destroy;
-	self->getBuffer = self_getBuffer;
-	self->setBuffer = self_setBuffer;
-	self->getPaused = self_getPaused;
-	self->setPaused = self_setPaused;
-	self->getMuted = self_getMuted;
-	self->setMuted = self_setMuted;
-	self->getGain = self_getGain;
-	self->setGain = self_setGain;
-	self->getPitch = self_getPitch;
-	self->setPitch = self_setPitch;
 	self->play = self_play;
 	self->stop = self_stop;
+	ASSIGN_GETTER_SETTER(Buffer);
+	ASSIGN_GETTER_SETTER(Paused);
+	ASSIGN_GETTER_SETTER(Muted);
+	ASSIGN_GETTER_SETTER(Gain);
+	ASSIGN_GETTER_SETTER(Pitch);
+	ASSIGN_GETTER_SETTER(Pan);
 	
 	// Other Initialization
 	AUC_MUTEX_INIT(&self->mutex);
@@ -110,10 +104,9 @@ AUCAudioSource* AUCAudioSource_create(AUCAudioContext* context)
 	}
 	
 	self->gain = 1.0f;
+	self->pitch = 1.0f;
 
 	AUC_LOG_DEBUG("Initialized source %d", self->elementNumber);
-//	self_stop(self);
-//	self_enableRenderProc(self);
 	
 	return self;
 }
@@ -128,6 +121,17 @@ static void self_destroy(AUCAudioSource* self)
 	FREE_OBJECT(self);
 }
 
+static inline OSStatus self_setFloat32Property(AUCAudioSource* self,
+											   UInt32 property,
+											   Float32 value)
+{
+	return AudioUnitSetParameter(self->context->mixerUnit,
+								 property,
+								 kAudioUnitScope_Input,
+								 self->elementNumber,
+								 value,
+								 sizeof(value));
+}
 
 static void self_enableRenderProc(AUCAudioSource* self)
 {
@@ -296,12 +300,7 @@ static void self_setGain(AUCAudioSource* self, float gain)
 	{
 		// Converting to sound pressure, so * 20
 		Float32	db = fmaxf(log10f(gain) * 20.0f, -120.0f);
-		error = AudioUnitSetParameter(self->context->mixerUnit,
-									  k3DMixerParam_Gain,
-									  kAudioUnitScope_Input,
-									  self->elementNumber,
-									  db,
-									  sizeof(db));
+		error = self_setFloat32Property(self, k3DMixerParam_Gain, db);
 		if(noErr == error)
 		{
 			self->gain = gain;
@@ -327,12 +326,7 @@ static void self_setPitch(AUCAudioSource* self, float pitch)
 	OPT_LOCK_MIXER();
 	if(pitch != self->pitch)
 	{
-		error = AudioUnitSetParameter(self->context->mixerUnit,
-									  k3DMixerParam_PlaybackRate,
-									  kAudioUnitScope_Input,
-									  self->elementNumber,
-									  pitch,
-									  sizeof(pitch));
+		error = self_setFloat32Property(self, k3DMixerParam_PlaybackRate, pitch);
 		if(noErr == error)
 		{
 			self->pitch = pitch;
@@ -343,6 +337,58 @@ static void self_setPitch(AUCAudioSource* self, float pitch)
 	if(noErr != error)
 	{
 		REPORT_AUGRAPH_ERROR(error, "Could not set source %d pitch to %f", self->elementNumber, pitch);
+	}
+}
+
+static float self_getPan(AUCAudioSource* self)
+{
+	return self->pan;
+}
+
+static void self_setPan(AUCAudioSource* self, float pan)
+{
+	OSStatus error = noErr;
+		
+	OPT_LOCK_MIXER();
+	if(pan != self->pan)
+	{
+		// Distance needs to be something other than 0 (inside your head)
+		self_setDistance(self, 1.0f);
+//kAudioUnitProperty_3DMixerAttenuationCurve
+		Float32 azimuth = fminf(pan*90, 90);
+		azimuth = fmaxf(azimuth, -90);
+		error = self_setFloat32Property(self, k3DMixerParam_Azimuth, azimuth);
+		if(noErr == error)
+		{
+			self->pan = pan;
+		}
+	}
+	OPT_UNLOCK_MIXER();
+	
+	if(noErr != error)
+	{
+		REPORT_AUGRAPH_ERROR(error, "Could not set source %d pan to %f", self->elementNumber, pan);
+	}
+}
+
+static void self_setDistance(AUCAudioSource* self, float distance)
+{
+	OSStatus error = noErr;
+	
+	OPT_LOCK_MIXER();
+	if(distance != self->distance)
+	{
+		error = self_setFloat32Property(self, k3DMixerParam_Distance, distance);
+		if(noErr == error)
+		{
+			self->distance = distance;
+		}
+	}
+	OPT_UNLOCK_MIXER();
+	
+	if(noErr != error)
+	{
+		REPORT_AUGRAPH_ERROR(error, "Could not set source %d distance to %f", self->elementNumber, distance);
 	}
 }
 
@@ -367,6 +413,7 @@ static OSStatus renderCallback(void* inRefCon,
 	{
 		// TODO: Strange behavior here: If I have two sources and the second
 		// one gets muted and sets this flag, BOTH sources get muted!
+		// Only seems to affect 3dmixer.
 //		*ioActionFlags |= kAudioUnitRenderAction_OutputIsSilence;
 		source->currentBytePos = (inStartPos + requestedBytes) % inSize;
 		for(unsigned int i = 0; i < numChannels; i++)

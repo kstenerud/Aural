@@ -58,6 +58,8 @@
 @synthesize gainSlider2;
 @synthesize pitchSlider1;
 @synthesize pitchSlider2;
+@synthesize panSlider1;
+@synthesize panSlider2;
 
 
 - (IBAction) onPlay1
@@ -87,8 +89,12 @@
 
 - (IBAction) onPitchSlider1:(id) sender
 {
-	NSLog(@"Slider value = %f", pitchSlider1.value);
 	source1->setPitch(source1, pitchSlider1.value * 2.0f);
+}
+
+- (IBAction) onPanSlider1:(id) sender
+{
+	source1->setPan(source1, (panSlider1.value - 0.5f) * 2);
 }
 
 
@@ -121,6 +127,11 @@
 - (IBAction) onPitchSlider2:(id) sender
 {
 	source2->setPitch(source2, pitchSlider2.value * 2.0f);
+}
+
+- (IBAction) onPanSlider2:(id) sender
+{
+	source2->setPan(source2, (panSlider2.value - 0.5f) * 2);
 }
 
 
