@@ -3,421 +3,795 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* AuralDemoAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AuralDemoAppDelegate.m */; };
-		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
-		28D7ACF80DDB3853001CB0EB /* AuralDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* AuralDemoViewController.m */; };
-		39DA508E1310A56000F94F67 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39DA508D1310A56000F94F67 /* MainWindow.xib */; };
-		39DA50921310A57200F94F67 /* AuralDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39DA50911310A57200F94F67 /* AuralDemoViewController.xib */; };
-		39DA510C1310A6C700F94F67 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DA510B1310A6C700F94F67 /* AudioToolbox.framework */; };
-		39DA51121310A6D900F94F67 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39DA51111310A6D900F94F67 /* AVFoundation.framework */; };
-		39DA51EC1310AB3700F94F67 /* AUCAudioBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51CC1310AB3700F94F67 /* AUCAudioBuffer.m */; };
-		39DA51ED1310AB3700F94F67 /* AUCAudioContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51CE1310AB3700F94F67 /* AUCAudioContext.m */; };
-		39DA51EE1310AB3700F94F67 /* AUCAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51D01310AB3700F94F67 /* AUCAudioManager.m */; };
-		39DA51EF1310AB3700F94F67 /* AUCAudioSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51D21310AB3700F94F67 /* AUCAudioSource.m */; };
-		39DA51F01310AB3700F94F67 /* AUCLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51D51310AB3700F94F67 /* AUCLogging.m */; };
-		39DA51F11310AB3700F94F67 /* AUCMutex.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51D81310AB3700F94F67 /* AUCMutex.m */; };
-		39DA51F21310AB3700F94F67 /* KSAudioFile+AUCAudioBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51DC1310AB3700F94F67 /* KSAudioFile+AUCAudioBuffer.m */; };
-		39DA51F31310AB3700F94F67 /* KSAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51DF1310AB3700F94F67 /* KSAudioFile.m */; };
-		39DA51F41310AB3700F94F67 /* NSMutableArray+WeakReferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51E11310AB3700F94F67 /* NSMutableArray+WeakReferences.m */; };
-		39DA51F51310AB3700F94F67 /* OALAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51E31310AB3700F94F67 /* OALAudioSession.m */; };
-		39DA51F61310AB3700F94F67 /* OALSuspendHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51E61310AB3700F94F67 /* OALSuspendHandler.m */; };
-		39DA51F71310AB3700F94F67 /* OALTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DA51E81310AB3700F94F67 /* OALTools.m */; };
-		39DA52441310AF7C00F94F67 /* ColdFunk.caf in Resources */ = {isa = PBXBuildFile; fileRef = 39DA52431310AF7C00F94F67 /* ColdFunk.caf */; };
+		398A26F4133BAD6D00C03008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F3133BAD6D00C03008 /* Foundation.framework */; };
+		398A26FF133BAD6D00C03008 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26FE133BAD6D00C03008 /* UIKit.framework */; };
+		398A2700133BAD6D00C03008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F3133BAD6D00C03008 /* Foundation.framework */; };
+		398A2702133BAD6D00C03008 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A2701133BAD6D00C03008 /* CoreGraphics.framework */; };
+		398A2705133BAD6D00C03008 /* libAural.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F0133BAD6D00C03008 /* libAural.a */; };
+		398A270B133BAD6D00C03008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 398A2709133BAD6D00C03008 /* InfoPlist.strings */; };
+		398A270E133BAD6D00C03008 /* AuralTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 398A270D133BAD6D00C03008 /* AuralTests.h */; };
+		398A2710133BAD6D00C03008 /* AuralTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A270F133BAD6D00C03008 /* AuralTests.m */; };
+		398A271F133BAD7700C03008 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26FE133BAD6D00C03008 /* UIKit.framework */; };
+		398A2720133BAD7700C03008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F3133BAD6D00C03008 /* Foundation.framework */; };
+		398A2721133BAD7700C03008 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A2701133BAD6D00C03008 /* CoreGraphics.framework */; };
+		398A2727133BAD7700C03008 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 398A2725133BAD7700C03008 /* InfoPlist.strings */; };
+		398A272A133BAD7700C03008 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A2729133BAD7700C03008 /* main.m */; };
+		398A272D133BAD7700C03008 /* AuralDemoAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A272C133BAD7700C03008 /* AuralDemoAppDelegate.mm */; };
+		398A2730133BAD7700C03008 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 398A272E133BAD7700C03008 /* MainWindow.xib */; };
+		398A2733133BAD7700C03008 /* AuralDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A2732133BAD7700C03008 /* AuralDemoViewController.mm */; };
+		398A2772133BADB400C03008 /* AUC3DAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2746133BADB400C03008 /* AUC3DAudioSource.h */; };
+		398A2773133BADB400C03008 /* AUC3DAudioSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A2747133BADB400C03008 /* AUC3DAudioSource.mm */; };
+		398A2774133BADB400C03008 /* AUCAudioBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2748133BADB400C03008 /* AUCAudioBuffer.h */; };
+		398A2775133BADB400C03008 /* AUCAudioBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A2749133BADB400C03008 /* AUCAudioBuffer.mm */; };
+		398A2776133BADB400C03008 /* AUCAudioContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A274A133BADB400C03008 /* AUCAudioContext.h */; };
+		398A2777133BADB400C03008 /* AUCAudioContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A274B133BADB400C03008 /* AUCAudioContext.mm */; };
+		398A2778133BADB400C03008 /* AUCAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A274C133BADB400C03008 /* AUCAudioManager.h */; };
+		398A2779133BADB400C03008 /* AUCAudioManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A274D133BADB400C03008 /* AUCAudioManager.mm */; };
+		398A277A133BADB400C03008 /* AUCAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A274E133BADB400C03008 /* AUCAudioSource.h */; };
+		398A277B133BADB400C03008 /* AUCAudioSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A274F133BADB400C03008 /* AUCAudioSource.mm */; };
+		398A277C133BADB400C03008 /* AUCInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2750133BADB400C03008 /* AUCInterface.h */; };
+		398A277D133BADB400C03008 /* AUCLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2751133BADB400C03008 /* AUCLogging.h */; };
+		398A277E133BADB400C03008 /* AUCLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A2752133BADB400C03008 /* AUCLogging.m */; };
+		398A277F133BADB400C03008 /* AUCMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2753133BADB400C03008 /* AUCMacros.h */; };
+		398A2780133BADB400C03008 /* AUCMutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2754133BADB400C03008 /* AUCMutex.h */; };
+		398A2781133BADB400C03008 /* AUCPitchBendAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2755133BADB400C03008 /* AUCPitchBendAudioSource.h */; };
+		398A2782133BADB400C03008 /* AUCPitchBendAudioSource.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A2756133BADB400C03008 /* AUCPitchBendAudioSource.mm */; };
+		398A2783133BADB400C03008 /* AudioRenderEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2757133BADB400C03008 /* AudioRenderEngine.h */; };
+		398A2784133BADB400C03008 /* Aural.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2758133BADB400C03008 /* Aural.h */; };
+		398A2785133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2759133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.h */; };
+		398A2786133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 398A275A133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.mm */; };
+		398A2787133BADB400C03008 /* PassthroughRenderEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398A275B133BADB400C03008 /* PassthroughRenderEngine.cpp */; };
+		398A2788133BADB400C03008 /* PassthroughRenderEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A275C133BADB400C03008 /* PassthroughRenderEngine.h */; };
+		398A2789133BADB400C03008 /* RenderBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398A275D133BADB400C03008 /* RenderBuffer.cpp */; };
+		398A278A133BADB400C03008 /* RenderBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A275E133BADB400C03008 /* RenderBuffer.h */; };
+		398A278B133BADB400C03008 /* SoundTouchRenderEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 398A275F133BADB400C03008 /* SoundTouchRenderEngine.cpp */; };
+		398A278C133BADB400C03008 /* SoundTouchRenderEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2760133BADB400C03008 /* SoundTouchRenderEngine.h */; };
+		398A278D133BADB400C03008 /* DataBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2762133BADB400C03008 /* DataBuffer.h */; };
+		398A278E133BADB400C03008 /* DataBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A2763133BADB400C03008 /* DataBuffer.m */; };
+		398A278F133BADB400C03008 /* KSAudioFile.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2764133BADB400C03008 /* KSAudioFile.h */; };
+		398A2790133BADB400C03008 /* KSAudioFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A2765133BADB400C03008 /* KSAudioFile.m */; };
+		398A2791133BADB400C03008 /* NSMutableArray+WeakReferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2766133BADB400C03008 /* NSMutableArray+WeakReferences.h */; };
+		398A2792133BADB400C03008 /* NSMutableArray+WeakReferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A2767133BADB400C03008 /* NSMutableArray+WeakReferences.m */; };
+		398A2793133BADB400C03008 /* OALAudioSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2768133BADB400C03008 /* OALAudioSession.h */; };
+		398A2794133BADB400C03008 /* OALAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A2769133BADB400C03008 /* OALAudioSession.m */; };
+		398A2795133BADB400C03008 /* OALNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A276A133BADB400C03008 /* OALNotifications.h */; };
+		398A2796133BADB400C03008 /* OALSuspendHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A276B133BADB400C03008 /* OALSuspendHandler.h */; };
+		398A2797133BADB400C03008 /* OALSuspendHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A276C133BADB400C03008 /* OALSuspendHandler.m */; };
+		398A2798133BADB400C03008 /* OALTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A276D133BADB400C03008 /* OALTools.h */; };
+		398A2799133BADB400C03008 /* OALTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 398A276E133BADB400C03008 /* OALTools.m */; };
+		398A279A133BADB400C03008 /* ObjectALConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A276F133BADB400C03008 /* ObjectALConfig.h */; };
+		398A279B133BADB400C03008 /* ObjectALMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2770133BADB400C03008 /* ObjectALMacros.h */; };
+		398A279C133BADB400C03008 /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 398A2771133BADB400C03008 /* SynthesizeSingleton.h */; };
+		398A27B1133BB18000C03008 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A27B0133BB18000C03008 /* AudioToolbox.framework */; };
+		398A27B3133BB18300C03008 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A27B2133BB18300C03008 /* AVFoundation.framework */; };
+		39906C17133C461500F1D7B1 /* SoundTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39906C16133C461500F1D7B1 /* SoundTouch.framework */; };
+		39906C18133C461500F1D7B1 /* SoundTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39906C16133C461500F1D7B1 /* SoundTouch.framework */; };
+		39906C2C133C482600F1D7B1 /* libAural.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F0133BAD6D00C03008 /* libAural.a */; };
+		39906C34133C4A5400F1D7B1 /* AuralDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39906C33133C4A5400F1D7B1 /* AuralDemoViewController.xib */; };
+		39906C3E133C4F2F00F1D7B1 /* ColdFunk.caf in Resources */ = {isa = PBXBuildFile; fileRef = 398A279E133BADC900C03008 /* ColdFunk.caf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		398A2703133BAD6D00C03008 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398A26E7133BAD6D00C03008 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 398A26EF133BAD6D00C03008;
+			remoteInfo = Aural;
+		};
+		39906C2A133C482200F1D7B1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 398A26E7133BAD6D00C03008 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 398A26EF133BAD6D00C03008;
+			remoteInfo = Aural;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* AuralDemoAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuralDemoAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* AuralDemoAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuralDemoAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* AuralDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuralDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		28D7ACF60DDB3853001CB0EB /* AuralDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuralDemoViewController.h; sourceTree = "<group>"; };
-		28D7ACF70DDB3853001CB0EB /* AuralDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuralDemoViewController.m; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* AuralDemo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuralDemo_Prefix.pch; sourceTree = "<group>"; };
-		39DA508D1310A56000F94F67 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		39DA508F1310A56800F94F67 /* AuralDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AuralDemo-Info.plist"; sourceTree = SOURCE_ROOT; };
-		39DA50911310A57200F94F67 /* AuralDemoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuralDemoViewController.xib; sourceTree = "<group>"; };
-		39DA510B1310A6C700F94F67 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		39DA51111310A6D900F94F67 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		39DA51CB1310AB3700F94F67 /* AUCAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCAudioBuffer.h; sourceTree = "<group>"; };
-		39DA51CC1310AB3700F94F67 /* AUCAudioBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUCAudioBuffer.m; sourceTree = "<group>"; };
-		39DA51CD1310AB3700F94F67 /* AUCAudioContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCAudioContext.h; sourceTree = "<group>"; };
-		39DA51CE1310AB3700F94F67 /* AUCAudioContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUCAudioContext.m; sourceTree = "<group>"; };
-		39DA51CF1310AB3700F94F67 /* AUCAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCAudioManager.h; sourceTree = "<group>"; };
-		39DA51D01310AB3700F94F67 /* AUCAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUCAudioManager.m; sourceTree = "<group>"; };
-		39DA51D11310AB3700F94F67 /* AUCAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCAudioSource.h; sourceTree = "<group>"; };
-		39DA51D21310AB3700F94F67 /* AUCAudioSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUCAudioSource.m; sourceTree = "<group>"; };
-		39DA51D31310AB3700F94F67 /* AUCInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCInterface.h; sourceTree = "<group>"; };
-		39DA51D41310AB3700F94F67 /* AUCLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCLogging.h; sourceTree = "<group>"; };
-		39DA51D51310AB3700F94F67 /* AUCLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUCLogging.m; sourceTree = "<group>"; };
-		39DA51D61310AB3700F94F67 /* AUCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCMacros.h; sourceTree = "<group>"; };
-		39DA51D71310AB3700F94F67 /* AUCMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCMutex.h; sourceTree = "<group>"; };
-		39DA51D81310AB3700F94F67 /* AUCMutex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUCMutex.m; sourceTree = "<group>"; };
-		39DA51D91310AB3700F94F67 /* AUCTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCTypes.h; sourceTree = "<group>"; };
-		39DA51DA1310AB3700F94F67 /* Aural.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aural.h; sourceTree = "<group>"; };
-		39DA51DB1310AB3700F94F67 /* KSAudioFile+AUCAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSAudioFile+AUCAudioBuffer.h"; sourceTree = "<group>"; };
-		39DA51DC1310AB3700F94F67 /* KSAudioFile+AUCAudioBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "KSAudioFile+AUCAudioBuffer.m"; sourceTree = "<group>"; };
-		39DA51DE1310AB3700F94F67 /* KSAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSAudioFile.h; sourceTree = "<group>"; };
-		39DA51DF1310AB3700F94F67 /* KSAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSAudioFile.m; sourceTree = "<group>"; };
-		39DA51E01310AB3700F94F67 /* NSMutableArray+WeakReferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+WeakReferences.h"; sourceTree = "<group>"; };
-		39DA51E11310AB3700F94F67 /* NSMutableArray+WeakReferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+WeakReferences.m"; sourceTree = "<group>"; };
-		39DA51E21310AB3700F94F67 /* OALAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAudioSession.h; sourceTree = "<group>"; };
-		39DA51E31310AB3700F94F67 /* OALAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAudioSession.m; sourceTree = "<group>"; };
-		39DA51E41310AB3700F94F67 /* OALNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALNotifications.h; sourceTree = "<group>"; };
-		39DA51E51310AB3700F94F67 /* OALSuspendHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALSuspendHandler.h; sourceTree = "<group>"; };
-		39DA51E61310AB3700F94F67 /* OALSuspendHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALSuspendHandler.m; sourceTree = "<group>"; };
-		39DA51E71310AB3700F94F67 /* OALTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALTools.h; sourceTree = "<group>"; };
-		39DA51E81310AB3700F94F67 /* OALTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALTools.m; sourceTree = "<group>"; };
-		39DA51E91310AB3700F94F67 /* ObjectALConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectALConfig.h; sourceTree = "<group>"; };
-		39DA51EA1310AB3700F94F67 /* ObjectALMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectALMacros.h; sourceTree = "<group>"; };
-		39DA51EB1310AB3700F94F67 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
-		39DA52431310AF7C00F94F67 /* ColdFunk.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ColdFunk.caf; sourceTree = "<group>"; };
+		398A26F0133BAD6D00C03008 /* libAural.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAural.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		398A26F3133BAD6D00C03008 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		398A26F7133BAD6D00C03008 /* Aural-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aural-Prefix.pch"; sourceTree = "<group>"; };
+		398A26FD133BAD6D00C03008 /* AuralTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AuralTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		398A26FE133BAD6D00C03008 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		398A2701133BAD6D00C03008 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		398A2708133BAD6D00C03008 /* AuralTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AuralTests-Info.plist"; sourceTree = "<group>"; };
+		398A270A133BAD6D00C03008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		398A270C133BAD6D00C03008 /* AuralTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AuralTests-Prefix.pch"; sourceTree = "<group>"; };
+		398A270D133BAD6D00C03008 /* AuralTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuralTests.h; sourceTree = "<group>"; };
+		398A270F133BAD6D00C03008 /* AuralTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AuralTests.m; sourceTree = "<group>"; };
+		398A271D133BAD7700C03008 /* AuralDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AuralDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		398A2724133BAD7700C03008 /* AuralDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AuralDemo-Info.plist"; sourceTree = "<group>"; };
+		398A2726133BAD7700C03008 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		398A2728133BAD7700C03008 /* AuralDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AuralDemo-Prefix.pch"; sourceTree = "<group>"; };
+		398A2729133BAD7700C03008 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		398A272B133BAD7700C03008 /* AuralDemoAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuralDemoAppDelegate.h; sourceTree = "<group>"; };
+		398A272C133BAD7700C03008 /* AuralDemoAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AuralDemoAppDelegate.mm; sourceTree = "<group>"; };
+		398A272F133BAD7700C03008 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		398A2731133BAD7700C03008 /* AuralDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AuralDemoViewController.h; sourceTree = "<group>"; };
+		398A2732133BAD7700C03008 /* AuralDemoViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AuralDemoViewController.mm; sourceTree = "<group>"; };
+		398A2746133BADB400C03008 /* AUC3DAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUC3DAudioSource.h; sourceTree = "<group>"; };
+		398A2747133BADB400C03008 /* AUC3DAudioSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AUC3DAudioSource.mm; sourceTree = "<group>"; };
+		398A2748133BADB400C03008 /* AUCAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCAudioBuffer.h; sourceTree = "<group>"; };
+		398A2749133BADB400C03008 /* AUCAudioBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AUCAudioBuffer.mm; sourceTree = "<group>"; };
+		398A274A133BADB400C03008 /* AUCAudioContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCAudioContext.h; sourceTree = "<group>"; };
+		398A274B133BADB400C03008 /* AUCAudioContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AUCAudioContext.mm; sourceTree = "<group>"; };
+		398A274C133BADB400C03008 /* AUCAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCAudioManager.h; sourceTree = "<group>"; };
+		398A274D133BADB400C03008 /* AUCAudioManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AUCAudioManager.mm; sourceTree = "<group>"; };
+		398A274E133BADB400C03008 /* AUCAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCAudioSource.h; sourceTree = "<group>"; };
+		398A274F133BADB400C03008 /* AUCAudioSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AUCAudioSource.mm; sourceTree = "<group>"; };
+		398A2750133BADB400C03008 /* AUCInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCInterface.h; sourceTree = "<group>"; };
+		398A2751133BADB400C03008 /* AUCLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCLogging.h; sourceTree = "<group>"; };
+		398A2752133BADB400C03008 /* AUCLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUCLogging.m; sourceTree = "<group>"; };
+		398A2753133BADB400C03008 /* AUCMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCMacros.h; sourceTree = "<group>"; };
+		398A2754133BADB400C03008 /* AUCMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCMutex.h; sourceTree = "<group>"; };
+		398A2755133BADB400C03008 /* AUCPitchBendAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUCPitchBendAudioSource.h; sourceTree = "<group>"; };
+		398A2756133BADB400C03008 /* AUCPitchBendAudioSource.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AUCPitchBendAudioSource.mm; sourceTree = "<group>"; };
+		398A2757133BADB400C03008 /* AudioRenderEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRenderEngine.h; sourceTree = "<group>"; };
+		398A2758133BADB400C03008 /* Aural.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Aural.h; sourceTree = "<group>"; };
+		398A2759133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSAudioFile+AUCAudioBuffer.h"; sourceTree = "<group>"; };
+		398A275A133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "KSAudioFile+AUCAudioBuffer.mm"; sourceTree = "<group>"; };
+		398A275B133BADB400C03008 /* PassthroughRenderEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PassthroughRenderEngine.cpp; sourceTree = "<group>"; };
+		398A275C133BADB400C03008 /* PassthroughRenderEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassthroughRenderEngine.h; sourceTree = "<group>"; };
+		398A275D133BADB400C03008 /* RenderBuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderBuffer.cpp; sourceTree = "<group>"; };
+		398A275E133BADB400C03008 /* RenderBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderBuffer.h; sourceTree = "<group>"; };
+		398A275F133BADB400C03008 /* SoundTouchRenderEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundTouchRenderEngine.cpp; sourceTree = "<group>"; };
+		398A2760133BADB400C03008 /* SoundTouchRenderEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundTouchRenderEngine.h; sourceTree = "<group>"; };
+		398A2762133BADB400C03008 /* DataBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBuffer.h; sourceTree = "<group>"; };
+		398A2763133BADB400C03008 /* DataBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBuffer.m; sourceTree = "<group>"; };
+		398A2764133BADB400C03008 /* KSAudioFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSAudioFile.h; sourceTree = "<group>"; };
+		398A2765133BADB400C03008 /* KSAudioFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSAudioFile.m; sourceTree = "<group>"; };
+		398A2766133BADB400C03008 /* NSMutableArray+WeakReferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+WeakReferences.h"; sourceTree = "<group>"; };
+		398A2767133BADB400C03008 /* NSMutableArray+WeakReferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+WeakReferences.m"; sourceTree = "<group>"; };
+		398A2768133BADB400C03008 /* OALAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALAudioSession.h; sourceTree = "<group>"; };
+		398A2769133BADB400C03008 /* OALAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALAudioSession.m; sourceTree = "<group>"; };
+		398A276A133BADB400C03008 /* OALNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALNotifications.h; sourceTree = "<group>"; };
+		398A276B133BADB400C03008 /* OALSuspendHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALSuspendHandler.h; sourceTree = "<group>"; };
+		398A276C133BADB400C03008 /* OALSuspendHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALSuspendHandler.m; sourceTree = "<group>"; };
+		398A276D133BADB400C03008 /* OALTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OALTools.h; sourceTree = "<group>"; };
+		398A276E133BADB400C03008 /* OALTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OALTools.m; sourceTree = "<group>"; };
+		398A276F133BADB400C03008 /* ObjectALConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectALConfig.h; sourceTree = "<group>"; };
+		398A2770133BADB400C03008 /* ObjectALMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectALMacros.h; sourceTree = "<group>"; };
+		398A2771133BADB400C03008 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		398A279D133BADC900C03008 /* AssetSources.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AssetSources.txt; sourceTree = "<group>"; };
+		398A279E133BADC900C03008 /* ColdFunk.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ColdFunk.caf; sourceTree = "<group>"; };
+		398A27B0133BB18000C03008 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		398A27B2133BB18300C03008 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		39906C16133C461500F1D7B1 /* SoundTouch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SoundTouch.framework; sourceTree = "<group>"; };
+		39906C33133C4A5400F1D7B1 /* AuralDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuralDemoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+		398A26ED133BAD6D00C03008 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
-				39DA510C1310A6C700F94F67 /* AudioToolbox.framework in Frameworks */,
-				39DA51121310A6D900F94F67 /* AVFoundation.framework in Frameworks */,
+				398A26F4133BAD6D00C03008 /* Foundation.framework in Frameworks */,
+				39906C17133C461500F1D7B1 /* SoundTouch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		398A26F9133BAD6D00C03008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398A26FF133BAD6D00C03008 /* UIKit.framework in Frameworks */,
+				398A2700133BAD6D00C03008 /* Foundation.framework in Frameworks */,
+				398A2702133BAD6D00C03008 /* CoreGraphics.framework in Frameworks */,
+				398A2705133BAD6D00C03008 /* libAural.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		398A271A133BAD7700C03008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39906C2C133C482600F1D7B1 /* libAural.a in Frameworks */,
+				398A27B3133BB18300C03008 /* AVFoundation.framework in Frameworks */,
+				398A27B1133BB18000C03008 /* AudioToolbox.framework in Frameworks */,
+				398A271F133BAD7700C03008 /* UIKit.framework in Frameworks */,
+				398A2720133BAD7700C03008 /* Foundation.framework in Frameworks */,
+				398A2721133BAD7700C03008 /* CoreGraphics.framework in Frameworks */,
+				39906C18133C461500F1D7B1 /* SoundTouch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
+		398A26E5133BAD6D00C03008 = {
 			isa = PBXGroup;
 			children = (
-				1D3623240D0F684500981E51 /* AuralDemoAppDelegate.h */,
-				1D3623250D0F684500981E51 /* AuralDemoAppDelegate.m */,
-				28D7ACF60DDB3853001CB0EB /* AuralDemoViewController.h */,
-				28D7ACF70DDB3853001CB0EB /* AuralDemoViewController.m */,
-				39DA50911310A57200F94F67 /* AuralDemoViewController.xib */,
+				398A26F5133BAD6D00C03008 /* Aural */,
+				398A2706133BAD6D00C03008 /* AuralTests */,
+				398A2722133BAD7700C03008 /* AuralDemo */,
+				398A26F2133BAD6D00C03008 /* Frameworks */,
+				398A26F1133BAD6D00C03008 /* Products */,
 			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
-		19C28FACFE9D520D11CA2CBB /* Products */ = {
+		398A26F1133BAD6D00C03008 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* AuralDemo.app */,
+				398A26FD133BAD6D00C03008 /* AuralTests.octest */,
+				398A271D133BAD7700C03008 /* AuralDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		398A26F2133BAD6D00C03008 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				39DA51761310A90400F94F67 /* Libraries */,
-				080E96DDFE201D6D7F000001 /* Classes */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
-				19C28FACFE9D520D11CA2CBB /* Products */,
-				39DA508C1310A56000F94F67 /* Resources */,
-			);
-			name = CustomTemplate;
-			sourceTree = "<group>";
-		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				32CA4F630368D1EE00C91783 /* AuralDemo_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
-				39DA510B1310A6C700F94F67 /* AudioToolbox.framework */,
-				39DA51111310A6D900F94F67 /* AVFoundation.framework */,
+				398A26F0133BAD6D00C03008 /* libAural.a */,
+				39906C16133C461500F1D7B1 /* SoundTouch.framework */,
+				398A27B2133BB18300C03008 /* AVFoundation.framework */,
+				398A27B0133BB18000C03008 /* AudioToolbox.framework */,
+				398A26F3133BAD6D00C03008 /* Foundation.framework */,
+				398A26FE133BAD6D00C03008 /* UIKit.framework */,
+				398A2701133BAD6D00C03008 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		39DA508C1310A56000F94F67 /* Resources */ = {
+		398A26F5133BAD6D00C03008 /* Aural */ = {
 			isa = PBXGroup;
 			children = (
-				39DA508F1310A56800F94F67 /* AuralDemo-Info.plist */,
-				39DA52431310AF7C00F94F67 /* ColdFunk.caf */,
-				39DA508D1310A56000F94F67 /* MainWindow.xib */,
+				398A2745133BADB400C03008 /* C */,
+				398A2761133BADB400C03008 /* Support */,
+				398A26F6133BAD6D00C03008 /* Supporting Files */,
 			);
-			path = Resources;
+			path = Aural;
 			sourceTree = "<group>";
 		};
-		39DA51761310A90400F94F67 /* Libraries */ = {
+		398A26F6133BAD6D00C03008 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				39DA51C91310AB3700F94F67 /* Aural */,
+				398A26F7133BAD6D00C03008 /* Aural-Prefix.pch */,
 			);
-			name = Libraries;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		39DA51C91310AB3700F94F67 /* Aural */ = {
+		398A2706133BAD6D00C03008 /* AuralTests */ = {
 			isa = PBXGroup;
 			children = (
-				39DA51CA1310AB3700F94F67 /* C */,
-				39DA51DD1310AB3700F94F67 /* Support */,
+				398A270D133BAD6D00C03008 /* AuralTests.h */,
+				398A270F133BAD6D00C03008 /* AuralTests.m */,
+				398A2707133BAD6D00C03008 /* Supporting Files */,
 			);
-			name = Aural;
-			path = Libraries/Aural;
+			path = AuralTests;
 			sourceTree = "<group>";
 		};
-		39DA51CA1310AB3700F94F67 /* C */ = {
+		398A2707133BAD6D00C03008 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				39DA51CB1310AB3700F94F67 /* AUCAudioBuffer.h */,
-				39DA51CC1310AB3700F94F67 /* AUCAudioBuffer.m */,
-				39DA51CD1310AB3700F94F67 /* AUCAudioContext.h */,
-				39DA51CE1310AB3700F94F67 /* AUCAudioContext.m */,
-				39DA51CF1310AB3700F94F67 /* AUCAudioManager.h */,
-				39DA51D01310AB3700F94F67 /* AUCAudioManager.m */,
-				39DA51D11310AB3700F94F67 /* AUCAudioSource.h */,
-				39DA51D21310AB3700F94F67 /* AUCAudioSource.m */,
-				39DA51D31310AB3700F94F67 /* AUCInterface.h */,
-				39DA51D41310AB3700F94F67 /* AUCLogging.h */,
-				39DA51D51310AB3700F94F67 /* AUCLogging.m */,
-				39DA51D61310AB3700F94F67 /* AUCMacros.h */,
-				39DA51D71310AB3700F94F67 /* AUCMutex.h */,
-				39DA51D81310AB3700F94F67 /* AUCMutex.m */,
-				39DA51D91310AB3700F94F67 /* AUCTypes.h */,
-				39DA51DA1310AB3700F94F67 /* Aural.h */,
-				39DA51DB1310AB3700F94F67 /* KSAudioFile+AUCAudioBuffer.h */,
-				39DA51DC1310AB3700F94F67 /* KSAudioFile+AUCAudioBuffer.m */,
+				398A2708133BAD6D00C03008 /* AuralTests-Info.plist */,
+				398A2709133BAD6D00C03008 /* InfoPlist.strings */,
+				398A270C133BAD6D00C03008 /* AuralTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		398A2722133BAD7700C03008 /* AuralDemo */ = {
+			isa = PBXGroup;
+			children = (
+				398A272B133BAD7700C03008 /* AuralDemoAppDelegate.h */,
+				398A272C133BAD7700C03008 /* AuralDemoAppDelegate.mm */,
+				398A272E133BAD7700C03008 /* MainWindow.xib */,
+				398A2731133BAD7700C03008 /* AuralDemoViewController.h */,
+				398A2732133BAD7700C03008 /* AuralDemoViewController.mm */,
+				39906C33133C4A5400F1D7B1 /* AuralDemoViewController.xib */,
+				398A2723133BAD7700C03008 /* Supporting Files */,
+			);
+			path = AuralDemo;
+			sourceTree = "<group>";
+		};
+		398A2723133BAD7700C03008 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				398A279D133BADC900C03008 /* AssetSources.txt */,
+				398A279E133BADC900C03008 /* ColdFunk.caf */,
+				398A2724133BAD7700C03008 /* AuralDemo-Info.plist */,
+				398A2725133BAD7700C03008 /* InfoPlist.strings */,
+				398A2728133BAD7700C03008 /* AuralDemo-Prefix.pch */,
+				398A2729133BAD7700C03008 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		398A2745133BADB400C03008 /* C */ = {
+			isa = PBXGroup;
+			children = (
+				398A2746133BADB400C03008 /* AUC3DAudioSource.h */,
+				398A2747133BADB400C03008 /* AUC3DAudioSource.mm */,
+				398A2748133BADB400C03008 /* AUCAudioBuffer.h */,
+				398A2749133BADB400C03008 /* AUCAudioBuffer.mm */,
+				398A274A133BADB400C03008 /* AUCAudioContext.h */,
+				398A274B133BADB400C03008 /* AUCAudioContext.mm */,
+				398A274C133BADB400C03008 /* AUCAudioManager.h */,
+				398A274D133BADB400C03008 /* AUCAudioManager.mm */,
+				398A274E133BADB400C03008 /* AUCAudioSource.h */,
+				398A274F133BADB400C03008 /* AUCAudioSource.mm */,
+				398A2750133BADB400C03008 /* AUCInterface.h */,
+				398A2751133BADB400C03008 /* AUCLogging.h */,
+				398A2752133BADB400C03008 /* AUCLogging.m */,
+				398A2753133BADB400C03008 /* AUCMacros.h */,
+				398A2754133BADB400C03008 /* AUCMutex.h */,
+				398A2755133BADB400C03008 /* AUCPitchBendAudioSource.h */,
+				398A2756133BADB400C03008 /* AUCPitchBendAudioSource.mm */,
+				398A2757133BADB400C03008 /* AudioRenderEngine.h */,
+				398A2758133BADB400C03008 /* Aural.h */,
+				398A2759133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.h */,
+				398A275A133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.mm */,
+				398A275B133BADB400C03008 /* PassthroughRenderEngine.cpp */,
+				398A275C133BADB400C03008 /* PassthroughRenderEngine.h */,
+				398A275D133BADB400C03008 /* RenderBuffer.cpp */,
+				398A275E133BADB400C03008 /* RenderBuffer.h */,
+				398A275F133BADB400C03008 /* SoundTouchRenderEngine.cpp */,
+				398A2760133BADB400C03008 /* SoundTouchRenderEngine.h */,
 			);
 			path = C;
 			sourceTree = "<group>";
 		};
-		39DA51DD1310AB3700F94F67 /* Support */ = {
+		398A2761133BADB400C03008 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				39DA51DE1310AB3700F94F67 /* KSAudioFile.h */,
-				39DA51DF1310AB3700F94F67 /* KSAudioFile.m */,
-				39DA51E01310AB3700F94F67 /* NSMutableArray+WeakReferences.h */,
-				39DA51E11310AB3700F94F67 /* NSMutableArray+WeakReferences.m */,
-				39DA51E21310AB3700F94F67 /* OALAudioSession.h */,
-				39DA51E31310AB3700F94F67 /* OALAudioSession.m */,
-				39DA51E41310AB3700F94F67 /* OALNotifications.h */,
-				39DA51E51310AB3700F94F67 /* OALSuspendHandler.h */,
-				39DA51E61310AB3700F94F67 /* OALSuspendHandler.m */,
-				39DA51E71310AB3700F94F67 /* OALTools.h */,
-				39DA51E81310AB3700F94F67 /* OALTools.m */,
-				39DA51E91310AB3700F94F67 /* ObjectALConfig.h */,
-				39DA51EA1310AB3700F94F67 /* ObjectALMacros.h */,
-				39DA51EB1310AB3700F94F67 /* SynthesizeSingleton.h */,
+				398A2762133BADB400C03008 /* DataBuffer.h */,
+				398A2763133BADB400C03008 /* DataBuffer.m */,
+				398A2764133BADB400C03008 /* KSAudioFile.h */,
+				398A2765133BADB400C03008 /* KSAudioFile.m */,
+				398A2766133BADB400C03008 /* NSMutableArray+WeakReferences.h */,
+				398A2767133BADB400C03008 /* NSMutableArray+WeakReferences.m */,
+				398A2768133BADB400C03008 /* OALAudioSession.h */,
+				398A2769133BADB400C03008 /* OALAudioSession.m */,
+				398A276A133BADB400C03008 /* OALNotifications.h */,
+				398A276B133BADB400C03008 /* OALSuspendHandler.h */,
+				398A276C133BADB400C03008 /* OALSuspendHandler.m */,
+				398A276D133BADB400C03008 /* OALTools.h */,
+				398A276E133BADB400C03008 /* OALTools.m */,
+				398A276F133BADB400C03008 /* ObjectALConfig.h */,
+				398A2770133BADB400C03008 /* ObjectALMacros.h */,
+				398A2771133BADB400C03008 /* SynthesizeSingleton.h */,
 			);
 			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		398A26EE133BAD6D00C03008 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398A2772133BADB400C03008 /* AUC3DAudioSource.h in Headers */,
+				398A2774133BADB400C03008 /* AUCAudioBuffer.h in Headers */,
+				398A2776133BADB400C03008 /* AUCAudioContext.h in Headers */,
+				398A2778133BADB400C03008 /* AUCAudioManager.h in Headers */,
+				398A277A133BADB400C03008 /* AUCAudioSource.h in Headers */,
+				398A277C133BADB400C03008 /* AUCInterface.h in Headers */,
+				398A277D133BADB400C03008 /* AUCLogging.h in Headers */,
+				398A277F133BADB400C03008 /* AUCMacros.h in Headers */,
+				398A2780133BADB400C03008 /* AUCMutex.h in Headers */,
+				398A2781133BADB400C03008 /* AUCPitchBendAudioSource.h in Headers */,
+				398A2783133BADB400C03008 /* AudioRenderEngine.h in Headers */,
+				398A2784133BADB400C03008 /* Aural.h in Headers */,
+				398A2785133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.h in Headers */,
+				398A2788133BADB400C03008 /* PassthroughRenderEngine.h in Headers */,
+				398A278A133BADB400C03008 /* RenderBuffer.h in Headers */,
+				398A278C133BADB400C03008 /* SoundTouchRenderEngine.h in Headers */,
+				398A278D133BADB400C03008 /* DataBuffer.h in Headers */,
+				398A278F133BADB400C03008 /* KSAudioFile.h in Headers */,
+				398A2791133BADB400C03008 /* NSMutableArray+WeakReferences.h in Headers */,
+				398A2793133BADB400C03008 /* OALAudioSession.h in Headers */,
+				398A2795133BADB400C03008 /* OALNotifications.h in Headers */,
+				398A2796133BADB400C03008 /* OALSuspendHandler.h in Headers */,
+				398A2798133BADB400C03008 /* OALTools.h in Headers */,
+				398A279A133BADB400C03008 /* ObjectALConfig.h in Headers */,
+				398A279B133BADB400C03008 /* ObjectALMacros.h in Headers */,
+				398A279C133BADB400C03008 /* SynthesizeSingleton.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* AuralDemo */ = {
+		398A26EF133BAD6D00C03008 /* Aural */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "AuralDemo" */;
+			buildConfigurationList = 398A2713133BAD6D00C03008 /* Build configuration list for PBXNativeTarget "Aural" */;
 			buildPhases = (
-				1D60588D0D05DD3D006BFB54 /* Resources */,
-				1D60588E0D05DD3D006BFB54 /* Sources */,
-				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				398A26EC133BAD6D00C03008 /* Sources */,
+				398A26ED133BAD6D00C03008 /* Frameworks */,
+				398A26EE133BAD6D00C03008 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = Aural;
+			productName = Aural;
+			productReference = 398A26F0133BAD6D00C03008 /* libAural.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		398A26FC133BAD6D00C03008 /* AuralTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 398A2716133BAD6D00C03008 /* Build configuration list for PBXNativeTarget "AuralTests" */;
+			buildPhases = (
+				398A26F8133BAD6D00C03008 /* Sources */,
+				398A26F9133BAD6D00C03008 /* Frameworks */,
+				398A26FA133BAD6D00C03008 /* Resources */,
+				398A26FB133BAD6D00C03008 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				398A2704133BAD6D00C03008 /* PBXTargetDependency */,
+			);
+			name = AuralTests;
+			productName = AuralTests;
+			productReference = 398A26FD133BAD6D00C03008 /* AuralTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		398A271C133BAD7700C03008 /* AuralDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 398A2737133BAD7700C03008 /* Build configuration list for PBXNativeTarget "AuralDemo" */;
+			buildPhases = (
+				398A2719133BAD7700C03008 /* Sources */,
+				398A271A133BAD7700C03008 /* Frameworks */,
+				398A271B133BAD7700C03008 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				39906C2B133C482200F1D7B1 /* PBXTargetDependency */,
+			);
 			name = AuralDemo;
 			productName = AuralDemo;
-			productReference = 1D6058910D05DD3D006BFB54 /* AuralDemo.app */;
+			productReference = 398A271D133BAD7700C03008 /* AuralDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		29B97313FDCFA39411CA2CEA /* Project object */ = {
+		398A26E7133BAD6D00C03008 /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Aural" */;
-			compatibilityVersion = "Xcode 3.1";
+			attributes = {
+				ORGANIZATIONNAME = Stenerud;
+			};
+			buildConfigurationList = 398A26EA133BAD6D00C03008 /* Build configuration list for PBXProject "Aural" */;
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
-			hasScannedForEncodings = 1;
+			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
-				Japanese,
-				French,
-				German,
+				en,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			mainGroup = 398A26E5133BAD6D00C03008;
+			productRefGroup = 398A26F1133BAD6D00C03008 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* AuralDemo */,
+				398A26EF133BAD6D00C03008 /* Aural */,
+				398A26FC133BAD6D00C03008 /* AuralTests */,
+				398A271C133BAD7700C03008 /* AuralDemo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+		398A26FA133BAD6D00C03008 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39DA508E1310A56000F94F67 /* MainWindow.xib in Resources */,
-				39DA50921310A57200F94F67 /* AuralDemoViewController.xib in Resources */,
-				39DA52441310AF7C00F94F67 /* ColdFunk.caf in Resources */,
+				398A270B133BAD6D00C03008 /* InfoPlist.strings in Resources */,
+				398A270E133BAD6D00C03008 /* AuralTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		398A271B133BAD7700C03008 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398A2727133BAD7700C03008 /* InfoPlist.strings in Resources */,
+				398A2730133BAD7700C03008 /* MainWindow.xib in Resources */,
+				39906C34133C4A5400F1D7B1 /* AuralDemoViewController.xib in Resources */,
+				39906C3E133C4F2F00F1D7B1 /* ColdFunk.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		398A26FB133BAD6D00C03008 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+		398A26EC133BAD6D00C03008 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* AuralDemoAppDelegate.m in Sources */,
-				28D7ACF80DDB3853001CB0EB /* AuralDemoViewController.m in Sources */,
-				39DA51EC1310AB3700F94F67 /* AUCAudioBuffer.m in Sources */,
-				39DA51ED1310AB3700F94F67 /* AUCAudioContext.m in Sources */,
-				39DA51EE1310AB3700F94F67 /* AUCAudioManager.m in Sources */,
-				39DA51EF1310AB3700F94F67 /* AUCAudioSource.m in Sources */,
-				39DA51F01310AB3700F94F67 /* AUCLogging.m in Sources */,
-				39DA51F11310AB3700F94F67 /* AUCMutex.m in Sources */,
-				39DA51F21310AB3700F94F67 /* KSAudioFile+AUCAudioBuffer.m in Sources */,
-				39DA51F31310AB3700F94F67 /* KSAudioFile.m in Sources */,
-				39DA51F41310AB3700F94F67 /* NSMutableArray+WeakReferences.m in Sources */,
-				39DA51F51310AB3700F94F67 /* OALAudioSession.m in Sources */,
-				39DA51F61310AB3700F94F67 /* OALSuspendHandler.m in Sources */,
-				39DA51F71310AB3700F94F67 /* OALTools.m in Sources */,
+				398A2773133BADB400C03008 /* AUC3DAudioSource.mm in Sources */,
+				398A2775133BADB400C03008 /* AUCAudioBuffer.mm in Sources */,
+				398A2777133BADB400C03008 /* AUCAudioContext.mm in Sources */,
+				398A2779133BADB400C03008 /* AUCAudioManager.mm in Sources */,
+				398A277B133BADB400C03008 /* AUCAudioSource.mm in Sources */,
+				398A277E133BADB400C03008 /* AUCLogging.m in Sources */,
+				398A2782133BADB400C03008 /* AUCPitchBendAudioSource.mm in Sources */,
+				398A2786133BADB400C03008 /* KSAudioFile+AUCAudioBuffer.mm in Sources */,
+				398A2787133BADB400C03008 /* PassthroughRenderEngine.cpp in Sources */,
+				398A2789133BADB400C03008 /* RenderBuffer.cpp in Sources */,
+				398A278B133BADB400C03008 /* SoundTouchRenderEngine.cpp in Sources */,
+				398A278E133BADB400C03008 /* DataBuffer.m in Sources */,
+				398A2790133BADB400C03008 /* KSAudioFile.m in Sources */,
+				398A2792133BADB400C03008 /* NSMutableArray+WeakReferences.m in Sources */,
+				398A2794133BADB400C03008 /* OALAudioSession.m in Sources */,
+				398A2797133BADB400C03008 /* OALSuspendHandler.m in Sources */,
+				398A2799133BADB400C03008 /* OALTools.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		398A26F8133BAD6D00C03008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398A2710133BAD6D00C03008 /* AuralTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		398A2719133BAD7700C03008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				398A272A133BAD7700C03008 /* main.m in Sources */,
+				398A272D133BAD7700C03008 /* AuralDemoAppDelegate.mm in Sources */,
+				398A2733133BAD7700C03008 /* AuralDemoViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		398A2704133BAD6D00C03008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 398A26EF133BAD6D00C03008 /* Aural */;
+			targetProxy = 398A2703133BAD6D00C03008 /* PBXContainerItemProxy */;
+		};
+		39906C2B133C482200F1D7B1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 398A26EF133BAD6D00C03008 /* Aural */;
+			targetProxy = 39906C2A133C482200F1D7B1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		398A2709133BAD6D00C03008 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				398A270A133BAD6D00C03008 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		398A2725133BAD7700C03008 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				398A2726133BAD7700C03008 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		398A272E133BAD7700C03008 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				398A272F133BAD7700C03008 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		1D6058940D05DD3E006BFB54 /* Debug */ = {
+		398A2711133BAD6D00C03008 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AuralDemo_Prefix.pch;
-				INFOPLIST_FILE = "AuralDemo-Info.plist";
-				PRODUCT_NAME = AuralDemo;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				SDKROOT = iphoneos;
 			};
 			name = Debug;
 		};
-		1D6058950D05DD3E006BFB54 /* Release */ = {
+		398A2712133BAD6D00C03008 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				COPY_PHASE_STRIP = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = AuralDemo_Prefix.pch;
-				INFOPLIST_FILE = "AuralDemo-Info.plist";
-				PRODUCT_NAME = AuralDemo;
-				VALIDATE_PRODUCT = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				SDKROOT = iphoneos;
 			};
 			name = Release;
 		};
-		C01FCF4F08A954540054247B /* Debug */ = {
+		398A2714133BAD6D00C03008 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_GLOBAL_CONSTRUCTORS = YES;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MISSING_PARENTHESES = YES;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_VALUE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/Aural.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Aural/Aural-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
-				SDKROOT = iphoneos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		C01FCF5008A954540054247B /* Release */ = {
+		398A2715133BAD6D00C03008 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_GLOBAL_CONSTRUCTORS = YES;
-				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
-				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
-				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
-				GCC_WARN_MISSING_PARENTHESES = YES;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_SIGN_COMPARE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNKNOWN_PRAGMAS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_LABEL = YES;
-				GCC_WARN_UNUSED_VALUE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/Aural.dst;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Aural/Aural-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PREBINDING = NO;
-				SDKROOT = iphoneos;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		398A2717133BAD6D00C03008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AuralTests/AuralTests-Prefix.pch";
+				INFOPLIST_FILE = "AuralTests/AuralTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		398A2718133BAD6D00C03008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AuralTests/AuralTests-Prefix.pch";
+				INFOPLIST_FILE = "AuralTests/AuralTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+		398A2738133BAD7700C03008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AuralDemo/AuralDemo-Prefix.pch";
+				INFOPLIST_FILE = "AuralDemo/AuralDemo-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		398A2739133BAD7700C03008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AuralDemo/AuralDemo-Prefix.pch";
+				INFOPLIST_FILE = "AuralDemo/AuralDemo-Info.plist";
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "AuralDemo" */ = {
+		398A26EA133BAD6D00C03008 /* Build configuration list for PBXProject "Aural" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1D6058940D05DD3E006BFB54 /* Debug */,
-				1D6058950D05DD3E006BFB54 /* Release */,
+				398A2711133BAD6D00C03008 /* Debug */,
+				398A2712133BAD6D00C03008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Aural" */ = {
+		398A2713133BAD6D00C03008 /* Build configuration list for PBXNativeTarget "Aural" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C01FCF4F08A954540054247B /* Debug */,
-				C01FCF5008A954540054247B /* Release */,
+				398A2714133BAD6D00C03008 /* Debug */,
+				398A2715133BAD6D00C03008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		398A2716133BAD6D00C03008 /* Build configuration list for PBXNativeTarget "AuralTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				398A2717133BAD6D00C03008 /* Debug */,
+				398A2718133BAD6D00C03008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		398A2737133BAD7700C03008 /* Build configuration list for PBXNativeTarget "AuralDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				398A2738133BAD7700C03008 /* Debug */,
+				398A2739133BAD7700C03008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+	rootObject = 398A26E7133BAD6D00C03008 /* Project object */;
 }
