@@ -29,7 +29,7 @@
 
 namespace aural
 {
-    const char* AudioUnitInfo::scopeName(AudioUnitScope scope)
+    const char* AudioUnitInfo::scopeName(const AudioUnitScope scope)
     {
         switch(scope)
         {
@@ -52,7 +52,7 @@ namespace aural
         }
     }
     
-    const char* AudioUnitInfo::errorName(OSStatus errorCode)
+    const char* AudioUnitInfo::errorName(const OSStatus errorCode)
     {
         switch(errorCode)
         {
@@ -105,7 +105,7 @@ namespace aural
         }
     }
 
-    const char* AudioUnitInfo::propertyName(AudioUnitPropertyID property)
+    const char* AudioUnitInfo::propertyName(const AudioUnitPropertyID property)
     {
         switch(property)
         {
@@ -195,7 +195,7 @@ namespace aural
         }
     }
     
-    const char* AudioUnitInfo::parameterName(AudioUnitParameterID parameter)
+    const char* AudioUnitInfo::parameterName(const AudioUnitParameterID parameter)
     {
         switch(parameter)
         {
@@ -224,7 +224,7 @@ namespace aural
     }
     
     
-    const char* AudioSessionInfo::errorName(OSStatus errorCode)
+    const char* AudioSessionInfo::errorName(const OSStatus errorCode)
     {
         switch(errorCode)
         {

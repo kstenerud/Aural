@@ -38,7 +38,7 @@ namespace aural
         return new IOS3DMixerAudioContext(this, kDefaultMaxSourcesPerContext);
     }
     
-    void IOSAudioManager::deleteContext(AudioContext* context)
+    void IOSAudioManager::deleteContext(AudioContext*const context)
     {
         delete context;
     }

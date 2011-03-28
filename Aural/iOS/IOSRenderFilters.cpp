@@ -56,7 +56,7 @@ namespace aural
     {
     }
 
-    void IOS3DMixerRenderFilter::setEnabled(bool enabled)
+    void IOS3DMixerRenderFilter::setEnabled(const bool enabled)
     {
         AURenderCallbackStruct renderCallbackStruct;
         if(enabled)
@@ -78,12 +78,12 @@ namespace aural
         }
     }
 
-    void IOS3DMixerRenderFilter::readFrames(unsigned long numFrames, void* buffer)
+    void IOS3DMixerRenderFilter::readFrames(const unsigned long numFrames, void*const dst)
     {
-        sourceReadFrames(numFrames, buffer);
+        sourceReadFrames(numFrames, dst);
     }
     
-    void IOS3DMixerRenderFilter::skipFrames(unsigned long numFrames)
+    void IOS3DMixerRenderFilter::skipFrames(const unsigned long numFrames)
     {
         sourceSkipFrames(numFrames);
     }

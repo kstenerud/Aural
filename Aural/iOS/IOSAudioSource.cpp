@@ -43,7 +43,7 @@
 
 namespace aural
 {
-    IOSAudioSource::IOSAudioSource(IOS3DMixerAudioContext& context, UInt32 elementNumber)
+    IOSAudioSource::IOSAudioSource(IOS3DMixerAudioContext& context, const UInt32 elementNumber)
     : audioContext_(context)
     , audioUnitAccessor_(context.mixerUnit(),
                          kAudioUnitScope_Input,
@@ -64,7 +64,7 @@ namespace aural
     {
     }
     
-    void IOSAudioSource::setBuffer(AudioBuffer* buffer)
+    void IOSAudioSource::setBuffer(AudioBuffer*const buffer)
     {
         OPTIONAL_LOCK(audioContext_.mutex());
         audioBuffer_ = buffer;
@@ -84,7 +84,7 @@ namespace aural
         
     }
     
-    void IOSAudioSource::setMuted(bool muted)
+    void IOSAudioSource::setMuted(const bool muted)
     {
             OPTIONAL_LOCK(audioContext_.mutex());
             if(muted != muted_)
@@ -106,11 +106,11 @@ namespace aural
         return paused_;
     }
     
-    void IOSAudioSource::setPaused(bool paused)
+    void IOSAudioSource::setPaused(const bool paused)
     {
         if(paused != paused_)
         {
-            paused = paused_;
+            paused_ = paused;
             renderSink_.setEnabled(!paused_);
         }
     }
@@ -145,7 +145,7 @@ namespace aural
         return gain_;
     }
     
-    void IOSAudioSource::setGain(float gain)
+    void IOSAudioSource::setGain(const float gain)
     {
         OPTIONAL_LOCK(audioContext_.mutex());
         if(gain != gain_)
@@ -162,7 +162,7 @@ namespace aural
         return pitch_;
     }
 	
-    void IOSAudioSource::setPitch(float pitch)
+    void IOSAudioSource::setPitch(const float pitch)
     {
         float totalAmount = (pitch - 1.0f) * 2.0f;
         //	NSLog(@"%f = %f", pitch, totalAmount);
@@ -171,7 +171,7 @@ namespace aural
 //        pitch_ = pitch;
     }
     
-    void IOSAudioSource::setPlaybackRate(float pitch)
+    void IOSAudioSource::setPlaybackRate(const float pitch)
     {
         OPTIONAL_LOCK(audioContext_.mutex());
         if(pitch != pitch_)
@@ -186,7 +186,7 @@ namespace aural
         return pan_;
     }
     
-    void IOSAudioSource::setPan(float pan)
+    void IOSAudioSource::setPan(const float pan)
     {
         OPTIONAL_LOCK(audioContext_.mutex());
         if(pan != pan_)
@@ -201,7 +201,7 @@ namespace aural
         }
     }
     
-    void IOSAudioSource::setDistance(float distance)
+    void IOSAudioSource::setDistance(const float distance)
     {
         OPTIONAL_LOCK(audioContext_.mutex());
         if(distance != distance_)

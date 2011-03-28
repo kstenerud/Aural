@@ -41,28 +41,32 @@ namespace aural
     class IOS3DMixerAudioContext: public AudioContext
     {
     public:
-        IOS3DMixerAudioContext(IOSAudioManager* manager,
-                               unsigned int maxSources);
+        IOS3DMixerAudioContext(IOSAudioManager*const manager,
+                               const unsigned int maxSources);
         ~IOS3DMixerAudioContext();
         
         AudioUnit mixerUnit();
         
         UInt32 maxFramesPerSlice();
-        void setMaxFramesPerSlice(UInt32 maxFramesPerSlice);
+        void setMaxFramesPerSlice(const UInt32 maxFramesPerSlice);
         
         Float64 sampleRate();
-        void setSampleRate(Float64 sampleRate);
+        void setSampleRate(const Float64 sampleRate);
         
         bool active();
-        void setActive(bool value);
+        void setActive(const bool value);
         
         AudioSource* newSource();
-        void deleteSource(AudioSource* audioSource);
+        void deleteSource(AudioSource*const audioSource);
         
         Mutex& mutex();
-        
+
     private:
-        void setNumElements(UInt32 numElements);
+        IOS3DMixerAudioContext(const IOS3DMixerAudioContext&);
+        IOS3DMixerAudioContext& operator=(const IOS3DMixerAudioContext&);
+
+    private:
+        void setNumElements(const UInt32 numElements);
 
         Mutex mutex_;
         
@@ -70,7 +74,7 @@ namespace aural
         
         IOSAudioManager* manager_;
         IOSAudioSource** sources_;
-        unsigned int maxSources_;
+        const unsigned int maxSources_;
         
         AudioUnitAccessor inputAccessor_;
         AudioUnitAccessor outputAccessor_;

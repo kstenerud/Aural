@@ -36,8 +36,15 @@ namespace aural
     class IOSAudioManager: public AudioManager
     {
     public:
+        IOSAudioManager() {};
+        ~IOSAudioManager() {};
+
         AudioContext* newContext();
-        void deleteContext(AudioContext* context);
+        void deleteContext(AudioContext*const context);
+
+    private:
+        IOSAudioManager(const IOSAudioManager&);
+        IOSAudioManager& operator=(const IOSAudioManager&);
     };
 }
 

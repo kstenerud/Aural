@@ -44,7 +44,7 @@
 
 namespace aural
 {
-    void SoundTouchRenderFilter::setPitchSemiTones(float newPitch)
+    void SoundTouchRenderFilter::setPitchSemiTones(const float newPitch)
     {
         soundTouch_.setPitchSemiTones(newPitch);
     }
@@ -79,7 +79,7 @@ namespace aural
 	{
 	}
     
-    void SoundTouchRenderFilter::setEnabled(bool enabled)
+    void SoundTouchRenderFilter::setEnabled(const bool enabled)
     {
         // TODO
     }
@@ -106,7 +106,7 @@ namespace aural
         preload();
 	}
     
-    inline void SoundTouchRenderFilter::readFrames(unsigned long numFrames, void* buffer)
+    inline void SoundTouchRenderFilter::readFrames(const unsigned long numFrames, void*const dst)
     {
         SAMPLETYPE temp[kInternalBufferSize];
         
@@ -119,7 +119,7 @@ namespace aural
             sourceReadFrames(framesToRead, temp);
             soundTouch_.putSamples(temp, framesToRead);
             framesToWrite += framesToRead;
-            unsigned long framesWritten = soundTouch_.receiveSamples(static_cast<SAMPLETYPE*>(buffer), framesToWrite);
+            unsigned long framesWritten = soundTouch_.receiveSamples(static_cast<SAMPLETYPE*>(dst), framesToWrite);
             LOG_TRACE("Read %d and wrote %d", framesToRead, framesWritten);
             framesToWrite -= framesWritten;
             framesLeft -= framesToRead;
@@ -127,7 +127,7 @@ namespace aural
         
         while(framesToWrite > 0)
         {
-            unsigned long framesWritten = soundTouch_.receiveSamples(static_cast<SAMPLETYPE*>(buffer), framesToWrite);
+            unsigned long framesWritten = soundTouch_.receiveSamples(static_cast<SAMPLETYPE*>(dst), framesToWrite);
             if(0 == framesWritten)
             {
                 AURAL_LOG_ERROR("Could not read %d frames from SoundTouch", framesToWrite);
@@ -138,7 +138,7 @@ namespace aural
         }
     }
     
-    inline void SoundTouchRenderFilter::skipFrames(unsigned long numFrames)
+    inline void SoundTouchRenderFilter::skipFrames(const unsigned long numFrames)
     {
         // TODO
     }

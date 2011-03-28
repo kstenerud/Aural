@@ -41,13 +41,13 @@ namespace aural
         virtual ~AudioContext() {};
         
         virtual AudioSource* newSource() = 0;
-        virtual void deleteSource(AudioSource* source) = 0;
+        virtual void deleteSource(AudioSource*const source) = 0;
 
         virtual Float64 sampleRate() = 0;
-        virtual void setSampleRate(Float64 sampleRate) = 0;
+        virtual void setSampleRate(const Float64 sampleRate) = 0;
 
         virtual bool active() = 0;
-        virtual void setActive(bool value) = 0;
+        virtual void setActive(const bool value) = 0;
     };
     
 }

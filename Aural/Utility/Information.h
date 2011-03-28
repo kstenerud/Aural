@@ -36,18 +36,18 @@ namespace aural
     class AudioUnitInfo
     {
     public:  
-        static const char* scopeName(AudioUnitScope scope);
-        static const char* errorName(OSStatus errorCode);
-        static const char* propertyName(AudioUnitPropertyID property);
+        static const char* scopeName(const AudioUnitScope scope);
+        static const char* errorName(const OSStatus errorCode);
+        static const char* propertyName(const AudioUnitPropertyID property);
         
         // Note: Assumes 3D mixer
-        static const char* parameterName(AudioUnitParameterID paramter);
+        static const char* parameterName(const AudioUnitParameterID paramter);
     };
     
     class AudioSessionInfo
     {
     public:  
-        static const char* errorName(OSStatus errorCode);
+        static const char* errorName(const OSStatus errorCode);
     };
 }
 

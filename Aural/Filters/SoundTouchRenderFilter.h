@@ -42,13 +42,13 @@ namespace aural
 
         void reset();
         void prepare();
-        void readFrames(unsigned long numFrames, void* buffer);
-        void skipFrames(unsigned long numFrames);
+        void readFrames(const unsigned long numFrames, void*const dst);
+        void skipFrames(const unsigned long numFrames);
 
         bool enabled();
-        void setEnabled(bool enabled);
+        void setEnabled(const bool enabled);
 
-		void setPitchSemiTones(float newPitch);
+		void setPitchSemiTones(const float newPitch);
 
     private:
         void preload();

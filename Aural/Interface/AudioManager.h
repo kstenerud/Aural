@@ -38,7 +38,7 @@ namespace aural
         virtual ~AudioManager() {};
         
         virtual AudioContext* newContext() = 0;
-        virtual void deleteContext(AudioContext* context) = 0;
+        virtual void deleteContext(AudioContext*const context) = 0;
     };
 }
 

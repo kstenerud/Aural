@@ -29,9 +29,9 @@
 #import "Information.h"
 
 
-void aural_log(const char* level,
-               const char* function,
-               const char* description,
+void aural_log(const char*const level,
+               const char*const function,
+               const char*const description,
                ...)
 {
 	va_list args;
@@ -47,9 +47,9 @@ void aural_log(const char* level,
 }
 
 
-void aural_notifyAudioUnitError(OSStatus errorCode,
-                                const char* function,
-                                const char* description,
+void aural_notifyAudioUnitError(const OSStatus errorCode,
+                                const char*const function,
+                                const char*const description,
                                 ...)
 {
 	va_list args;
@@ -67,9 +67,9 @@ void aural_notifyAudioUnitError(OSStatus errorCode,
 }
 
 
-void aural_notifyAudioSessionError(OSStatus errorCode,
-                                   const char* function,
-                                   const char* description,
+void aural_notifyAudioSessionError(const OSStatus errorCode,
+                                   const char*const function,
+                                   const char*const description,
                                    ...)
 {
 	va_list args;

@@ -44,15 +44,15 @@
 
 namespace aural
 {
-    inline static void reportAndThrow(const OSStatus error, const char* message)
+    inline static void reportAndThrow(const OSStatus error, const char*const message)
     {
         REPORT_AUDIOUNIT_ERROR(error, message);
         OPTIONAL_THROW(std::runtime_error(message));
     }
     
     
-    AudioUnitGraph::AudioUnitGraph(OSType mixerSubtype,
-                                   unsigned long numElements)
+    AudioUnitGraph::AudioUnitGraph(const OSType mixerSubtype,
+                                   const unsigned long numElements)
     {
         OSStatus error;
         AUNode nodeIo;
@@ -150,7 +150,7 @@ namespace aural
         return isActive;
     }
     
-    void AudioUnitGraph::setActive(bool value)
+    void AudioUnitGraph::setActive(const bool value)
     {
         OSStatus error;
         

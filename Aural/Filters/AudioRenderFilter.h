@@ -46,8 +46,8 @@ namespace aural
     {
 	public:
 		virtual ~AudioRenderSource() {}
-        virtual void readFrames(unsigned long numFrames, void* buffer) = 0;
-        virtual void skipFrames(unsigned long numFrames) = 0;
+        virtual void readFrames(const unsigned long numFrames, void*const dst) = 0;
+        virtual void skipFrames(const unsigned long numFrames) = 0;
     };
 
     
@@ -55,9 +55,9 @@ namespace aural
     {
 	public:
 		virtual ~AudioRenderSink() {}
-        virtual void setSource(AudioRenderSource* source) = 0;
+        virtual void setSource(AudioRenderSource*const source) = 0;
         virtual bool enabled() = 0;
-        virtual void setEnabled(bool value) = 0;
+        virtual void setEnabled(const bool value) = 0;
     };
     
     
@@ -70,13 +70,13 @@ namespace aural
     class BasicAudioRenderSink: public AudioRenderSink
     {
     public:
-        virtual void setSource(AudioRenderSource* source);
+        virtual void setSource(AudioRenderSource*const source);
         virtual void reset();
         virtual void prepare();
         
     protected:
-        void sourceReadFrames(unsigned long numFrames, void* buffer);
-        void sourceSkipFrames(unsigned long numFrames);
+        void sourceReadFrames(const unsigned long numFrames, void*const dst);
+        void sourceSkipFrames(const unsigned long numFrames);
         
     private:
         AudioRenderSource* source_;
@@ -85,13 +85,13 @@ namespace aural
     class BasicAudioRenderFilter: public AudioRenderFilter
     {
     public:
-        virtual void setSource(AudioRenderSource* source);
+        virtual void setSource(AudioRenderSource*const source);
         virtual void reset();
         virtual void prepare();
         
     protected:
-        void sourceReadFrames(unsigned long numFrames, void* buffer);
-        void sourceSkipFrames(unsigned long numFrames);
+        void sourceReadFrames(const unsigned long numFrames, void*const dst);
+        void sourceSkipFrames(const unsigned long numFrames);
         
     private:
         AudioRenderSource* source_;
@@ -101,13 +101,13 @@ namespace aural
     class MonoBufferRenderSource: public AudioRenderSource
     {
     public:
-        void setBuffer(AudioBuffer* buffer);
+        void setBuffer(AudioBuffer*const buffer);
         unsigned long position();
-        void setPosition(unsigned long frameNumber);
+        void setPosition(const unsigned long frameNumber);
         void reset();
         void prepare();
-        void readFrames(unsigned long numFrames, void* buffer);
-        void skipFrames(unsigned long numFrames);
+        void readFrames(const unsigned long numFrames, void*const dst);
+        void skipFrames(const unsigned long numFrames);
 
     private:
         AudioBuffer* audioBuffer_;
@@ -129,17 +129,17 @@ namespace aural
         source_->prepare();
     }
     
-    inline void BasicAudioRenderSink::setSource(AudioRenderSource* source)
+    inline void BasicAudioRenderSink::setSource(AudioRenderSource*const source)
     {
         source_ = source;
     }
     
-    inline void BasicAudioRenderSink::sourceReadFrames(unsigned long numFrames, void* buffer)
+    inline void BasicAudioRenderSink::sourceReadFrames(const unsigned long numFrames, void*const dst)
     {
-        source_->readFrames(numFrames, buffer);
+        source_->readFrames(numFrames, dst);
     }
     
-    inline void BasicAudioRenderSink::sourceSkipFrames(unsigned long numFrames)
+    inline void BasicAudioRenderSink::sourceSkipFrames(const unsigned long numFrames)
     {
         source_->skipFrames(numFrames);
     }
@@ -155,24 +155,24 @@ namespace aural
         source_->prepare();
     }
     
-    inline void BasicAudioRenderFilter::setSource(AudioRenderSource* source)
+    inline void BasicAudioRenderFilter::setSource(AudioRenderSource*const source)
     {
         source_ = source;
     }
     
-    inline void BasicAudioRenderFilter::sourceReadFrames(unsigned long numFrames, void* buffer)
+    inline void BasicAudioRenderFilter::sourceReadFrames(const unsigned long numFrames, void*const dst)
     {
-        source_->readFrames(numFrames, buffer);
+        source_->readFrames(numFrames, dst);
     }
     
-    inline void BasicAudioRenderFilter::sourceSkipFrames(unsigned long numFrames)
+    inline void BasicAudioRenderFilter::sourceSkipFrames(const unsigned long numFrames)
     {
         source_->skipFrames(numFrames);
     }
     
 
 
-    inline void MonoBufferRenderSource::setBuffer(AudioBuffer* buffer)
+    inline void MonoBufferRenderSource::setBuffer(AudioBuffer*const buffer)
     {
         audioBuffer_ = buffer;
         frameSize_ = 2;
@@ -186,7 +186,7 @@ namespace aural
         return position_;
     }
     
-    inline void MonoBufferRenderSource::setPosition(unsigned long frameNumber)
+    inline void MonoBufferRenderSource::setPosition(const unsigned long frameNumber)
     {
         position_ = frameNumber;
     }
@@ -201,9 +201,9 @@ namespace aural
         
     }
     
-    inline void MonoBufferRenderSource::readFrames(unsigned long numFrames, void* buffer)
+    inline void MonoBufferRenderSource::readFrames(const unsigned long numFrames, void*const dst)
     {
-        size_t newPosition = copy_circular(buffer,
+        size_t newPosition = copy_circular(dst,
                                            numFrames * frameSize_,
                                            audioBuffer_->leftChannelData(),
                                            position_ * frameSize_,
@@ -212,7 +212,7 @@ namespace aural
         position_ = newPosition / frameSize_;
     }
 
-    inline void MonoBufferRenderSource::skipFrames(unsigned long numFrames)
+    inline void MonoBufferRenderSource::skipFrames(const unsigned long numFrames)
     {
         size_t newPosition = advance_circular(numFrames * frameSize_,
                                               position_ * frameSize_,

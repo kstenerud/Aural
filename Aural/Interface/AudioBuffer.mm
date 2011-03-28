@@ -29,9 +29,9 @@
 
 namespace aural
 {
-    AudioBuffer::AudioBuffer(void* leftChannelData,
-                             void* rightChannelData,
-                             unsigned int numBytes,
+    AudioBuffer::AudioBuffer(void*const leftChannelData,
+                             void*const rightChannelData,
+                             const unsigned int numBytes,
                              AudioStreamBasicDescription& format)
     : leftChannelData_(leftChannelData)
     , rightChannelData_(rightChannelData)

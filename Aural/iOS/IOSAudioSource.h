@@ -41,36 +41,40 @@ namespace aural
     class IOSAudioSource: public AudioSource
     {
     public:
-        IOSAudioSource(IOS3DMixerAudioContext& context, UInt32 elementNumber);
+        IOSAudioSource(IOS3DMixerAudioContext& context, const UInt32 elementNumber);
         ~IOSAudioSource();
 
         AudioBuffer* buffer();
         
-        void setBuffer(AudioBuffer* buffer);
+        void setBuffer(AudioBuffer*const buffer);
         
         bool paused();
-        void setPaused(bool paused);
+        void setPaused(const bool paused);
         
         bool muted();
-        void setMuted(bool muted);
+        void setMuted(const bool muted);
         
         float gain();
-        void setGain(float gain);
+        void setGain(const float gain);
         
         float pan();
-        void setPan(float pan);
+        void setPan(const float pan);
         
         float pitch();
-        void setPitch(float pitch);
+        void setPitch(const float pitch);
         
-        void setPlaybackRate(float playbackRate);
+        void setPlaybackRate(const float playbackRate);
         
         void play();
         void stop();
 
-        void setDistance(float distance);
+        void setDistance(const float distance);
         
         UInt32 elementNumber();
+
+    private:
+        IOSAudioSource(const IOSAudioSource&);
+        IOSAudioSource& operator=(const IOSAudioSource&);
 
     private:	
         float gain_;

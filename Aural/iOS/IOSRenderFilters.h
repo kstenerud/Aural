@@ -41,11 +41,11 @@ namespace aural
     public:
         IOS3DMixerRenderFilter(AudioUnitAccessor& accessor, Mutex& mutex);
 
-        void readFrames(unsigned long numFrames, void* buffer);
-        void skipFrames(unsigned long numFrames);
+        void readFrames(const unsigned long numFrames, void*const dst);
+        void skipFrames(const unsigned long numFrames);
 
         bool enabled();
-        void setEnabled(bool enabled);
+        void setEnabled(const bool enabled);
     private:
         AudioUnitAccessor& accessor_;
         Mutex& mutex_;

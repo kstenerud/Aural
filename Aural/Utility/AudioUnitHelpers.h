@@ -50,8 +50,8 @@ namespace aural
     class AudioUnitGraph
     {
     public:
-        AudioUnitGraph(OSType mixerSubtype,
-                       unsigned long numElements);
+        AudioUnitGraph(const OSType mixerSubtype,
+                       const unsigned long numElements);
         
         bool active();
         void setActive(bool value);
@@ -67,9 +67,9 @@ namespace aural
     class AudioUnitAccessor
     {
     public:
-        AudioUnitAccessor(AudioUnit audioUnit_,
-                          AudioUnitScope audioUnitScope_,
-                          AudioUnitElement element_);
+        AudioUnitAccessor(const AudioUnit audioUnit_,
+                          const AudioUnitScope audioUnitScope_,
+                          const AudioUnitElement element_);
 
         AudioUnitParameterValue getParameter(const AudioUnitParameterID parameter);
         void setParameter(const AudioUnitParameterID parameter, const AudioUnitParameterValue value);
@@ -110,9 +110,9 @@ namespace aural
     }
     
     
-    inline AudioUnitAccessor::AudioUnitAccessor(AudioUnit audioUnit,
-                                                AudioUnitScope audioUnitScope,
-                                                AudioUnitElement element)
+    inline AudioUnitAccessor::AudioUnitAccessor(const AudioUnit audioUnit,
+                                                const AudioUnitScope audioUnitScope,
+                                                const AudioUnitElement element)
     : audioUnit_(audioUnit)
     , audioUnitScope_(audioUnitScope)
     , element_(element)
@@ -156,7 +156,8 @@ namespace aural
         return value;
     }
     
-    inline void AudioUnitAccessor::setParameter(const AudioUnitParameterID parameter, const AudioUnitParameterValue value)
+    inline void AudioUnitAccessor::setParameter(const AudioUnitParameterID parameter,
+                                                const AudioUnitParameterValue value)
     {
         OSStatus error;
         

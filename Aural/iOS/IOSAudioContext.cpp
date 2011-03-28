@@ -32,8 +32,8 @@
 
 namespace aural
 {
-    IOS3DMixerAudioContext::IOS3DMixerAudioContext(IOSAudioManager* manager,
-                                                   unsigned int maxSources)
+    IOS3DMixerAudioContext::IOS3DMixerAudioContext(IOSAudioManager*const manager,
+                                                   const unsigned int maxSources)
     : manager_(manager)
     , maxSources_(maxSources)
     , graph_(AudioUnitGraph(kAudioUnitSubType_AU3DMixerEmbedded, maxSources))
@@ -85,7 +85,7 @@ namespace aural
         return source;
     }
 
-    void IOS3DMixerAudioContext::deleteSource(AudioSource* audioSource)
+    void IOS3DMixerAudioContext::deleteSource(AudioSource*const audioSource)
     {
         IOSAudioSource* realSource = static_cast<IOSAudioSource*>(audioSource);
         OPTIONAL_LOCK(mutex_);
@@ -93,7 +93,7 @@ namespace aural
         delete audioSource;
     }
 
-    void IOS3DMixerAudioContext::setNumElements(UInt32 value)
+    void IOS3DMixerAudioContext::setNumElements(const UInt32 value)
     {
         OPTIONAL_LOCK(mutex_);
         inputAccessor_.setUInt32Property(kAudioUnitProperty_ElementCount, value);
@@ -105,7 +105,7 @@ namespace aural
         return outputAccessor_.getFloat64Property(kAudioUnitProperty_SampleRate);
     }
     
-    void IOS3DMixerAudioContext::setSampleRate(Float64 value)
+    void IOS3DMixerAudioContext::setSampleRate(const Float64 value)
     {
         OPTIONAL_LOCK(mutex_);
         outputAccessor_.setFloat64Property(kAudioUnitProperty_SampleRate, value);
@@ -117,7 +117,7 @@ namespace aural
         return globalAccessor_.getUInt32Property(kAudioUnitProperty_MaximumFramesPerSlice);
     }
     
-    void IOS3DMixerAudioContext::setMaxFramesPerSlice(UInt32 value)
+    void IOS3DMixerAudioContext::setMaxFramesPerSlice(const UInt32 value)
     {
         OPTIONAL_LOCK(mutex_);
         globalAccessor_.setUInt32Property(kAudioUnitProperty_MaximumFramesPerSlice, value);
@@ -128,7 +128,7 @@ namespace aural
         return graph_.active();
     }
     
-    void IOS3DMixerAudioContext::setActive(bool value)
+    void IOS3DMixerAudioContext::setActive(const bool value)
     {
         graph_.setActive(value);
     }

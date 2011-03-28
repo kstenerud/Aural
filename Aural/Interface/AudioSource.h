@@ -39,23 +39,23 @@ namespace aural
         
         virtual AudioBuffer* buffer() = 0;
 
-        virtual void setBuffer(AudioBuffer* buffer) = 0;
+        virtual void setBuffer(AudioBuffer*const buffer) = 0;
         
         virtual bool paused() = 0;
-        virtual void setPaused(bool paused) = 0;
+        virtual void setPaused(const bool paused) = 0;
         
         virtual bool muted() = 0;
-        virtual void setMuted(bool muted) = 0;
+        virtual void setMuted(const bool muted) = 0;
         
         virtual float gain() = 0;
-        virtual void setGain(float gain) = 0;
+        virtual void setGain(const float gain) = 0;
         
         virtual float pan() = 0;
-        virtual void setPan(float pan) = 0;
+        virtual void setPan(const float pan) = 0;
         
-        virtual void setPitch(float pitch) = 0;
+        virtual void setPitch(const float pitch) = 0;
         
-        virtual void setPlaybackRate(float playbackRate) = 0;
+        virtual void setPlaybackRate(const float playbackRate) = 0;
         
         virtual void play() = 0;
         virtual void stop() = 0;

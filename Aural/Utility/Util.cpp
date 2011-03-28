@@ -30,17 +30,17 @@
 
 namespace aural
 {
-    size_t copy_circular(void* dst,
-                         size_t numBytesToCopy,
-                         void* src,
-                         size_t srcOffset,
-                         size_t srcLength)
+    size_t copy_circular(void*const dst,
+                         const size_t numBytesToCopy,
+                         const void*const src,
+                         const size_t srcOffset,
+                         const size_t srcLength)
     {
         size_t dstPosition = 0;
         size_t srcPosition = srcOffset;
         size_t segmentLength = numBytesToCopy;
-        unsigned char* srcBytes = static_cast<unsigned char*>(src);
-        unsigned char* dstBytes = static_cast<unsigned char*>(dst);
+        const unsigned char*const srcBytes = static_cast<const unsigned char*const>(src);
+        unsigned char*const dstBytes = static_cast<unsigned char*const>(dst);
         
         while(srcPosition+segmentLength >= srcLength)
         {
@@ -60,9 +60,9 @@ namespace aural
         return srcPosition;
     }
     
-    size_t advance_circular(size_t numBytesToAdvance,
-                            size_t srcOffset,
-                            size_t srcLength)
+    size_t advance_circular(const size_t numBytesToAdvance,
+                            const size_t srcOffset,
+                            const size_t srcLength)
     {
         return (srcOffset + numBytesToAdvance) % srcLength;
     }
