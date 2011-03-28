@@ -53,6 +53,8 @@
 		390BB61F134013DD00F5A7C4 /* Mutex.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5F1134013DD00F5A7C4 /* Mutex.h */; };
 		390BB620134013DD00F5A7C4 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5F2134013DD00F5A7C4 /* Util.cpp */; };
 		390BB621134013DD00F5A7C4 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5F3134013DD00F5A7C4 /* Util.h */; };
+		390BB62413402D6B00F5A7C4 /* CommonRenderFilters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB62213402D6B00F5A7C4 /* CommonRenderFilters.cpp */; };
+		390BB62513402D6B00F5A7C4 /* CommonRenderFilters.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB62313402D6B00F5A7C4 /* CommonRenderFilters.h */; };
 		398A26F4133BAD6D00C03008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F3133BAD6D00C03008 /* Foundation.framework */; };
 		398A26FF133BAD6D00C03008 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26FE133BAD6D00C03008 /* UIKit.framework */; };
 		398A2700133BAD6D00C03008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F3133BAD6D00C03008 /* Foundation.framework */; };
@@ -142,6 +144,8 @@
 		390BB5F1134013DD00F5A7C4 /* Mutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mutex.h; sourceTree = "<group>"; };
 		390BB5F2134013DD00F5A7C4 /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
 		390BB5F3134013DD00F5A7C4 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		390BB62213402D6B00F5A7C4 /* CommonRenderFilters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonRenderFilters.cpp; sourceTree = "<group>"; };
+		390BB62313402D6B00F5A7C4 /* CommonRenderFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonRenderFilters.h; sourceTree = "<group>"; };
 		398A26F0133BAD6D00C03008 /* libAural.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAural.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		398A26F3133BAD6D00C03008 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		398A26F7133BAD6D00C03008 /* Aural-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aural-Prefix.pch"; sourceTree = "<group>"; };
@@ -213,6 +217,8 @@
 			isa = PBXGroup;
 			children = (
 				390BB5C4134013DD00F5A7C4 /* AudioRenderFilter.h */,
+				390BB62213402D6B00F5A7C4 /* CommonRenderFilters.cpp */,
+				390BB62313402D6B00F5A7C4 /* CommonRenderFilters.h */,
 				390BB5C5134013DD00F5A7C4 /* SoundTouchRenderFilter.cpp */,
 				390BB5C6134013DD00F5A7C4 /* SoundTouchRenderFilter.h */,
 			);
@@ -428,6 +434,7 @@
 				390BB61E134013DD00F5A7C4 /* Macros.h in Headers */,
 				390BB61F134013DD00F5A7C4 /* Mutex.h in Headers */,
 				390BB621134013DD00F5A7C4 /* Util.h in Headers */,
+				390BB62513402D6B00F5A7C4 /* CommonRenderFilters.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -576,6 +583,7 @@
 				390BB61B134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.mm in Sources */,
 				390BB61D134013DD00F5A7C4 /* Logging.mm in Sources */,
 				390BB620134013DD00F5A7C4 /* Util.cpp in Sources */,
+				390BB62413402D6B00F5A7C4 /* CommonRenderFilters.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -140,6 +140,15 @@ namespace aural
     
     inline void SoundTouchRenderFilter::skipFrames(const unsigned long numFrames)
     {
-        // TODO
+        SAMPLETYPE temp[kInternalBufferSize];
+        
+        unsigned long framesLeft = numFrames;
+
+        while(framesLeft > 0)
+        {
+            unsigned long framesToSkip = framesLeft > kInternalBufferSize ? kInternalBufferSize : framesLeft;
+            readFrames(framesToSkip, temp);
+            framesLeft -= framesToSkip;
+        }
     }
 }

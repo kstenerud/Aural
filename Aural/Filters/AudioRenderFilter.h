@@ -46,6 +46,7 @@ namespace aural
     {
 	public:
 		virtual ~AudioRenderSource() {}
+        virtual const unsigned long frameSize() = 0;
         virtual void readFrames(const unsigned long numFrames, void*const dst) = 0;
         virtual void skipFrames(const unsigned long numFrames) = 0;
     };
@@ -75,6 +76,7 @@ namespace aural
         virtual void prepare();
         
     protected:
+        const unsigned long sourceFrameSize();
         void sourceReadFrames(const unsigned long numFrames, void*const dst);
         void sourceSkipFrames(const unsigned long numFrames);
         
@@ -88,35 +90,17 @@ namespace aural
         virtual void setSource(AudioRenderSource*const source);
         virtual void reset();
         virtual void prepare();
+        virtual const unsigned long frameSize();
+        virtual void skipFrames(const unsigned long numFrames);
         
     protected:
+        const unsigned long sourceFrameSize();
         void sourceReadFrames(const unsigned long numFrames, void*const dst);
         void sourceSkipFrames(const unsigned long numFrames);
         
     private:
         AudioRenderSource* source_;
     };
-    
-    
-    class MonoBufferRenderSource: public AudioRenderSource
-    {
-    public:
-        void setBuffer(AudioBuffer*const buffer);
-        unsigned long position();
-        void setPosition(const unsigned long frameNumber);
-        void reset();
-        void prepare();
-        void readFrames(const unsigned long numFrames, void*const dst);
-        void skipFrames(const unsigned long numFrames);
-
-    private:
-        AudioBuffer* audioBuffer_;
-        unsigned long frameSize_;
-        unsigned long numFrames_;
-        unsigned long position_;
-    };
-    
-    
     
     
     inline void BasicAudioRenderSink::reset()
@@ -128,12 +112,17 @@ namespace aural
     {
         source_->prepare();
     }
-    
+
     inline void BasicAudioRenderSink::setSource(AudioRenderSource*const source)
     {
         source_ = source;
     }
     
+    inline const unsigned long BasicAudioRenderSink::sourceFrameSize()
+    {
+        return source_->frameSize();
+    }
+
     inline void BasicAudioRenderSink::sourceReadFrames(const unsigned long numFrames, void*const dst)
     {
         source_->readFrames(numFrames, dst);
@@ -155,9 +144,24 @@ namespace aural
         source_->prepare();
     }
     
+    inline const unsigned long BasicAudioRenderFilter::frameSize()
+    {
+        return sourceFrameSize();
+    }
+    
+    inline void BasicAudioRenderFilter::skipFrames(const unsigned long numFrames)
+    {
+        sourceSkipFrames(numFrames);
+    }
+
     inline void BasicAudioRenderFilter::setSource(AudioRenderSource*const source)
     {
         source_ = source;
+    }
+    
+    inline const unsigned long BasicAudioRenderFilter::sourceFrameSize()
+    {
+        return source_->frameSize();
     }
     
     inline void BasicAudioRenderFilter::sourceReadFrames(const unsigned long numFrames, void*const dst)
@@ -168,57 +172,6 @@ namespace aural
     inline void BasicAudioRenderFilter::sourceSkipFrames(const unsigned long numFrames)
     {
         source_->skipFrames(numFrames);
-    }
-    
-
-
-    inline void MonoBufferRenderSource::setBuffer(AudioBuffer*const buffer)
-    {
-        audioBuffer_ = buffer;
-        frameSize_ = 2;
-        numFrames_ = audioBuffer_->numFrames();
-        
-        setPosition(0);
-    }
-    
-    inline unsigned long MonoBufferRenderSource::position()
-    {
-        return position_;
-    }
-    
-    inline void MonoBufferRenderSource::setPosition(const unsigned long frameNumber)
-    {
-        position_ = frameNumber;
-    }
-    
-    inline void MonoBufferRenderSource::reset()
-    {
-        setPosition(0);
-    }
-    
-    inline void MonoBufferRenderSource::prepare()
-    {
-        
-    }
-    
-    inline void MonoBufferRenderSource::readFrames(const unsigned long numFrames, void*const dst)
-    {
-        size_t newPosition = copy_circular(dst,
-                                           numFrames * frameSize_,
-                                           audioBuffer_->leftChannelData(),
-                                           position_ * frameSize_,
-                                           audioBuffer_->numBytes());
-        
-        position_ = newPosition / frameSize_;
-    }
-
-    inline void MonoBufferRenderSource::skipFrames(const unsigned long numFrames)
-    {
-        size_t newPosition = advance_circular(numFrames * frameSize_,
-                                              position_ * frameSize_,
-                                              audioBuffer_->numBytes());
-        
-        position_ = newPosition / frameSize_;
     }
 }
 

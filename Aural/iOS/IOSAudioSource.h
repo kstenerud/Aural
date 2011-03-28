@@ -30,6 +30,7 @@
 
 #import <AudioToolbox/AudioToolbox.h>
 #include "AudioSource.h"
+#include "CommonRenderFilters.h"
 #include "IOSRenderFilters.h"
 #include "AudioUnitHelpers.h"
 
@@ -78,7 +79,6 @@ namespace aural
 
     private:	
         float gain_;
-        bool muted_;
         bool paused_;
         bool playing_;
         float pan_;

@@ -80,25 +80,12 @@ namespace aural
     
     bool IOSAudioSource::muted()
     {
-        return muted_;
-        
+        return renderSink_.muted();
     }
     
     void IOSAudioSource::setMuted(const bool muted)
     {
-            OPTIONAL_LOCK(audioContext_.mutex());
-            if(muted != muted_)
-            {
-                //NSLog(@"Set %d to muted %d", elementNumber_, muted);
-                /*
-                 error = AudioUnitSetParameter(self->context->mixerUnit,
-                 kMultiChannelMixerParam_Enable,
-                 kAudioUnitScope_Input,
-                 self->elementNumber,
-                 !muted,
-                 0);
-                 */
-            }
+        renderSink_.setMuted(muted);
     }
     
     bool IOSAudioSource::paused()

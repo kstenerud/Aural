@@ -45,7 +45,16 @@ namespace aural
                                    AudioBufferList* ioData)
     {
         IOS3DMixerRenderFilter* filter = (IOS3DMixerRenderFilter*)inRefCon;
-        filter->readFrames(inNumberFrames, ioData->mBuffers[kLeftChannel].mData);
+        
+        if(filter->muted())
+        {
+            filter->skipFrames(inNumberFrames);
+            memset(ioData->mBuffers[kLeftChannel].mData, 0, inNumberFrames*filter->frameSize());
+        }
+        else
+        {
+            filter->readFrames(inNumberFrames, ioData->mBuffers[kLeftChannel].mData);
+        }
 	    
         return noErr;
     }
@@ -54,6 +63,11 @@ namespace aural
     : accessor_(accessor)
     , mutex_(mutex)
     {
+    }
+
+    void IOS3DMixerRenderFilter::setMuted(const bool muted)
+    {
+        muted_ = muted;
     }
 
     void IOS3DMixerRenderFilter::setEnabled(const bool enabled)
@@ -81,10 +95,5 @@ namespace aural
     void IOS3DMixerRenderFilter::readFrames(const unsigned long numFrames, void*const dst)
     {
         sourceReadFrames(numFrames, dst);
-    }
-    
-    void IOS3DMixerRenderFilter::skipFrames(const unsigned long numFrames)
-    {
-        sourceSkipFrames(numFrames);
     }
 }

@@ -42,20 +42,27 @@ namespace aural
         IOS3DMixerRenderFilter(AudioUnitAccessor& accessor, Mutex& mutex);
 
         void readFrames(const unsigned long numFrames, void*const dst);
-        void skipFrames(const unsigned long numFrames);
 
         bool enabled();
-        void setEnabled(const bool enabled);
+        void setEnabled(const bool value);
+        bool muted();
+        void setMuted(const bool value);
     private:
         AudioUnitAccessor& accessor_;
         Mutex& mutex_;
         bool enabled_;
+        bool muted_;
     };
 
     
     inline bool IOS3DMixerRenderFilter::enabled()
     {
         return enabled_;
+    }
+    
+    inline bool IOS3DMixerRenderFilter::muted()
+    {
+        return muted_;
     }
 }
 
