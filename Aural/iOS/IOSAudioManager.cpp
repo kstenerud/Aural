@@ -1,8 +1,8 @@
 //
-//  AUCAudioManager.m
+//  IOSAudioManager.cpp
 //  Aural
 //
-//  Created by Karl Stenerud on 2/19/11.
+//  Created by Karl Stenerud on 3/26/11.
 //
 // Copyright 2011 Karl Stenerud
 //
@@ -24,10 +24,22 @@
 // Attribution is not required, but appreciated :)
 //
 
-#import "AUCAudioManager.h"
-//#import "AUCMacros.h"
-//#import "AUCAudioContext.h"
+#include "IOSAudioManager.h"
+#include "IOSAudioContext.h"
 
-namespace aural {
 
-} // namespace
+static const unsigned int kDefaultMaxSourcesPerContext = 100;
+
+
+namespace aural
+{
+    AudioContext* IOSAudioManager::newContext()
+    {
+        return new IOS3DMixerAudioContext(this, kDefaultMaxSourcesPerContext);
+    }
+    
+    void IOSAudioManager::deleteContext(AudioContext* context)
+    {
+        delete context;
+    }
+}

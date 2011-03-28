@@ -1,8 +1,8 @@
 //
-//  AUCMacros.h
+//  IOSRenderFilters.h
 //  Aural
 //
-//  Created by Karl Stenerud on 2/19/11.
+//  Created by Karl Stenerud on 3/26/11.
 //
 // Copyright 2011 Karl Stenerud
 //
@@ -24,12 +24,39 @@
 // Attribution is not required, but appreciated :)
 //
 
+#ifndef AURAL_IOSRENDERFILTERS_H
+#define AURAL_IOSRENDERFILTERS_H
 
-#define CONFIG_USE_LOCKS 1
+
+#include "AudioRenderFilter.h"
 
 
-#if CONFIG_USE_LOCKS
-	#define OPTIONAL_LOCK(MUTEX) MutexLock AUrAL_LoCK(MUTEX)
-#else
-	#define OPTIONAL_LOCK(MUTEX)
-#endif
+namespace aural
+{
+    class AudioUnitAccessor;
+    class Mutex;
+    
+    class IOS3DMixerRenderFilter: public BasicAudioRenderFilter
+    {
+    public:
+        IOS3DMixerRenderFilter(AudioUnitAccessor& accessor, Mutex& mutex);
+
+        void readFrames(unsigned long numFrames, void* buffer);
+        void skipFrames(unsigned long numFrames);
+
+        bool enabled();
+        void setEnabled(bool enabled);
+    private:
+        AudioUnitAccessor& accessor_;
+        Mutex& mutex_;
+        bool enabled_;
+    };
+
+    
+    inline bool IOS3DMixerRenderFilter::enabled()
+    {
+        return enabled_;
+    }
+}
+
+#endif // AURAL_IOSRENDERFILTERS_H

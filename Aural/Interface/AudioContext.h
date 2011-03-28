@@ -1,5 +1,5 @@
 //
-//  AUCAudioManager.h
+//  AUCAudioContext.h
 //  Aural
 //
 //  Created by Karl Stenerud on 2/19/11.
@@ -24,32 +24,32 @@
 // Attribution is not required, but appreciated :)
 //
 
-#ifndef AURAL_AUDIOMANAGER_H
-#define AURAL_AUDIOMANAGER_H
+#ifndef AURAL_AUDIOCONTEXT_H
+#define AURAL_AUDIOCONTEXT_H
 
 
-namespace aural {
+#import "Mutex.h"
 
-class AudioManager
+
+namespace aural
 {
-	// TODO: This probably doesn't even have to be a singleton.
-	// Let the app decide how to hold this object and have
-	// context keep a reference.
-public:
-	static inline AudioManager& sharedInstance()
-	{
-		static AudioManager instance;
-		return instance;
-	}
-protected:
-	AudioManager() {};
-	~AudioManager() {};
-private:
-	AudioManager(const AudioManager&);
-	const AudioManager& operator=(const AudioManager&);
-};
+    class AudioSource;
+    
+    class AudioContext
+    {
+    public:
+        virtual ~AudioContext() {};
+        
+        virtual AudioSource* newSource() = 0;
+        virtual void deleteSource(AudioSource* source) = 0;
 
+        virtual Float64 sampleRate() = 0;
+        virtual void setSampleRate(Float64 sampleRate) = 0;
 
-} // namespace
+        virtual bool active() = 0;
+        virtual void setActive(bool value) = 0;
+    };
+    
+}
 
-#endif // AURAL_AUDIOMANAGER_H
+#endif // AURAL_AUDIOCONTEXT_H

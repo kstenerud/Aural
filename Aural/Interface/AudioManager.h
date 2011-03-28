@@ -1,5 +1,5 @@
 //
-//  Aural.h
+//  AUCAudioManager.h
 //  Aural
 //
 //  Created by Karl Stenerud on 2/19/11.
@@ -24,8 +24,22 @@
 // Attribution is not required, but appreciated :)
 //
 
-#import "AUCAudioBuffer.h"
-#import "AUCAudioSource.h"
-#import "AUCAudioContext.h"
-#import "AUCAudioManager.h"
-#import "KSAudioFile+AUCAudioBuffer.h"
+#ifndef AURAL_AUDIOMANAGER_H
+#define AURAL_AUDIOMANAGER_H
+
+
+namespace aural
+{
+    class AudioContext;
+    
+    class AudioManager
+    {
+    public:
+        virtual ~AudioManager() {};
+        
+        virtual AudioContext* newContext() = 0;
+        virtual void deleteContext(AudioContext* context) = 0;
+    };
+}
+
+#endif // AURAL_AUDIOMANAGER_H

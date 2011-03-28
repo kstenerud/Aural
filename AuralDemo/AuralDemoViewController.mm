@@ -17,18 +17,17 @@
     [super viewDidLoad];
 	
 	[OALAudioSession sharedInstance];
-//	AUCAudioManager* manager = AUCAudioManager_shared();
 	
-	context = new aural::AudioContext(NULL);
+	context = manager.newContext();
 	context->setSampleRate(44100);
 	
 	buffer = [KSAudioFile aucBufferWithUrl:[OALTools urlForPath:@"ColdFunk.caf"]
 									stereo:NO];
 	
-	source1 = new aural::AudioSource(*context);
+	source1 = context->newSource();
 	source1->setBuffer(buffer);
 	
-	source2 = new aural::AudioSource(*context);
+	source2 = context->newSource();
 	source2->setBuffer(buffer);
 	
 	gainSlider1.value = 1.0f;
@@ -41,6 +40,7 @@
 
 - (void)dealloc
 {
+    context->deleteSource(source1);
 	delete source1;
 	delete source2;
 	delete context;

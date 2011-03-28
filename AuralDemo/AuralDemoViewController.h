@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "Aural.h"
+#import "IOSAudioManager.h"
 
 @interface AuralDemoViewController : UIViewController
 {
+    aural::IOSAudioManager manager;
 	aural::AudioContext* context;
 	aural::AudioBuffer* buffer;
 	aural::AudioSource* source1;

@@ -1,8 +1,8 @@
 //
-//  AUCInterface.h
+//  AuralConfig.h
 //  Aural
 //
-//  Created by Karl Stenerud on 2/19/11.
+//  Created by Karl Stenerud on 3/27/11.
 //
 // Copyright 2011 Karl Stenerud
 //
@@ -24,21 +24,13 @@
 // Attribution is not required, but appreciated :)
 //
 
-#define DECLARE_INTERFACE(INTF_NAME) \
-struct INTF_NAME##_; \
-typedef struct INTF_NAME##_ INTF_NAME
+#ifndef AURAL_AURALCONFIG_H
+#define AURAL_AURALCONFIG_H
 
-#define DEFINE_INTERFACE(INTF_NAME) \
-struct INTF_NAME##_
 
-#define DECLARE_AND_DEFINE_INTERFACE(INTF_NAME) \
-DECLARE_INTERFACE(INTF_NAME); \
-DEFINE_INTERFACE(INTF_NAME)
+#define CONFIG_USE_LOCKS 1
 
-#define DECLARE_GETTER_SETTER(TYPE, NAME) \
-static TYPE self_get##NAME(AUCAudioSource* self); \
-static void self_set##NAME(AUCAudioSource* self, TYPE NAME)
+#define CONFIG_USE_EXCEPTIONS 1
 
-#define ASSIGN_GETTER_SETTER(NAME) \
-self->get##NAME = self_get##NAME; \
-self->set##NAME = self_set##NAME
+
+#endif // AURAL_AURALCONFIG_H

@@ -1,8 +1,8 @@
 //
-//  DataBuffer.h
+//  AUCAudioBuffer.m
 //  Aural
 //
-//  Created by Karl Stenerud on 2/27/11.
+//  Created by Karl Stenerud on 2/19/11.
 //
 // Copyright 2011 Karl Stenerud
 //
@@ -24,35 +24,32 @@
 // Attribution is not required, but appreciated :)
 //
 
+#import "AudioBuffer.h"
 
-@interface DataBuffer : NSObject
+
+namespace aural
 {
-	void* _data;
-	unsigned int _numBytes;
-	bool _freeOnDealloc;
+    AudioBuffer::AudioBuffer(void* leftChannelData,
+                             void* rightChannelData,
+                             unsigned int numBytes,
+                             AudioStreamBasicDescription& format)
+    : leftChannelData_(leftChannelData)
+    , rightChannelData_(rightChannelData)
+    , numBytes_(numBytes)
+    , format_(format)
+    , numFrames_(numBytes / format.mBytesPerFrame)
+    {
+    }
+    
+    AudioBuffer::~AudioBuffer()
+    {
+        if(NULL != leftChannelData_)
+        {
+            free(leftChannelData_);
+        }
+        if(NULL != rightChannelData_)
+        {
+            free(rightChannelData_);
+        }
+    }
 }
-
-@property(readonly) void* data;
-@property(readonly) unsigned int numBytes;
-@property(readwrite) bool freeOnDealloc;
-
-
-+ (DataBuffer*) bufferWithLength:(unsigned int) numBytes;
-
-+ (DataBuffer*) bufferWithLength:(unsigned int) numBytes
-				   freeOnDealloc:(bool) freeOnDealloc;
-
-+ (DataBuffer*) bufferWithData:(void*) data
-					  numBytes:(unsigned int) numBytes
-				 freeOnDealloc:(bool) freeOnDealloc;
-
-- (id) initWithLength:(unsigned int) numBytes;
-
-- (id) initWithLength:(unsigned int) numBytes
-		freeOnDealloc:(bool) freeOnDealloc;
-
-- (id) initWithData:(void*) data
-		   numBytes:(unsigned int) numBytes
-	  freeOnDealloc:(bool) freeOnDealloc;
-
-@end

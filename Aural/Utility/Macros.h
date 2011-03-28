@@ -1,8 +1,8 @@
 //
-//  DataBuffer.h
+//  AUCMacros.h
 //  Aural
 //
-//  Created by Karl Stenerud on 2/27/11.
+//  Created by Karl Stenerud on 2/19/11.
 //
 // Copyright 2011 Karl Stenerud
 //
@@ -24,35 +24,26 @@
 // Attribution is not required, but appreciated :)
 //
 
-
-@interface DataBuffer : NSObject
-{
-	void* _data;
-	unsigned int _numBytes;
-	bool _freeOnDealloc;
-}
-
-@property(readonly) void* data;
-@property(readonly) unsigned int numBytes;
-@property(readwrite) bool freeOnDealloc;
+#ifndef AURAL_MACROS_H
+#define AURAL_MACROS_H
 
 
-+ (DataBuffer*) bufferWithLength:(unsigned int) numBytes;
+#include "AuralConfig.h"
 
-+ (DataBuffer*) bufferWithLength:(unsigned int) numBytes
-				   freeOnDealloc:(bool) freeOnDealloc;
 
-+ (DataBuffer*) bufferWithData:(void*) data
-					  numBytes:(unsigned int) numBytes
-				 freeOnDealloc:(bool) freeOnDealloc;
+#if CONFIG_USE_LOCKS
+    // Use a name that's unlikely to clash with anything
+	#define OPTIONAL_LOCK(MUTEX) MutexLock AUrAL_LoCK_nwIpY72l(MUTEX)
+#else
+	#define OPTIONAL_LOCK(MUTEX)
+#endif
 
-- (id) initWithLength:(unsigned int) numBytes;
 
-- (id) initWithLength:(unsigned int) numBytes
-		freeOnDealloc:(bool) freeOnDealloc;
+#if CONFIG_USE_EXCEPTIONS
+    #define OPTIONAL_THROW(EXCEPTION) throw (EXCEPTION)
+#else
+    #define OPTIONAL_THROW(EXCEPTION)
+#endif
 
-- (id) initWithData:(void*) data
-		   numBytes:(unsigned int) numBytes
-	  freeOnDealloc:(bool) freeOnDealloc;
 
-@end
+#endif // AURAL_MACROS_H

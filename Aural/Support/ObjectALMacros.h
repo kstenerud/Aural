@@ -180,13 +180,13 @@ if(noErr != (ERROR_CODE)) \
 
 #if OBJECTAL_CFG_LOG_LEVEL > 0
 
-#define REPORT_AUGRAPH_ERROR(ERROR_CODE, FMT, ...) \
+#define REPORT_AUDIOUNIT_ERROR(ERROR_CODE, FMT, ...) \
 [OALTools notifyAUGraphError:(ERROR_CODE) function:__PRETTY_FUNCTION__ description:(FMT), ##__VA_ARGS__]
 
 #else
 
 // ExtAudio calls aren't dependent on the audio session so we'd never post an audio session error from here.
-#define REPORT_AUGRAPH_ERROR(ERROR_CODE, FMT, ...)
+#define REPORT_AUDIOUNIT_ERROR(ERROR_CODE, FMT, ...)
 
 #endif /* OBJECTAL_CFG_LOG_LEVEL > 0 */
 

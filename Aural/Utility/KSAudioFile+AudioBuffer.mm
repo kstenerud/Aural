@@ -24,12 +24,12 @@
 // Attribution is not required, but appreciated :)
 //
 
-#import "KSAudioFile+AUCAudioBuffer.h"
-#import "AUCLogging.h"
-#import "AUCAudioBuffer.h"
+#import "KSAudioFile+AudioBuffer.h"
+#import "Logging.h"
+#import "AudioBuffer.h"
 
 
-#define kDefaultSampleRate 44100
+static const unsigned int kDefaultSampleRate = 44100;
 
 
 @implementation KSAudioFile (AudioBuffer)

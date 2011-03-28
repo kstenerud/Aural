@@ -1,8 +1,8 @@
 //
-//  AUCAudioBuffer.m
+//  Util.h
 //  Aural
 //
-//  Created by Karl Stenerud on 2/19/11.
+//  Created by Karl Stenerud on 3/26/11.
 //
 // Copyright 2011 Karl Stenerud
 //
@@ -24,33 +24,24 @@
 // Attribution is not required, but appreciated :)
 //
 
-#import "AUCAudioBuffer.h"
+#ifndef AURAL_UTIL_H
+#define AURAL_UTIL_H
 
 
-namespace aural {
+#include <memory>
 
-AudioBuffer::AudioBuffer(void*const leftChannelData,
-						 void*const rightChannelData,
-						 const unsigned int numBytes,
-						 AudioStreamBasicDescription& format)
-: leftChannelData_(leftChannelData)
-, rightChannelData_(rightChannelData)
-, numBytes_(numBytes)
-, format_(format)
-, numFrames_(numBytes / format.mBytesPerFrame)
+
+namespace aural
 {
+    size_t copy_circular(void* dst,
+                         size_t numBytesToCopy,
+                         void* src,
+                         size_t srcOffset,
+                         size_t srcLength);
+    
+    size_t advance_circular(size_t numBytesToAdvance,
+                            size_t srcOffset,
+                            size_t srcLength);
 }
 
-AudioBuffer::~AudioBuffer()
-{
-	if(NULL != leftChannelData_)
-	{
-		free(leftChannelData_);
-	}
-	if(NULL != rightChannelData_)
-	{
-		free(rightChannelData_);
-	}
-}
-
-} // namespace
+#endif // AURAL_UTIL_H
