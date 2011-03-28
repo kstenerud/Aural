@@ -21,6 +21,9 @@
 	IBOutlet UISlider *gainSlider1;
 	IBOutlet UISlider *gainSlider2;
 	
+	IBOutlet UISlider *rateSlider1;
+	IBOutlet UISlider *rateSlider2;
+	
 	IBOutlet UISlider *pitchSlider1;
 	IBOutlet UISlider *pitchSlider2;
 	
@@ -30,6 +33,9 @@
 
 @property (nonatomic, retain) IBOutlet UISlider *gainSlider1;
 @property (nonatomic, retain) IBOutlet UISlider *gainSlider2;
+
+@property (nonatomic, retain) IBOutlet UISlider *rateSlider1;
+@property (nonatomic, retain) IBOutlet UISlider *rateSlider2;
 
 @property (nonatomic, retain) IBOutlet UISlider *pitchSlider1;
 @property (nonatomic, retain) IBOutlet UISlider *pitchSlider2;
@@ -42,6 +48,7 @@
 - (IBAction) onMute1;
 - (IBAction) onPause1;
 - (IBAction) onGainSlider1:(id) sender;
+- (IBAction) onRateSlider1:(id) sender;
 - (IBAction) onPitchSlider1:(id) sender;
 - (IBAction) onPanSlider1:(id) sender;
 
@@ -50,6 +57,7 @@
 - (IBAction) onMute2;
 - (IBAction) onPause2;
 - (IBAction) onGainSlider2:(id) sender;
+- (IBAction) onRateSlider2:(id) sender;
 - (IBAction) onPitchSlider2:(id) sender;
 - (IBAction) onPanSlider2:(id) sender;
 

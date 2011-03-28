@@ -64,6 +64,7 @@ namespace aural
         float pitch();
         void setPitch(const float pitch);
         
+        float playbackRate();
         void setPlaybackRate(const float playbackRate);
         
         void play();

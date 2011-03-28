@@ -53,8 +53,10 @@ namespace aural
         virtual float pan() = 0;
         virtual void setPan(const float pan) = 0;
         
+        virtual float pitch() = 0;
         virtual void setPitch(const float pitch) = 0;
         
+        virtual float playbackRate() = 0;
         virtual void setPlaybackRate(const float playbackRate) = 0;
         
         virtual void play() = 0;

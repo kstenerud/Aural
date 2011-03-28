@@ -33,9 +33,15 @@
 	gainSlider1.value = 1.0f;
 	gainSlider2.value = 1.0f;
 
+	rateSlider1.value = 0.5f;
+	rateSlider2.value = 0.5f;
+    
 	pitchSlider1.value = 0.5f;
 	pitchSlider2.value = 0.5f;
-
+    
+	panSlider1.value = 0.5f;
+	panSlider2.value = 0.5f;
+    
 }
 
 - (void)dealloc
@@ -48,14 +54,20 @@
 	
 	[gainSlider1 release];
 	[gainSlider2 release];
+	[rateSlider1 release];
+	[rateSlider2 release];
 	[pitchSlider1 release];
 	[pitchSlider2 release];
+	[panSlider1 release];
+	[panSlider2 release];
 
     [super dealloc];
 }
 
 @synthesize gainSlider1;
 @synthesize gainSlider2;
+@synthesize rateSlider1;
+@synthesize rateSlider2;
 @synthesize pitchSlider1;
 @synthesize pitchSlider2;
 @synthesize panSlider1;
@@ -85,6 +97,11 @@
 - (IBAction) onGainSlider1:(id) sender
 {
 	source1->setGain(gainSlider1.value);
+}
+
+- (IBAction) onRateSlider1:(id) sender
+{
+	source1->setPlaybackRate(rateSlider1.value * 2.0f);
 }
 
 - (IBAction) onPitchSlider1:(id) sender
@@ -122,6 +139,11 @@
 - (IBAction) onGainSlider2:(id) sender
 {
 	source2->setGain(gainSlider2.value);
+}
+
+- (IBAction) onRateSlider2:(id) sender
+{
+	source2->setPlaybackRate(rateSlider2.value * 2.0f);
 }
 
 - (IBAction) onPitchSlider2:(id) sender

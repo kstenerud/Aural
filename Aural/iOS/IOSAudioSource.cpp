@@ -155,16 +155,21 @@ namespace aural
         //	NSLog(@"%f = %f", pitch, totalAmount);
         
         ((SoundTouchRenderFilter*)currentFilter_)->setPitchSemiTones(totalAmount);
-//        pitch_ = pitch;
+        pitch_ = pitch;
     }
     
-    void IOSAudioSource::setPlaybackRate(const float pitch)
+    float IOSAudioSource::playbackRate()
+    {
+        return playbackRate_;
+    }
+
+    void IOSAudioSource::setPlaybackRate(const float rate)
     {
         OPTIONAL_LOCK(audioContext_.mutex());
-        if(pitch != pitch_)
+        if(rate != playbackRate_)
         {
-            audioUnitAccessor_.setParameter(k3DMixerParam_PlaybackRate, pitch);
-            pitch_ = pitch;
+            audioUnitAccessor_.setParameter(k3DMixerParam_PlaybackRate, rate);
+            playbackRate_ = rate;
         }
     }
     
