@@ -7,6 +7,7 @@ Aural is an audio library designed for use in games and other applications requi
 audio.
 
 Aural has 3 goals:
+
  - Be easy to use. A complicated API is a useless API.
  - Be as fast and efficient as possible so it can run on weak devices.
  - Be cross platform.
