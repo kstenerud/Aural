@@ -3,18 +3,22 @@ Aural
 
 ### What is it?
 
-Aural is an audio library for iOS (and soon OSX) that provides a simpler interface to Audio Units
-while remaining fast and efficient.
+Aural is an audio library designed for use in games and other applications requiring low latency
+audio.
+
+Aural has 3 goals:
+ - Be easy to use. A complicated API is a useless API.
+ - Be as fast and efficient as possible so it can run on weak devices.
+ - Be cross platform.
 
 
 ### How does it work?
 
-Currently, I've put in a C interface to Aural, which mimics a number of object-oriented behaviors.
 It follows to a large extent the same model as OpenAL, with contexts, sources, and buffers. However,
 the API is completely different. Personally, I can't stand the OpenAL API :P
 
-Once the C interface is complete, I'll be adding an Objective-C wrapper to gain access to all the
-Objective-C conveniences.
+Once the C++ interface is complete, I'll be adding an Objective-C wrapper to the iOS/OSX port to
+gain access to all the Objective-C conveniences.
 
 
 ### Should I use this code in my program?
