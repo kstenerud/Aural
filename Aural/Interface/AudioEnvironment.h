@@ -1,5 +1,5 @@
 //
-//  AUCAudioContext.h
+//  AudioEnvironment.h
 //  Aural
 //
 //  Created by Karl Stenerud on 2/19/11.
@@ -24,24 +24,25 @@
 // Attribution is not required, but appreciated :)
 //
 
-#ifndef AURAL_AUDIOCONTEXT_H
-#define AURAL_AUDIOCONTEXT_H
+#ifndef AURAL_AUDIOENVIRONMENT_H
+#define AURAL_AUDIOENVIRONMENT_H
 
 
 #import "Mutex.h"
 
+// TODO: Register default features for emitters.
 
 namespace aural
 {
-    class AudioSource;
+    class AudioEmitter;
     
-    class AudioContext
+    class AudioEnvironment
     {
     public:
-        virtual ~AudioContext() {};
+        virtual ~AudioEnvironment() {};
         
-        virtual AudioSource* newSource() = 0;
-        virtual void deleteSource(AudioSource*const source) = 0;
+        virtual AudioEmitter* newEmitter() = 0;
+        virtual void deleteEmitter(AudioEmitter*const emitter) = 0;
 
         virtual double sampleRate() = 0;
         virtual void setSampleRate(const double sampleRate) = 0;
@@ -52,4 +53,4 @@ namespace aural
     
 }
 
-#endif // AURAL_AUDIOCONTEXT_H
+#endif // AURAL_AUDIOENVIRONMENT_H

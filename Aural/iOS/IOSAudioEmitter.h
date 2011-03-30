@@ -1,5 +1,5 @@
 //
-//  IOSAudioSource.h
+//  IOSAudioEmitter.h
 //  Aural
 //
 //  Created by Karl Stenerud on 3/26/11.
@@ -24,30 +24,33 @@
 // Attribution is not required, but appreciated :)
 //
 
-#ifndef AURAL_IOSAUDIOSOURCE_H
-#define AURAL_IOSAUDIOSOURCE_H
+#ifndef AURAL_IOSAUDIOEMITTER_H
+#define AURAL_IOSAUDIOEMITTER_H
 
 
 #import <AudioToolbox/AudioToolbox.h>
-#include "AudioSource.h"
-#include "CommonRenderFilters.h"
+#include "AudioEmitter.h"
+#include "IOSAudioData.h"
 #include "IOSRenderFilters.h"
 #include "AudioUnitHelpers.h"
 
+// TODO: hardware capable emitter, software emitter
+// stream emitter, buffer emitter?
 
 namespace aural
 {
-    class IOS3DMixerAudioContext;
+    class IOS3DMixerAudioEnvironment;
     
-    class IOSAudioSource: public AudioSource
+    class IOSAudioEmitter: public AudioEmitter
     {
     public:
-        IOSAudioSource(IOS3DMixerAudioContext& context, const UInt32 elementNumber);
-        ~IOSAudioSource();
-
-        AudioBuffer* buffer();
+        IOSAudioEmitter(IOS3DMixerAudioEnvironment& environment,
+                        const UInt32 elementNumber);
+        ~IOSAudioEmitter();
         
-        void setBuffer(AudioBuffer*const buffer);
+        AudioData* audioData();
+        
+        void setAudioData(AudioData*const audioData);
         
         bool paused();
         void setPaused(const bool paused);
@@ -69,15 +72,15 @@ namespace aural
         
         void play();
         void stop();
-
+        
         void setDistance(const float distance);
         
         UInt32 elementNumber();
-
+        
     private:
-        IOSAudioSource(const IOSAudioSource&);
-        IOSAudioSource& operator=(const IOSAudioSource&);
-
+        IOSAudioEmitter(const IOSAudioEmitter&);
+        IOSAudioEmitter& operator=(const IOSAudioEmitter&);
+        
     private:	
         float gain_;
         bool paused_;
@@ -91,18 +94,18 @@ namespace aural
         
         unsigned int currentBytePos_;
         
-        IOS3DMixerAudioContext& audioContext_;
+        IOS3DMixerAudioEnvironment& audioEnvironment_;
         AudioUnitAccessor audioUnitAccessor_;
         MonoBufferRenderSource renderSource_;
         IOS3DMixerRenderFilter renderSink_;
         
         AudioRenderFilter* currentFilter_;
         
-        AudioBuffer* audioBuffer_;
-
+        IOSAudioData* audioData_;
+        
         float pitch_;
         float playbackRate_;
     };
 }
 
-#endif // AURAL_IOSAUDIOSOURCE_H
+#endif // AURAL_IOSAUDIOEMITTER_H

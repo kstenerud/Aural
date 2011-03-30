@@ -29,6 +29,7 @@
 
 
 #include "AudioRenderFilter.h"
+#include "IOSAudioData.h"
 
 
 namespace aural
@@ -40,9 +41,9 @@ namespace aural
     {
     public:
         IOS3DMixerRenderFilter(AudioUnitAccessor& accessor, Mutex& mutex);
-
+        
         void readFrames(const unsigned long numFrames, void*const dst);
-
+        
         bool enabled();
         void setEnabled(const bool value);
         bool muted();
@@ -53,7 +54,7 @@ namespace aural
         bool enabled_;
         bool muted_;
     };
-
+    
     
     inline bool IOS3DMixerRenderFilter::enabled()
     {
@@ -63,6 +64,81 @@ namespace aural
     inline bool IOS3DMixerRenderFilter::muted()
     {
         return muted_;
+    }
+    
+    class MonoBufferRenderSource: public AudioRenderSource
+    {
+    public:
+        void setBuffer(AudioData*const buffer);
+        unsigned long position();
+        void setPosition(const unsigned long frameNumber);
+        
+        void reset();
+        void prepare();
+        const unsigned long frameSize();
+        void readFrames(const unsigned long numFrames, void*const dst);
+        void skipFrames(const unsigned long numFrames);
+        
+    private:
+        IOSAudioData* audioData_;
+        unsigned long frameSize_;
+        unsigned long numFrames_;
+        unsigned long position_;
+    };
+    
+    
+    inline void MonoBufferRenderSource::setBuffer(AudioData*const buffer)
+    {
+        audioData_ = static_cast<IOSAudioData*>(buffer);
+        frameSize_ = 2;
+        numFrames_ = audioData_->numFrames();
+        
+        setPosition(0);
+    }
+    
+    inline unsigned long MonoBufferRenderSource::position()
+    {
+        return position_;
+    }
+    
+    inline void MonoBufferRenderSource::setPosition(const unsigned long frameNumber)
+    {
+        position_ = frameNumber;
+    }
+    
+    inline void MonoBufferRenderSource::reset()
+    {
+        setPosition(0);
+    }
+    
+    inline void MonoBufferRenderSource::prepare()
+    {
+        // Nothing to do
+    }
+    
+    inline const unsigned long MonoBufferRenderSource::frameSize()
+    {
+        return frameSize_;
+    }
+    
+    inline void MonoBufferRenderSource::readFrames(const unsigned long numFrames, void*const dst)
+    {
+        size_t newPosition = copy_circular(dst,
+                                           numFrames * frameSize_,
+                                           audioData_->leftChannelData(),
+                                           position_ * frameSize_,
+                                           audioData_->numBytes());
+        
+        position_ = newPosition / frameSize_;
+    }
+    
+    inline void MonoBufferRenderSource::skipFrames(const unsigned long numFrames)
+    {
+        size_t newPosition = advance_circular(numFrames * frameSize_,
+                                              position_ * frameSize_,
+                                              audioData_->numBytes());
+        
+        position_ = newPosition / frameSize_;
     }
 }
 

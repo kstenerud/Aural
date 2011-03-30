@@ -1,5 +1,5 @@
 //
-//  IOSAudioContext.h
+//  IOSAudioEnvironment.h
 //  Aural
 //
 //  Created by Karl Stenerud on 3/26/11.
@@ -24,26 +24,26 @@
 // Attribution is not required, but appreciated :)
 //
 
-#ifndef AURAL_IOSAUDIOCONTEXT_H
-#define AURAL_IOSAUDIOCONTEXT_H
+#ifndef AURAL_IOSAUDIOENVIRONMENT_H
+#define AURAL_IOSAUDIOENVIRONMENT_H
 
 
 #import <AudioToolbox/AudioToolbox.h>
-#include "AudioContext.h"
+#include "AudioEnvironment.h"
 #include "AudioUnitHelpers.h"
 
 
 namespace aural
 {
     class IOSAudioManager;
-    class IOSAudioSource;
+    class IOSAudioEmitter;
     
-    class IOS3DMixerAudioContext: public AudioContext
+    class IOS3DMixerAudioEnvironment: public AudioEnvironment
     {
     public:
-        IOS3DMixerAudioContext(IOSAudioManager*const manager,
-                               const unsigned int maxSources);
-        ~IOS3DMixerAudioContext();
+        IOS3DMixerAudioEnvironment(IOSAudioManager*const manager,
+                               const unsigned int maxEmitters);
+        ~IOS3DMixerAudioEnvironment();
         
         AudioUnit mixerUnit();
         
@@ -56,14 +56,14 @@ namespace aural
         bool active();
         void setActive(const bool value);
         
-        AudioSource* newSource();
-        void deleteSource(AudioSource*const audioSource);
+        AudioEmitter* newEmitter();
+        void deleteEmitter(AudioEmitter*const audioEmitter);
         
         Mutex& mutex();
 
     private:
-        IOS3DMixerAudioContext(const IOS3DMixerAudioContext&);
-        IOS3DMixerAudioContext& operator=(const IOS3DMixerAudioContext&);
+        IOS3DMixerAudioEnvironment(const IOS3DMixerAudioEnvironment&);
+        IOS3DMixerAudioEnvironment& operator=(const IOS3DMixerAudioEnvironment&);
 
     private:
         void setNumElements(const UInt32 numElements);
@@ -73,8 +73,8 @@ namespace aural
         AudioUnitGraph graph_;
         
         IOSAudioManager* manager_;
-        IOSAudioSource** sources_;
-        const unsigned int maxSources_;
+        IOSAudioEmitter** emitters_;
+        const unsigned int maxEmitters_;
         
         AudioUnitAccessor inputAccessor_;
         AudioUnitAccessor outputAccessor_;
@@ -83,15 +83,15 @@ namespace aural
         bool active_;
     };
     
-    inline AudioUnit IOS3DMixerAudioContext::mixerUnit()
+    inline AudioUnit IOS3DMixerAudioEnvironment::mixerUnit()
     {
         return graph_.mixerUnit();
     }
 
-    inline Mutex& IOS3DMixerAudioContext::mutex()
+    inline Mutex& IOS3DMixerAudioEnvironment::mutex()
     {
         return mutex_;
     }
 }
 
-#endif // AURAL_IOSAUDIOCONTEXT_H
+#endif // AURAL_IOSAUDIOENVIRONMENT_H

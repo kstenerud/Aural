@@ -1,5 +1,5 @@
 //
-//  AUCAudioManager.h
+//  AudioManager.h
 //  Aural
 //
 //  Created by Karl Stenerud on 2/19/11.
@@ -30,15 +30,15 @@
 
 namespace aural
 {
-    class AudioContext;
+    class AudioEnvironment;
     
     class AudioManager
     {
     public:
         virtual ~AudioManager() {};
         
-        virtual AudioContext* newContext() = 0;
-        virtual void deleteContext(AudioContext*const context) = 0;
+        virtual AudioEnvironment* newEnvironment() = 0;
+        virtual void deleteEnvironment(AudioEnvironment*const environment) = 0;
     };
 }
 

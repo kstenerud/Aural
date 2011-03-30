@@ -225,7 +225,7 @@
 					<object class="IBUIButton" id="810661037">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{95, 414}, {131, 37}}</string>
+						<string key="NSFrame">{{77, 414}, {167, 37}}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView"/>
@@ -235,7 +235,7 @@
 						<int key="IBUIContentVerticalAlignment">0</int>
 						<reference key="IBUIFont" ref="951035790"/>
 						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Context On/Off</string>
+						<string key="IBUINormalTitle">Environment On/Off</string>
 						<reference key="IBUIHighlightedTitleColor" ref="440320477"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
@@ -572,15 +572,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
-						<string key="label">onContext</string>
-						<reference key="source" ref="810661037"/>
-						<reference key="destination" ref="372490531"/>
-						<int key="IBEventType">1</int>
-					</object>
-					<int key="connectionID">17</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">onMute1</string>
 						<reference key="source" ref="941551718"/>
 						<reference key="destination" ref="372490531"/>
@@ -786,6 +777,15 @@
 						<reference key="destination" ref="428354610"/>
 					</object>
 					<int key="connectionID">66</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">onEnvironment</string>
+						<reference key="source" ref="810661037"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">1</int>
+					</object>
+					<int key="connectionID">67</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1163,7 +1163,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">66</int>
+			<int key="maxID">67</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1175,7 +1175,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>onContext</string>
+							<string>onEnvironment</string>
 							<string>onGainSlider1:</string>
 							<string>onGainSlider2:</string>
 							<string>onMute1</string>
@@ -1218,7 +1218,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>onContext</string>
+							<string>onEnvironment</string>
 							<string>onGainSlider1:</string>
 							<string>onGainSlider2:</string>
 							<string>onMute1</string>
@@ -1239,7 +1239,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
-								<string key="name">onContext</string>
+								<string key="name">onEnvironment</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

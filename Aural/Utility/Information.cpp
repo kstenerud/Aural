@@ -111,15 +111,15 @@ namespace aural
         {
                 // Generic
             case kAudioUnitProperty_ClassInfo:
-                return "ClassInfo/Azimuth/Volume";
+                return "ClassInfo";
             case kAudioUnitProperty_MakeConnection:
-                return "MakeConnection/Elevation/Enable";
+                return "MakeConnection";
             case kAudioUnitProperty_SampleRate:
-                return "SampleRate/Distance/Pan";
+                return "SampleRate";
             case kAudioUnitProperty_ParameterList:
-                return "ParameterList/Gain";
+                return "ParameterList";
             case kAudioUnitProperty_ParameterInfo:
-                return "ParameterInfo/PlaybackRate";
+                return "ParameterInfo";
             case k3DMixerParam_Enable:
                 return "Enable";
             case k3DMixerParam_MinGain:

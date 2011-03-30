@@ -13,10 +13,10 @@
 @interface AuralDemoViewController : UIViewController
 {
     aural::IOSAudioManager manager;
-	aural::AudioContext* context;
-	aural::AudioBuffer* buffer;
-	aural::AudioSource* source1;
-	aural::AudioSource* source2;
+	aural::AudioEnvironment* environment;
+	aural::AudioData* buffer;
+	aural::AudioEmitter* emitter1;
+	aural::AudioEmitter* emitter2;
 	
 	IBOutlet UISlider *gainSlider1;
 	IBOutlet UISlider *gainSlider2;
@@ -61,7 +61,7 @@
 - (IBAction) onPitchSlider2:(id) sender;
 - (IBAction) onPanSlider2:(id) sender;
 
-- (IBAction) onContext;
+- (IBAction) onEnvironment;
 
 @end
 

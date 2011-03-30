@@ -12,17 +12,16 @@
 		390BB5F6134013DD00F5A7C4 /* AudioRenderFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5C4134013DD00F5A7C4 /* AudioRenderFilter.h */; };
 		390BB5F7134013DD00F5A7C4 /* SoundTouchRenderFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5C5134013DD00F5A7C4 /* SoundTouchRenderFilter.cpp */; };
 		390BB5F8134013DD00F5A7C4 /* SoundTouchRenderFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5C6134013DD00F5A7C4 /* SoundTouchRenderFilter.h */; };
-		390BB5F9134013DD00F5A7C4 /* AudioBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5C8134013DD00F5A7C4 /* AudioBuffer.h */; };
-		390BB5FA134013DD00F5A7C4 /* AudioBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5C9134013DD00F5A7C4 /* AudioBuffer.mm */; };
-		390BB5FB134013DD00F5A7C4 /* AudioContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5CA134013DD00F5A7C4 /* AudioContext.h */; };
+		390BB5F9134013DD00F5A7C4 /* AudioData.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5C8134013DD00F5A7C4 /* AudioData.h */; };
+		390BB5FB134013DD00F5A7C4 /* AudioEnvironment.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5CA134013DD00F5A7C4 /* AudioEnvironment.h */; };
 		390BB5FC134013DD00F5A7C4 /* AudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5CB134013DD00F5A7C4 /* AudioManager.h */; };
-		390BB5FD134013DD00F5A7C4 /* AudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5CC134013DD00F5A7C4 /* AudioSource.h */; };
-		390BB5FE134013DD00F5A7C4 /* IOSAudioContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5CE134013DD00F5A7C4 /* IOSAudioContext.cpp */; };
-		390BB5FF134013DD00F5A7C4 /* IOSAudioContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5CF134013DD00F5A7C4 /* IOSAudioContext.h */; };
+		390BB5FD134013DD00F5A7C4 /* AudioEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5CC134013DD00F5A7C4 /* AudioEmitter.h */; };
+		390BB5FE134013DD00F5A7C4 /* IOSAudioEnvironment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5CE134013DD00F5A7C4 /* IOSAudioEnvironment.cpp */; };
+		390BB5FF134013DD00F5A7C4 /* IOSAudioEnvironment.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5CF134013DD00F5A7C4 /* IOSAudioEnvironment.h */; };
 		390BB600134013DD00F5A7C4 /* IOSAudioManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5D0134013DD00F5A7C4 /* IOSAudioManager.cpp */; };
 		390BB601134013DD00F5A7C4 /* IOSAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5D1134013DD00F5A7C4 /* IOSAudioManager.h */; };
-		390BB602134013DD00F5A7C4 /* IOSAudioSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5D2134013DD00F5A7C4 /* IOSAudioSource.cpp */; };
-		390BB603134013DD00F5A7C4 /* IOSAudioSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5D3134013DD00F5A7C4 /* IOSAudioSource.h */; };
+		390BB602134013DD00F5A7C4 /* IOSAudioEmitter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5D2134013DD00F5A7C4 /* IOSAudioEmitter.cpp */; };
+		390BB603134013DD00F5A7C4 /* IOSAudioEmitter.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5D3134013DD00F5A7C4 /* IOSAudioEmitter.h */; };
 		390BB604134013DD00F5A7C4 /* IOSRenderFilters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5D4134013DD00F5A7C4 /* IOSRenderFilters.cpp */; };
 		390BB605134013DD00F5A7C4 /* IOSRenderFilters.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5D5134013DD00F5A7C4 /* IOSRenderFilters.h */; };
 		390BB606134013DD00F5A7C4 /* DataBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5D7134013DD00F5A7C4 /* DataBuffer.h */; };
@@ -45,8 +44,8 @@
 		390BB617134013DD00F5A7C4 /* AudioUnitHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5E9134013DD00F5A7C4 /* AudioUnitHelpers.h */; };
 		390BB618134013DD00F5A7C4 /* Information.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5EA134013DD00F5A7C4 /* Information.cpp */; };
 		390BB619134013DD00F5A7C4 /* Information.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5EB134013DD00F5A7C4 /* Information.h */; };
-		390BB61A134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5EC134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.h */; };
-		390BB61B134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5ED134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.mm */; };
+		390BB61A134013DD00F5A7C4 /* KSAudioFile+AudioData.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5EC134013DD00F5A7C4 /* KSAudioFile+AudioData.h */; };
+		390BB61B134013DD00F5A7C4 /* KSAudioFile+AudioData.mm in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5ED134013DD00F5A7C4 /* KSAudioFile+AudioData.mm */; };
 		390BB61C134013DD00F5A7C4 /* Logging.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5EE134013DD00F5A7C4 /* Logging.h */; };
 		390BB61D134013DD00F5A7C4 /* Logging.mm in Sources */ = {isa = PBXBuildFile; fileRef = 390BB5EF134013DD00F5A7C4 /* Logging.mm */; };
 		390BB61E134013DD00F5A7C4 /* Macros.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5F0134013DD00F5A7C4 /* Macros.h */; };
@@ -55,6 +54,8 @@
 		390BB621134013DD00F5A7C4 /* Util.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB5F3134013DD00F5A7C4 /* Util.h */; };
 		390BB62413402D6B00F5A7C4 /* CommonRenderFilters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB62213402D6B00F5A7C4 /* CommonRenderFilters.cpp */; };
 		390BB62513402D6B00F5A7C4 /* CommonRenderFilters.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB62313402D6B00F5A7C4 /* CommonRenderFilters.h */; };
+		390BB8A413417D7800F5A7C4 /* IOSAudioData.h in Headers */ = {isa = PBXBuildFile; fileRef = 390BB8A213417D7800F5A7C4 /* IOSAudioData.h */; };
+		390BB8A513417D7800F5A7C4 /* IOSAudioData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 390BB8A313417D7800F5A7C4 /* IOSAudioData.cpp */; };
 		398A26F4133BAD6D00C03008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F3133BAD6D00C03008 /* Foundation.framework */; };
 		398A26FF133BAD6D00C03008 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26FE133BAD6D00C03008 /* UIKit.framework */; };
 		398A2700133BAD6D00C03008 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 398A26F3133BAD6D00C03008 /* Foundation.framework */; };
@@ -103,17 +104,16 @@
 		390BB5C4134013DD00F5A7C4 /* AudioRenderFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioRenderFilter.h; sourceTree = "<group>"; };
 		390BB5C5134013DD00F5A7C4 /* SoundTouchRenderFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoundTouchRenderFilter.cpp; sourceTree = "<group>"; };
 		390BB5C6134013DD00F5A7C4 /* SoundTouchRenderFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundTouchRenderFilter.h; sourceTree = "<group>"; };
-		390BB5C8134013DD00F5A7C4 /* AudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioBuffer.h; sourceTree = "<group>"; };
-		390BB5C9134013DD00F5A7C4 /* AudioBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioBuffer.mm; sourceTree = "<group>"; };
-		390BB5CA134013DD00F5A7C4 /* AudioContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioContext.h; sourceTree = "<group>"; };
+		390BB5C8134013DD00F5A7C4 /* AudioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioData.h; sourceTree = "<group>"; };
+		390BB5CA134013DD00F5A7C4 /* AudioEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEnvironment.h; sourceTree = "<group>"; };
 		390BB5CB134013DD00F5A7C4 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
-		390BB5CC134013DD00F5A7C4 /* AudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioSource.h; sourceTree = "<group>"; };
-		390BB5CE134013DD00F5A7C4 /* IOSAudioContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOSAudioContext.cpp; sourceTree = "<group>"; };
-		390BB5CF134013DD00F5A7C4 /* IOSAudioContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAudioContext.h; sourceTree = "<group>"; };
+		390BB5CC134013DD00F5A7C4 /* AudioEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioEmitter.h; sourceTree = "<group>"; };
+		390BB5CE134013DD00F5A7C4 /* IOSAudioEnvironment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOSAudioEnvironment.cpp; sourceTree = "<group>"; };
+		390BB5CF134013DD00F5A7C4 /* IOSAudioEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAudioEnvironment.h; sourceTree = "<group>"; };
 		390BB5D0134013DD00F5A7C4 /* IOSAudioManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOSAudioManager.cpp; sourceTree = "<group>"; };
 		390BB5D1134013DD00F5A7C4 /* IOSAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAudioManager.h; sourceTree = "<group>"; };
-		390BB5D2134013DD00F5A7C4 /* IOSAudioSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOSAudioSource.cpp; sourceTree = "<group>"; };
-		390BB5D3134013DD00F5A7C4 /* IOSAudioSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAudioSource.h; sourceTree = "<group>"; };
+		390BB5D2134013DD00F5A7C4 /* IOSAudioEmitter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOSAudioEmitter.cpp; sourceTree = "<group>"; };
+		390BB5D3134013DD00F5A7C4 /* IOSAudioEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAudioEmitter.h; sourceTree = "<group>"; };
 		390BB5D4134013DD00F5A7C4 /* IOSRenderFilters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOSRenderFilters.cpp; sourceTree = "<group>"; };
 		390BB5D5134013DD00F5A7C4 /* IOSRenderFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSRenderFilters.h; sourceTree = "<group>"; };
 		390BB5D7134013DD00F5A7C4 /* DataBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBuffer.h; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 		390BB5E9134013DD00F5A7C4 /* AudioUnitHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioUnitHelpers.h; sourceTree = "<group>"; };
 		390BB5EA134013DD00F5A7C4 /* Information.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Information.cpp; sourceTree = "<group>"; };
 		390BB5EB134013DD00F5A7C4 /* Information.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Information.h; sourceTree = "<group>"; };
-		390BB5EC134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSAudioFile+AudioBuffer.h"; sourceTree = "<group>"; };
-		390BB5ED134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "KSAudioFile+AudioBuffer.mm"; sourceTree = "<group>"; };
+		390BB5EC134013DD00F5A7C4 /* KSAudioFile+AudioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KSAudioFile+AudioData.h"; sourceTree = "<group>"; };
+		390BB5ED134013DD00F5A7C4 /* KSAudioFile+AudioData.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "KSAudioFile+AudioData.mm"; sourceTree = "<group>"; };
 		390BB5EE134013DD00F5A7C4 /* Logging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Logging.h; sourceTree = "<group>"; };
 		390BB5EF134013DD00F5A7C4 /* Logging.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Logging.mm; sourceTree = "<group>"; };
 		390BB5F0134013DD00F5A7C4 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
@@ -146,6 +146,8 @@
 		390BB5F3134013DD00F5A7C4 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		390BB62213402D6B00F5A7C4 /* CommonRenderFilters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CommonRenderFilters.cpp; sourceTree = "<group>"; };
 		390BB62313402D6B00F5A7C4 /* CommonRenderFilters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonRenderFilters.h; sourceTree = "<group>"; };
+		390BB8A213417D7800F5A7C4 /* IOSAudioData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IOSAudioData.h; sourceTree = "<group>"; };
+		390BB8A313417D7800F5A7C4 /* IOSAudioData.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IOSAudioData.cpp; sourceTree = "<group>"; };
 		398A26F0133BAD6D00C03008 /* libAural.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAural.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		398A26F3133BAD6D00C03008 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		398A26F7133BAD6D00C03008 /* Aural-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Aural-Prefix.pch"; sourceTree = "<group>"; };
@@ -228,11 +230,10 @@
 		390BB5C7134013DD00F5A7C4 /* Interface */ = {
 			isa = PBXGroup;
 			children = (
-				390BB5C8134013DD00F5A7C4 /* AudioBuffer.h */,
-				390BB5C9134013DD00F5A7C4 /* AudioBuffer.mm */,
-				390BB5CA134013DD00F5A7C4 /* AudioContext.h */,
+				390BB5C8134013DD00F5A7C4 /* AudioData.h */,
+				390BB5CC134013DD00F5A7C4 /* AudioEmitter.h */,
+				390BB5CA134013DD00F5A7C4 /* AudioEnvironment.h */,
 				390BB5CB134013DD00F5A7C4 /* AudioManager.h */,
-				390BB5CC134013DD00F5A7C4 /* AudioSource.h */,
 			);
 			path = Interface;
 			sourceTree = "<group>";
@@ -240,12 +241,14 @@
 		390BB5CD134013DD00F5A7C4 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				390BB5CE134013DD00F5A7C4 /* IOSAudioContext.cpp */,
-				390BB5CF134013DD00F5A7C4 /* IOSAudioContext.h */,
+				390BB8A213417D7800F5A7C4 /* IOSAudioData.h */,
+				390BB8A313417D7800F5A7C4 /* IOSAudioData.cpp */,
+				390BB5D2134013DD00F5A7C4 /* IOSAudioEmitter.cpp */,
+				390BB5D3134013DD00F5A7C4 /* IOSAudioEmitter.h */,
+				390BB5CE134013DD00F5A7C4 /* IOSAudioEnvironment.cpp */,
+				390BB5CF134013DD00F5A7C4 /* IOSAudioEnvironment.h */,
 				390BB5D0134013DD00F5A7C4 /* IOSAudioManager.cpp */,
 				390BB5D1134013DD00F5A7C4 /* IOSAudioManager.h */,
-				390BB5D2134013DD00F5A7C4 /* IOSAudioSource.cpp */,
-				390BB5D3134013DD00F5A7C4 /* IOSAudioSource.h */,
 				390BB5D4134013DD00F5A7C4 /* IOSRenderFilters.cpp */,
 				390BB5D5134013DD00F5A7C4 /* IOSRenderFilters.h */,
 			);
@@ -282,8 +285,8 @@
 				390BB5E9134013DD00F5A7C4 /* AudioUnitHelpers.h */,
 				390BB5EA134013DD00F5A7C4 /* Information.cpp */,
 				390BB5EB134013DD00F5A7C4 /* Information.h */,
-				390BB5EC134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.h */,
-				390BB5ED134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.mm */,
+				390BB5EC134013DD00F5A7C4 /* KSAudioFile+AudioData.h */,
+				390BB5ED134013DD00F5A7C4 /* KSAudioFile+AudioData.mm */,
 				390BB5EE134013DD00F5A7C4 /* Logging.h */,
 				390BB5EF134013DD00F5A7C4 /* Logging.mm */,
 				390BB5F0134013DD00F5A7C4 /* Macros.h */,
@@ -409,13 +412,13 @@
 				390BB5F5134013DD00F5A7C4 /* AuralConfig.h in Headers */,
 				390BB5F6134013DD00F5A7C4 /* AudioRenderFilter.h in Headers */,
 				390BB5F8134013DD00F5A7C4 /* SoundTouchRenderFilter.h in Headers */,
-				390BB5F9134013DD00F5A7C4 /* AudioBuffer.h in Headers */,
-				390BB5FB134013DD00F5A7C4 /* AudioContext.h in Headers */,
+				390BB5F9134013DD00F5A7C4 /* AudioData.h in Headers */,
+				390BB5FB134013DD00F5A7C4 /* AudioEnvironment.h in Headers */,
 				390BB5FC134013DD00F5A7C4 /* AudioManager.h in Headers */,
-				390BB5FD134013DD00F5A7C4 /* AudioSource.h in Headers */,
-				390BB5FF134013DD00F5A7C4 /* IOSAudioContext.h in Headers */,
+				390BB5FD134013DD00F5A7C4 /* AudioEmitter.h in Headers */,
+				390BB5FF134013DD00F5A7C4 /* IOSAudioEnvironment.h in Headers */,
 				390BB601134013DD00F5A7C4 /* IOSAudioManager.h in Headers */,
-				390BB603134013DD00F5A7C4 /* IOSAudioSource.h in Headers */,
+				390BB603134013DD00F5A7C4 /* IOSAudioEmitter.h in Headers */,
 				390BB605134013DD00F5A7C4 /* IOSRenderFilters.h in Headers */,
 				390BB606134013DD00F5A7C4 /* DataBuffer.h in Headers */,
 				390BB608134013DD00F5A7C4 /* KSAudioFile.h in Headers */,
@@ -429,12 +432,13 @@
 				390BB615134013DD00F5A7C4 /* SynthesizeSingleton.h in Headers */,
 				390BB617134013DD00F5A7C4 /* AudioUnitHelpers.h in Headers */,
 				390BB619134013DD00F5A7C4 /* Information.h in Headers */,
-				390BB61A134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.h in Headers */,
+				390BB61A134013DD00F5A7C4 /* KSAudioFile+AudioData.h in Headers */,
 				390BB61C134013DD00F5A7C4 /* Logging.h in Headers */,
 				390BB61E134013DD00F5A7C4 /* Macros.h in Headers */,
 				390BB61F134013DD00F5A7C4 /* Mutex.h in Headers */,
 				390BB621134013DD00F5A7C4 /* Util.h in Headers */,
 				390BB62513402D6B00F5A7C4 /* CommonRenderFilters.h in Headers */,
+				390BB8A413417D7800F5A7C4 /* IOSAudioData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,10 +571,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				390BB5F7134013DD00F5A7C4 /* SoundTouchRenderFilter.cpp in Sources */,
-				390BB5FA134013DD00F5A7C4 /* AudioBuffer.mm in Sources */,
-				390BB5FE134013DD00F5A7C4 /* IOSAudioContext.cpp in Sources */,
+				390BB5FE134013DD00F5A7C4 /* IOSAudioEnvironment.cpp in Sources */,
 				390BB600134013DD00F5A7C4 /* IOSAudioManager.cpp in Sources */,
-				390BB602134013DD00F5A7C4 /* IOSAudioSource.cpp in Sources */,
+				390BB602134013DD00F5A7C4 /* IOSAudioEmitter.cpp in Sources */,
 				390BB604134013DD00F5A7C4 /* IOSRenderFilters.cpp in Sources */,
 				390BB607134013DD00F5A7C4 /* DataBuffer.m in Sources */,
 				390BB609134013DD00F5A7C4 /* KSAudioFile.m in Sources */,
@@ -580,10 +583,11 @@
 				390BB612134013DD00F5A7C4 /* OALTools.m in Sources */,
 				390BB616134013DD00F5A7C4 /* AudioUnitHelpers.cpp in Sources */,
 				390BB618134013DD00F5A7C4 /* Information.cpp in Sources */,
-				390BB61B134013DD00F5A7C4 /* KSAudioFile+AudioBuffer.mm in Sources */,
+				390BB61B134013DD00F5A7C4 /* KSAudioFile+AudioData.mm in Sources */,
 				390BB61D134013DD00F5A7C4 /* Logging.mm in Sources */,
 				390BB620134013DD00F5A7C4 /* Util.cpp in Sources */,
 				390BB62413402D6B00F5A7C4 /* CommonRenderFilters.cpp in Sources */,
+				390BB8A513417D7800F5A7C4 /* IOSAudioData.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

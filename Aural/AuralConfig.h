@@ -28,9 +28,13 @@
 #define AURAL_AURALCONFIG_H
 
 
+#ifndef CONFIG_USE_LOCKS
 #define CONFIG_USE_LOCKS 1
+#endif
 
+#ifndef CONFIG_USE_EXCEPTIONS
 #define CONFIG_USE_EXCEPTIONS 1
+#endif
 
 
 #endif // AURAL_AURALCONFIG_H

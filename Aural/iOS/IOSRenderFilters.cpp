@@ -38,11 +38,11 @@ static const unsigned int kRightChannel = 1;
 namespace aural
 {
     static OSStatus IOS3DMixerRenderSink_renderCallback(void* inRefCon,
-                                   AudioUnitRenderActionFlags* ioActionFlags,
-                                   const AudioTimeStamp* inTimeStamp,
-                                   UInt32 inElementNumber,
-                                   UInt32 inNumberFrames,
-                                   AudioBufferList* ioData)
+                                                        AudioUnitRenderActionFlags* ioActionFlags,
+                                                        const AudioTimeStamp* inTimeStamp,
+                                                        UInt32 inElementNumber,
+                                                        UInt32 inNumberFrames,
+                                                        AudioBufferList* ioData)
     {
         IOS3DMixerRenderFilter* filter = (IOS3DMixerRenderFilter*)inRefCon;
         
@@ -58,18 +58,18 @@ namespace aural
 	    
         return noErr;
     }
-
+    
     IOS3DMixerRenderFilter::IOS3DMixerRenderFilter(AudioUnitAccessor& accessor, Mutex& mutex)
     : accessor_(accessor)
     , mutex_(mutex)
     {
     }
-
+    
     void IOS3DMixerRenderFilter::setMuted(const bool muted)
     {
         muted_ = muted;
     }
-
+    
     void IOS3DMixerRenderFilter::setEnabled(const bool enabled)
     {
         AURenderCallbackStruct renderCallbackStruct;
@@ -83,7 +83,7 @@ namespace aural
             renderCallbackStruct.inputProc = NULL;
             renderCallbackStruct.inputProcRefCon = NULL;
         }
-
+        
         // Nested scope to control mutex lifetime.
         {
             OPTIONAL_LOCK(mutex_);
@@ -91,7 +91,7 @@ namespace aural
             enabled_ = enabled;
         }
     }
-
+    
     void IOS3DMixerRenderFilter::readFrames(const unsigned long numFrames, void*const dst)
     {
         sourceReadFrames(numFrames, dst);

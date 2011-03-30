@@ -1,5 +1,5 @@
 //
-//  IOSAudioSource.cpp
+//  IOSAudioEmitter.cpp
 //  Aural
 //
 //  Created by Karl Stenerud on 3/26/11.
@@ -24,8 +24,8 @@
 // Attribution is not required, but appreciated :)
 //
 
-#include "IOSAudioSource.h"
-#include "IOSAudioContext.h"
+#include "IOSAudioEmitter.h"
+#include "IOSAudioEnvironment.h"
 #include "Macros.h"
 #include "SoundTouchRenderFilter.h"
 #include "Logging.h"
@@ -35,65 +35,67 @@
 #define TRACE_LOGGING_ENABLED 0
 
 #if TRACE_LOGGING_ENABLED
-    #define LOG_TRACE(FMT, ...) AURAL_LOG_DEBUG(FMT, ##__VA_ARGS__)
+#define LOG_TRACE(FMT, ...) AURAL_LOG_DEBUG(FMT, ##__VA_ARGS__)
 #else
-    #define LOG_TRACE(FMT, ...)
+#define LOG_TRACE(FMT, ...)
 #endif
 
 
 namespace aural
 {
-    IOSAudioSource::IOSAudioSource(IOS3DMixerAudioContext& context, const UInt32 elementNumber)
-    : audioContext_(context)
-    , audioUnitAccessor_(context.mixerUnit(),
+    IOSAudioEmitter::IOSAudioEmitter(IOS3DMixerAudioEnvironment& environment,
+                                     const UInt32 elementNumber)
+    : audioEnvironment_(environment)
+    , audioUnitAccessor_(environment.mixerUnit(),
                          kAudioUnitScope_Input,
                          elementNumber)
-    , renderSink_(audioUnitAccessor_, context.mutex())
+    , renderSink_(audioUnitAccessor_, environment.mutex())
     , gain_(1.0f)
     , pan_(0.5f)
     , currentFilter_(new SoundTouchRenderFilter())
     {
-//        renderSink_.setSource(&renderSource_);
         renderSink_.setSource(currentFilter_);
         currentFilter_->setSource(&renderSource_);
-
-        LOG_TRACE("Initialized source %d", audioUnitAccessor_.element());
+        
+//        renderSink_.setEmitter(&renderSource_);
+        
+        LOG_TRACE("Initialized emitter %d", audioUnitAccessor_.element());
     }
     
-    IOSAudioSource::~IOSAudioSource()
+    IOSAudioEmitter::~IOSAudioEmitter()
     {
     }
     
-    void IOSAudioSource::setBuffer(AudioBuffer*const buffer)
+    void IOSAudioEmitter::setAudioData(AudioData*const audioData)
     {
-        OPTIONAL_LOCK(audioContext_.mutex());
-        audioBuffer_ = buffer;
-        renderSource_.setBuffer(buffer);
-        audioUnitAccessor_.setStreamFormat(buffer->format());
+        OPTIONAL_LOCK(audioEnvironment_.mutex());
+        audioData_ = static_cast<IOSAudioData*>(audioData);
+        renderSource_.setBuffer(audioData_);
+        audioUnitAccessor_.setStreamFormat(audioData_->format());
         renderSink_.prepare();
     }
     
-    AudioBuffer* IOSAudioSource::buffer()
+    AudioData* IOSAudioEmitter::audioData()
     {
-        return audioBuffer_;
+        return audioData_;
     }
     
-    bool IOSAudioSource::muted()
+    bool IOSAudioEmitter::muted()
     {
         return renderSink_.muted();
     }
     
-    void IOSAudioSource::setMuted(const bool muted)
+    void IOSAudioEmitter::setMuted(const bool muted)
     {
         renderSink_.setMuted(muted);
     }
     
-    bool IOSAudioSource::paused()
+    bool IOSAudioEmitter::paused()
     {
         return paused_;
     }
     
-    void IOSAudioSource::setPaused(const bool paused)
+    void IOSAudioEmitter::setPaused(const bool paused)
     {
         if(paused != paused_)
         {
@@ -102,7 +104,7 @@ namespace aural
         }
     }
 	
-    void IOSAudioSource::play()
+    void IOSAudioEmitter::play()
     {
         if(playing_)
         {
@@ -114,7 +116,7 @@ namespace aural
         paused_ = FALSE;
     }
     
-    void IOSAudioSource::stop() 
+    void IOSAudioEmitter::stop() 
     {
         // TODO: Calling reset/prepare will reset SoundTouch to the CURRENT
         // pitch value. If you change pitch, it will still have preloaded data
@@ -127,14 +129,14 @@ namespace aural
         currentBytePos_ = 0;
     }
     
-    float IOSAudioSource::gain()
+    float IOSAudioEmitter::gain()
     {
         return gain_;
     }
     
-    void IOSAudioSource::setGain(const float gain)
+    void IOSAudioEmitter::setGain(const float gain)
     {
-        OPTIONAL_LOCK(audioContext_.mutex());
+        OPTIONAL_LOCK(audioEnvironment_.mutex());
         if(gain != gain_)
         {
             // Converting to sound pressure, so * 20
@@ -144,43 +146,43 @@ namespace aural
         }
     }
     
-    float IOSAudioSource::pitch()
+    float IOSAudioEmitter::pitch()
     {
         return pitch_;
     }
 	
-    void IOSAudioSource::setPitch(const float pitch)
+    void IOSAudioEmitter::setPitch(const float pitch)
     {
-        float totalAmount = (pitch - 1.0f) * 2.0f;
-        //	NSLog(@"%f = %f", pitch, totalAmount);
+        ((SoundTouchRenderFilter*)currentFilter_)->setPitch(pitch);
         
-        ((SoundTouchRenderFilter*)currentFilter_)->setPitchSemiTones(totalAmount);
+//        ((SoundTouchRenderFilter*)currentFilter_)->setPitchSemiTones((pitch - 1.0f) * 2.0f);
         pitch_ = pitch;
     }
     
-    float IOSAudioSource::playbackRate()
+    float IOSAudioEmitter::playbackRate()
     {
         return playbackRate_;
     }
-
-    void IOSAudioSource::setPlaybackRate(const float rate)
+    
+    void IOSAudioEmitter::setPlaybackRate(const float rate)
     {
-        OPTIONAL_LOCK(audioContext_.mutex());
+        OPTIONAL_LOCK(audioEnvironment_.mutex());
         if(rate != playbackRate_)
         {
-            audioUnitAccessor_.setParameter(k3DMixerParam_PlaybackRate, rate);
+            ((SoundTouchRenderFilter*)currentFilter_)->setRate(rate);
+            //            audioUnitAccessor_.setParameter(k3DMixerParam_PlaybackRate, rate);
             playbackRate_ = rate;
         }
     }
     
-    float IOSAudioSource::pan()
+    float IOSAudioEmitter::pan()
     {
         return pan_;
     }
     
-    void IOSAudioSource::setPan(const float pan)
+    void IOSAudioEmitter::setPan(const float pan)
     {
-        OPTIONAL_LOCK(audioContext_.mutex());
+        OPTIONAL_LOCK(audioEnvironment_.mutex());
         if(pan != pan_)
         {
             // Distance needs to be something other than 0 (inside your head)
@@ -193,9 +195,9 @@ namespace aural
         }
     }
     
-    void IOSAudioSource::setDistance(const float distance)
+    void IOSAudioEmitter::setDistance(const float distance)
     {
-        OPTIONAL_LOCK(audioContext_.mutex());
+        OPTIONAL_LOCK(audioEnvironment_.mutex());
         if(distance != distance_)
         {
             audioUnitAccessor_.setParameter(k3DMixerParam_Distance, distance);
@@ -203,7 +205,7 @@ namespace aural
         }
     }
     
-    UInt32 IOSAudioSource::elementNumber()
+    UInt32 IOSAudioEmitter::elementNumber()
     {
         return audioUnitAccessor_.element();
     }

@@ -1,5 +1,5 @@
 //
-//  AUCAudioSource.h
+//  AudioEmitter.h
 //  Aural
 //
 //  Created by Karl Stenerud on 2/19/11.
@@ -24,22 +24,50 @@
 // Attribution is not required, but appreciated :)
 //
 
-#ifndef AURAL_AUDIOSOURCE_H
-#define AURAL_AUDIOSOURCE_H
+#ifndef AURAL_AUDIOEMITTER_H
+#define AURAL_AUDIOEMITTER_H
 
+/*
+ features:
+ - pitch
+ - tempo
+ - playback rate
+ - pan
+ - mute
+ - stereo
+ - 3d positioning
+ - streaming
+ - playback position
+ - metering
+ - looping
+ - notify on playback end
+ - play at time
+ - reverb
+ - tremolo?
+ - vibrato?
+ 
+ purpose:
+ - streaming
+ - instant playback
+ - looped playback
+ - hardware acceleration
+ 
+ data source:
+ - memory buffer
+ - stream
+ */
 
 namespace aural
 {
-    class AudioBuffer;
+    class AudioData;
     
-    class AudioSource
+    class AudioEmitter
     {
     public:
-        virtual ~AudioSource() {};
+        virtual ~AudioEmitter() {};
         
-        virtual AudioBuffer* buffer() = 0;
-
-        virtual void setBuffer(AudioBuffer*const buffer) = 0;
+        virtual AudioData* audioData() = 0;
+        virtual void setAudioData(AudioData*const audioData) = 0;
         
         virtual bool paused() = 0;
         virtual void setPaused(const bool paused) = 0;
@@ -64,5 +92,5 @@ namespace aural
     };
 }
 
-#endif // AURAL_AUDIOSOURCE_H
+#endif // AURAL_AUDIOEMITTER_H
 

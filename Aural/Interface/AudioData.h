@@ -1,5 +1,5 @@
 //
-//  AUCAudioBuffer.m
+//  AudioData.h
 //  Aural
 //
 //  Created by Karl Stenerud on 2/19/11.
@@ -24,32 +24,21 @@
 // Attribution is not required, but appreciated :)
 //
 
-#import "AudioBuffer.h"
+#ifndef AURAL_AUDIODATA_H
+#define AURAL_AUDIODATA_H
 
+
+#include <AudioToolbox/AudioToolbox.h>
+
+// TODO: AudioDataBuffer, AudioDataStream
 
 namespace aural
 {
-    AudioBuffer::AudioBuffer(void*const leftChannelData,
-                             void*const rightChannelData,
-                             const unsigned int numBytes,
-                             AudioStreamBasicDescription& format)
-    : leftChannelData_(leftChannelData)
-    , rightChannelData_(rightChannelData)
-    , numBytes_(numBytes)
-    , format_(format)
-    , numFrames_(numBytes / format.mBytesPerFrame)
+    class AudioData
     {
-    }
-    
-    AudioBuffer::~AudioBuffer()
-    {
-        if(NULL != leftChannelData_)
-        {
-            free(leftChannelData_);
-        }
-        if(NULL != rightChannelData_)
-        {
-            free(rightChannelData_);
-        }
-    }
+    public:
+        virtual ~AudioData() {}
+    };
 }
+
+#endif // AURAL_AUDIODATA_H

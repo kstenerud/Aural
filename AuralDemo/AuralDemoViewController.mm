@@ -18,17 +18,17 @@
 	
 	[OALAudioSession sharedInstance];
 	
-	context = manager.newContext();
-	context->setSampleRate(44100);
+	environment = manager.newEnvironment();
+	environment->setSampleRate(44100);
 	
-	buffer = [KSAudioFile aucBufferWithUrl:[OALTools urlForPath:@"ColdFunk.caf"]
-									stereo:NO];
+	buffer = [KSAudioFile audioDataWithUrl:[OALTools urlForPath:@"ColdFunk.caf"]
+                                    stereo:NO];
 	
-	source1 = context->newSource();
-	source1->setBuffer(buffer);
+	emitter1 = environment->newEmitter();
+	emitter1->setAudioData(buffer);
 	
-	source2 = context->newSource();
-	source2->setBuffer(buffer);
+	emitter2 = environment->newEmitter();
+	emitter2->setAudioData(buffer);
 	
 	gainSlider1.value = 1.0f;
 	gainSlider2.value = 1.0f;
@@ -46,10 +46,9 @@
 
 - (void)dealloc
 {
-    context->deleteSource(source1);
-	delete source1;
-	delete source2;
-	delete context;
+    environment->deleteEmitter(emitter1);
+    environment->deleteEmitter(emitter2);
+    manager.deleteEnvironment(environment);
 	delete buffer;
 	
 	[gainSlider1 release];
@@ -76,91 +75,91 @@
 
 - (IBAction) onPlay1
 {
-	source1->play();
+	emitter1->play();
 }
 
 - (IBAction) onStop1
 {
-	source1->stop();
+	emitter1->stop();
 }
 
 - (IBAction) onMute1
 {
-	source1->setMuted(!source1->muted());
+	emitter1->setMuted(!emitter1->muted());
 }
 
 - (IBAction) onPause1
 {
-	source1->setPaused(!source1->paused());
+	emitter1->setPaused(!emitter1->paused());
 }
 
 - (IBAction) onGainSlider1:(id) sender
 {
-	source1->setGain(gainSlider1.value);
+	emitter1->setGain(gainSlider1.value);
 }
 
 - (IBAction) onRateSlider1:(id) sender
 {
-	source1->setPlaybackRate(rateSlider1.value * 2.0f);
+	emitter1->setPlaybackRate(rateSlider1.value * 2.0f);
 }
 
 - (IBAction) onPitchSlider1:(id) sender
 {
-	source1->setPitch(pitchSlider1.value * 2.0f);
+	emitter1->setPitch(pitchSlider1.value * 2.0f);
 }
 
 - (IBAction) onPanSlider1:(id) sender
 {
-	source1->setPan((panSlider1.value - 0.5f) * 2);
+	emitter1->setPan((panSlider1.value - 0.5f) * 2);
 }
 
 
 
 - (IBAction) onPlay2
 {
-	source2->play();
+	emitter2->play();
 }
 
 - (IBAction) onStop2
 {
-	source2->stop();
+	emitter2->stop();
 }
 
 - (IBAction) onMute2
 {
-	source2->setMuted(!source2->muted());
+	emitter2->setMuted(!emitter2->muted());
 }
 
 - (IBAction) onPause2
 {
-	source2->setPaused(!source2->paused());
+	emitter2->setPaused(!emitter2->paused());
 }
 
 - (IBAction) onGainSlider2:(id) sender
 {
-	source2->setGain(gainSlider2.value);
+	emitter2->setGain(gainSlider2.value);
 }
 
 - (IBAction) onRateSlider2:(id) sender
 {
-	source2->setPlaybackRate(rateSlider2.value * 2.0f);
+	emitter2->setPlaybackRate(rateSlider2.value * 2.0f);
 }
 
 - (IBAction) onPitchSlider2:(id) sender
 {
-	source2->setPitch(pitchSlider2.value * 2.0f);
+	emitter2->setPitch(pitchSlider2.value * 2.0f);
 }
 
 - (IBAction) onPanSlider2:(id) sender
 {
-	source2->setPan((panSlider2.value - 0.5f) * 2);
+	emitter2->setPan((panSlider2.value - 0.5f) * 2);
 }
 
 
 
-- (IBAction) onContext
+- (IBAction) onEnvironment
 {
-	context->setActive(!context->active());
+	environment->setActive(!environment->active());
 }
 
 @end

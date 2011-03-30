@@ -32,6 +32,7 @@ extern "C"
 {
 #endif
 
+#include <MacTypes.h>
 
 #pragma mark -
 #pragma mark Basic Logging

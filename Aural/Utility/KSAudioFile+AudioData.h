@@ -1,5 +1,5 @@
 //
-//  KSAudioFile+AUCAudioBuffer.h
+//  KSAudioFile+AUCAudioData.h
 //  Aural
 //
 //  Created by Karl Stenerud on 2/19/11.
@@ -28,22 +28,22 @@
 #import "Aural.h"
 
 
-@interface KSAudioFile (AudioBuffer)
+@interface KSAudioFile (AudioData)
 
-+ (aural::AudioBuffer*) aucBufferWithUrl:(NSURL*) url
-							  stereo:(bool) stereo;
++ (aural::AudioData*) audioDataWithUrl:(NSURL*) url
+                                stereo:(bool) stereo;
 
-+ (aural::AudioBuffer*) aucBufferWithUrl:(NSURL*) url
-							  stereo:(bool) stereo
-						  sampleRate:(UInt32) sampleRate;
++ (aural::AudioData*) audioDataWithUrl:(NSURL*) url
+                                stereo:(bool) stereo
+                            sampleRate:(UInt32) sampleRate;
 
-- (void) setToAudioBufferFormatWithStereo:(bool) stereo;
+- (void) setToAudioDataFormatWithStereo:(bool) stereo;
 
-- (void) setToAudioBufferFormatWithStereo:(bool) stereo
-							   sampleRate:(UInt32) sampleRate;
+- (void) setToAudioDataFormatWithStereo:(bool) stereo
+                             sampleRate:(UInt32) sampleRate;
 
-- (aural::AudioBuffer*) aucBufferWithName:(NSString*) name
-						   startFrame:(SInt64) startFrame
-							numFrames:(SInt64) numFrames;
+- (aural::AudioData*) audioDataWithName:(NSString*) name
+                             startFrame:(SInt64) startFrame
+                              numFrames:(SInt64) numFrames;
 
 @end

@@ -28,11 +28,11 @@
 #define AURAL_AURAL_H
 
 
-#include "AudioBuffer.h"
-#include "AudioSource.h"
-#include "AudioContext.h"
+#include "AudioData.h"
+#include "AudioEmitter.h"
+#include "AudioEnvironment.h"
 #include "AudioManager.h"
-#include "KSAudioFile+AudioBuffer.h"
+#include "KSAudioFile+AudioData.h"
 
 
 #endif // AURAL_AURAL_H

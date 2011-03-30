@@ -1,5 +1,5 @@
 //
-//  KSAudioFile+AUCAudioBuffer.m
+//  KSAudioFile+AUCAudioData.m
 //  Aural
 //
 //  Created by Karl Stenerud on 2/19/11.
@@ -24,15 +24,15 @@
 // Attribution is not required, but appreciated :)
 //
 
-#import "KSAudioFile+AudioBuffer.h"
+#import "KSAudioFile+AudioData.h"
 #import "Logging.h"
-#import "AudioBuffer.h"
+#import "IOSAudioData.h"
 
 
 static const unsigned int kDefaultSampleRate = 44100;
 
 
-@implementation KSAudioFile (AudioBuffer)
+@implementation KSAudioFile (AudioData)
 
 + (Float64) hardwareSampleRate
 {
@@ -51,50 +51,50 @@ static const unsigned int kDefaultSampleRate = 44100;
 	return value;
 }
 
-+ (aural::AudioBuffer*) aucBufferWithUrl:(NSURL*) url
-							  stereo:(bool) stereo
++ (aural::AudioData*) audioDataWithUrl:(NSURL*) url
+                                stereo:(bool) stereo
 {
-	return [self aucBufferWithUrl:url
-						   stereo:stereo
-					   sampleRate:(UInt32)[self hardwareSampleRate]];
+	return [self audioDataWithUrl:url
+                           stereo:stereo
+                       sampleRate:(UInt32)[self hardwareSampleRate]];
 }
 
-+ (aural::AudioBuffer*) aucBufferWithUrl:(NSURL*) url
-							  stereo:(bool) stereo
-						  sampleRate:(UInt32) sampleRate
++ (aural::AudioData*) audioDataWithUrl:(NSURL*) url
+                                stereo:(bool) stereo
+                            sampleRate:(UInt32) sampleRate
 {
 	KSAudioFile* file = [[self alloc] initWithUrl:url];
-	[file setToAudioBufferFormatWithStereo:stereo
-								sampleRate:sampleRate];
+	[file setToAudioDataFormatWithStereo:stereo
+                              sampleRate:sampleRate];
 	
-	aural::AudioBuffer* buffer = [file aucBufferWithName:[url description]
-										  startFrame:0
-										   numFrames:-1];
+	aural::AudioData* buffer = [file audioDataWithName:[url description]
+                                            startFrame:0
+                                             numFrames:-1];
 	
 	[file release];
 	
 	return buffer;
 }
 
-- (void) setToAudioBufferFormatWithStereo:(bool) stereo
+- (void) setToAudioDataFormatWithStereo:(bool) stereo
 {
-	[self setToAudioBufferFormatWithStereo:stereo
-								sampleRate:(UInt32)[[self class] hardwareSampleRate]];
+	[self setToAudioDataFormatWithStereo:stereo
+                              sampleRate:(UInt32)[[self class] hardwareSampleRate]];
 }
 
-- (void) setToAudioBufferFormatWithStereo:(bool) stereo
-							   sampleRate:(UInt32) sampleRate
+- (void) setToAudioDataFormatWithStereo:(bool) stereo
+                             sampleRate:(UInt32) sampleRate
 {
 	//	self.sampleRate = sampleRate;
 	_outputDescription.mSampleRate = sampleRate;
 	// TODO: Need to sort this part out better.
-//	[self setTo32BitCanonicalFormatWithStereo:stereo interleaved:NO];
+    //	[self setTo32BitCanonicalFormatWithStereo:stereo interleaved:NO];
 	[self setTo16BitCanonicalFormatWithStereo:NO interleaved:YES];
 }
 
-- (aural::AudioBuffer*) aucBufferWithName:(NSString*) name
-						   startFrame:(SInt64) startFrame
-							numFrames:(SInt64) numFrames
+- (aural::AudioData*) audioDataWithName:(NSString*) name
+                             startFrame:(SInt64) startFrame
+                              numFrames:(SInt64) numFrames
 {
 	NSArray* channelData = [self audioDataWithStartFrame:startFrame
 											   numFrames:numFrames
@@ -102,14 +102,14 @@ static const unsigned int kDefaultSampleRate = 44100;
 	
 	DataBuffer* leftData = [channelData objectAtIndex:0];
 	DataBuffer* rightdata = [channelData count] > 1 ? [channelData objectAtIndex:1] : nil;
-
+    
 	leftData.freeOnDealloc = NO;
 	rightdata.freeOnDealloc = NO;
-
-	return new aural::AudioBuffer(leftData.data,
-								  rightdata.data,
-								  leftData.numBytes,
-								  _outputDescription);
+    
+	return new aural::IOSAudioData(leftData.data,
+                                   rightdata.data,
+                                   leftData.numBytes,
+                                   _outputDescription);
 }
 
 @end

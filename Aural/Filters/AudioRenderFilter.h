@@ -28,7 +28,6 @@
 #define AURAL_RENDERFILTER_H
 
 
-#include "AudioBuffer.h"
 #include "Util.h"
 
 

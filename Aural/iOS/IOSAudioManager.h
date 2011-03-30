@@ -38,10 +38,10 @@ namespace aural
     public:
         IOSAudioManager() {};
         ~IOSAudioManager() {};
-
-        AudioContext* newContext();
-        void deleteContext(AudioContext*const context);
-
+        
+        AudioEnvironment* newEnvironment();
+        void deleteEnvironment(AudioEnvironment*const environment);
+        
     private:
         IOSAudioManager(const IOSAudioManager&);
         IOSAudioManager& operator=(const IOSAudioManager&);

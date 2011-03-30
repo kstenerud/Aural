@@ -44,11 +44,6 @@
 
 namespace aural
 {
-    void SoundTouchRenderFilter::setPitchSemiTones(const float newPitch)
-    {
-        soundTouch_.setPitchSemiTones(newPitch);
-    }
-
 	using namespace soundtouch;
     
 	SoundTouchRenderFilter::SoundTouchRenderFilter()
@@ -84,6 +79,25 @@ namespace aural
         // TODO
     }
     
+    void SoundTouchRenderFilter::setPitchSemiTones(const float newPitch)
+    {
+        soundTouch_.setPitchSemiTones(newPitch);
+    }
+
+    void SoundTouchRenderFilter::setPitch(const float value)
+    {
+        soundTouch_.setPitch(value);
+    }
+    
+    void SoundTouchRenderFilter::setRate(const float value)
+    {
+        soundTouch_.setRate(value);
+    }
+    
+    void SoundTouchRenderFilter::setTempo(const float value)
+    {
+        soundTouch_.setTempo(value);
+    }
     
 	void SoundTouchRenderFilter::preload()
 	{

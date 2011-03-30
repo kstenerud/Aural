@@ -25,21 +25,21 @@
 //
 
 #include "IOSAudioManager.h"
-#include "IOSAudioContext.h"
+#include "IOSAudioEnvironment.h"
 
 
-static const unsigned int kDefaultMaxSourcesPerContext = 100;
+static const unsigned int kDefaultMaxEmittersPerEnvironment = 100;
 
 
 namespace aural
 {
-    AudioContext* IOSAudioManager::newContext()
+    AudioEnvironment* IOSAudioManager::newEnvironment()
     {
-        return new IOS3DMixerAudioContext(this, kDefaultMaxSourcesPerContext);
+        return new IOS3DMixerAudioEnvironment(this, kDefaultMaxEmittersPerEnvironment);
     }
     
-    void IOSAudioManager::deleteContext(AudioContext*const context)
+    void IOSAudioManager::deleteEnvironment(AudioEnvironment*const environment)
     {
-        delete context;
+        delete environment;
     }
 }

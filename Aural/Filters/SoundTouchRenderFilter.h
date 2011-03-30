@@ -48,7 +48,10 @@ namespace aural
         bool enabled();
         void setEnabled(const bool enabled);
 
-		void setPitchSemiTones(const float newPitch);
+		void setPitchSemiTones(const float value);
+		void setPitch(const float value);
+		void setRate(const float value);
+		void setTempo(const float value);
 
     private:
         void preload();

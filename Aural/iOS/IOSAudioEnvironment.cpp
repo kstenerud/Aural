@@ -1,5 +1,5 @@
 //
-//  IOSAudioContext.cpp
+//  IOSAudioEnvironment.cpp
 //  Aural
 //
 //  Created by Karl Stenerud on 3/26/11.
@@ -24,111 +24,111 @@
 // Attribution is not required, but appreciated :)
 //
 
-#include "IOSAudioContext.h"
+#include "IOSAudioEnvironment.h"
 #include "Macros.h"
 #include "IOSAudioManager.h"
-#include "IOSAudioSource.h"
+#include "IOSAudioEmitter.h"
 
 
 namespace aural
 {
-    IOS3DMixerAudioContext::IOS3DMixerAudioContext(IOSAudioManager*const manager,
-                                                   const unsigned int maxSources)
+    IOS3DMixerAudioEnvironment::IOS3DMixerAudioEnvironment(IOSAudioManager*const manager,
+                                                           const unsigned int maxEmitters)
     : manager_(manager)
-    , maxSources_(maxSources)
-    , graph_(AudioUnitGraph(kAudioUnitSubType_AU3DMixerEmbedded, maxSources))
-    , sources_(new IOSAudioSource*[maxSources])
+    , maxEmitters_(maxEmitters)
+    , graph_(AudioUnitGraph(kAudioUnitSubType_AU3DMixerEmbedded, maxEmitters))
+    , emitters_(new IOSAudioEmitter*[maxEmitters])
     , inputAccessor_(graph_.mixerUnit(), kAudioUnitScope_Input, 0)
     , outputAccessor_(graph_.mixerUnit(), kAudioUnitScope_Output, 0)
     , globalAccessor_(graph_.mixerUnit(), kAudioUnitScope_Global, 0)
     {
-        memset(sources_, 0, sizeof(sources_) * maxSources);
+        memset(emitters_, 0, sizeof(emitters_) * maxEmitters);
         setActive(TRUE);
     }
     
     
-    IOS3DMixerAudioContext::~IOS3DMixerAudioContext()
+    IOS3DMixerAudioEnvironment::~IOS3DMixerAudioEnvironment()
     {
-        for(UInt32 element = 0; element < maxSources_; element++)
+        for(UInt32 element = 0; element < maxEmitters_; element++)
         {
-            if(NULL != sources_[element])
+            if(NULL != emitters_[element])
             {
-                delete sources_[element];
+                delete emitters_[element];
             }
         }
-        delete [] sources_;
+        delete [] emitters_;
     }
 
-    AudioSource* IOS3DMixerAudioContext::newSource()
+    AudioEmitter* IOS3DMixerAudioEnvironment::newEmitter()
     {
-        IOSAudioSource* source = NULL;
+        IOSAudioEmitter* emitter = NULL;
         
         // Nested scope to control mutex lifetime.
         {
             OPTIONAL_LOCK(mutex_);
             
-            for(UInt32 element = 0; element < maxSources_; element++)
+            for(UInt32 element = 0; element < maxEmitters_; element++)
             {
-                if(NULL == sources_[element])
+                if(NULL == emitters_[element])
                 {
-                    sources_[element] = source = new IOSAudioSource(*this, element);
+                    emitters_[element] = emitter = new IOSAudioEmitter(*this, element);
                     break;
                 }
             }
         }
         
-        if(NULL == source)
+        if(NULL == emitter)
         {
-            AURAL_LOG_ERROR("Cannot allocate any more sources on this context");
+            AURAL_LOG_ERROR("Cannot allocate any more emitters in this environment");
         }
 
-        return source;
+        return emitter;
     }
 
-    void IOS3DMixerAudioContext::deleteSource(AudioSource*const audioSource)
+    void IOS3DMixerAudioEnvironment::deleteEmitter(AudioEmitter*const audioEmitter)
     {
-        IOSAudioSource* realSource = static_cast<IOSAudioSource*>(audioSource);
+        IOSAudioEmitter* realEmitter = static_cast<IOSAudioEmitter*>(audioEmitter);
         OPTIONAL_LOCK(mutex_);
-        sources_[realSource->elementNumber()] = NULL;
-        delete audioSource;
+        emitters_[realEmitter->elementNumber()] = NULL;
+        delete audioEmitter;
     }
 
-    void IOS3DMixerAudioContext::setNumElements(const UInt32 value)
+    void IOS3DMixerAudioEnvironment::setNumElements(const UInt32 value)
     {
         OPTIONAL_LOCK(mutex_);
         inputAccessor_.setUInt32Property(kAudioUnitProperty_ElementCount, value);
     }
     
-    Float64 IOS3DMixerAudioContext::sampleRate()
+    Float64 IOS3DMixerAudioEnvironment::sampleRate()
     {
         OPTIONAL_LOCK(mutex_);
         return outputAccessor_.getFloat64Property(kAudioUnitProperty_SampleRate);
     }
     
-    void IOS3DMixerAudioContext::setSampleRate(const Float64 value)
+    void IOS3DMixerAudioEnvironment::setSampleRate(const Float64 value)
     {
         OPTIONAL_LOCK(mutex_);
         outputAccessor_.setFloat64Property(kAudioUnitProperty_SampleRate, value);
     }
     
-    UInt32 IOS3DMixerAudioContext::maxFramesPerSlice()
+    UInt32 IOS3DMixerAudioEnvironment::maxFramesPerSlice()
     {
         OPTIONAL_LOCK(mutex_);
         return globalAccessor_.getUInt32Property(kAudioUnitProperty_MaximumFramesPerSlice);
     }
     
-    void IOS3DMixerAudioContext::setMaxFramesPerSlice(const UInt32 value)
+    void IOS3DMixerAudioEnvironment::setMaxFramesPerSlice(const UInt32 value)
     {
         OPTIONAL_LOCK(mutex_);
         globalAccessor_.setUInt32Property(kAudioUnitProperty_MaximumFramesPerSlice, value);
     }
     
-    inline bool IOS3DMixerAudioContext::active()
+    inline bool IOS3DMixerAudioEnvironment::active()
     {
         return graph_.active();
     }
     
-    void IOS3DMixerAudioContext::setActive(const bool value)
+    void IOS3DMixerAudioEnvironment::setActive(const bool value)
     {
         graph_.setActive(value);
     }
